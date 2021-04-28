@@ -58,17 +58,17 @@ function Navbar() {
 
     const onMouseEnter3 = () => {
         if (window.innerWidth < 960) {
-            setDropdown2(false);
+            setDropdown3(false);
         } else {
-            setDropdown2(true);
+            setDropdown3(true);
         }
     };
 
     const onMouseLeave3 = () => {
         if (window.innerWidth < 960) {
-            setDropdown2(false);
+            setDropdown3(false);
         } else {
-            setDropdown2(false);
+            setDropdown3(false);
         }
     };
 
