@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import './Dropdown.css'
 import {MenuItems} from "./MenuItems";
-import Navbar from "./Navbar";
+
 
 function Dropdown() {
 

@@ -21,7 +21,7 @@ function Navbar() {
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);
 
-    const handleClick = () => setClick(!click);
+
     const close = () => setShowLinks(false);
 
     const onMouseEnter = () => {

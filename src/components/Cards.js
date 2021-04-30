@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import {  withRouter } from "react-router-dom";
 import CardItem from './CardItem';
 import logo from './images/vet_03.jpg'
 
@@ -37,12 +37,7 @@ function Cards() {
                             label='Adventure'
                             path='/products'
                         />
-                        <CardItem
-                            src='images/img-8.jpg'
-                            text='Ride through the Sahara Desert on a guided camel tour'
-                            label='Adrenaline'
-                            path='/sign-up'
-                        />
+
                     </ul>
                 </div>
             </div>

@@ -1,13 +1,24 @@
 import React from 'react';
 import '../../App.css';
 import Cards from '../Cards';
+import Navbar from "../Navbar/Navbar";
+import Product from "../Product"
 
 
 function Home() {
     return (
         <>
-            <Cards />
-        </>
+
+            <Navbar/>
+            <div className="home">
+                <h2 className="hometitle"> Latest Products</h2>
+                <div className="home-products">
+                    <Product/>
+                    <Product/>
+
+                </div>
+        </div>
+            </>
     );
 }
 
