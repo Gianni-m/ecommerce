@@ -1,0 +1,41 @@
+.productpage {
+  max-width: 1300px;
+  margin: 1rem auto;
+  display: flex;
+}
+
+
+.productpage-left {
+  display: flex;
+  flex: 0.8;
+}
+
+.left-image {
+  margin: 1rem;
+  flex: 0.6;
+}
+
+.left-info {
+  margin: 1rem;
+  flex: 0.4;
+
+  height: fit-content;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.left-name {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.left-info > p,
+.right__info > p {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.left-info > p:last-child,
+.right__info > p:last-child {
+  border: none;
+}
