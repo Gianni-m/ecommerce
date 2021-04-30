@@ -1,7 +1,7 @@
 import React from "react";
 import {  withRouter } from "react-router-dom";
 import CardItem from './CardItem';
-import logo from './images/vet_03.jpg'
+import logo from '../assets/images/vet_03.jpg'
 
 function Cards() {
     return (

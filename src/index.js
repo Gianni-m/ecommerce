@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import rooReducer from "./reducers";
+import {createStore} from "redux";
+import middleware from "./middlewares"
+import {composeWithDevTools} from "redux-devtools-extension";
+import {Provider} from "react-redux";
+const store = createStore(rooReducer, composeWithDevTools(middleware))
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+          <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

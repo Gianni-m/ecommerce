@@ -1,7 +1,6 @@
 import './Product.scss';
 import {Link} from "react-router-dom"
-import logo from './images/vet_03.jpg'
-import Home from "./pages/Home";
+import logo from '../assets/images/vet_03.jpg'
 
 const Product  = () => {
 

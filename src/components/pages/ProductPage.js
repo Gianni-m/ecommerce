@@ -1,5 +1,5 @@
 import "./ProductPage.scss";
-import logo from '../images/vet_03.jpg'
+import logo from '../../assets/images/vet_03.jpg'
 import Navbar from "../Navbar/Navbar";
 const ProductPage =() => {
     return (
