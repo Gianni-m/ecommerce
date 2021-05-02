@@ -32,7 +32,7 @@ class Home extends Component {
                                 : "je ne suis pas connecté"
                         }
                     </div>
-                    <div className="home-products">
+                    <div className="home-products" >
                         <Product/>
                         <Product/>
                     </div>

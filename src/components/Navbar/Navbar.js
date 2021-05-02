@@ -15,14 +15,14 @@ import Dropdown from './Dropdown'
 
 function Navbar() {
 
-    const [showLinks, setShowLinks] = useState(false);
+
     const [click, setClick] = useState(false);
     const [dropdown1, setDropdown1] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);
 
 
-    const close = () => setShowLinks(false);
+    const close = () => setDropdown1(false);
 
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {
@@ -80,9 +80,9 @@ function Navbar() {
                 </Link>
 
                 <div className="test">
-                    <button onClick={() => setShowLinks(!showLinks)}> <IoMenu/> </button>
+                    <button onClick={() => setClick(!click)}> <IoMenu/> </button>
                 </div>
-                <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={showLinks ? "hidden" : "" }>
+                <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={click ? "hidden" : "" }>
 
                     <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                         <Link to ='/homme' className='nav-links' onClick={close}>
@@ -112,7 +112,7 @@ function Navbar() {
                 <Link to='/login' className="logo">
                     <VscAccount className="loginlogo" />
                 </Link>
-                <Link to='/panier' className="logop">
+                <Link to='/cart' className="logop">
                     <AiOutlineShoppingCart className="panierlogo"/>
                 </Link>
 
