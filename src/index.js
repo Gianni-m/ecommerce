@@ -9,7 +9,13 @@ import {createStore} from "redux";
 import middleware from "./middlewares"
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
+import {loginDispatch} from "./actions/authActions";
 const store = createStore(rooReducer, composeWithDevTools(middleware))
+
+if(localStorage.jwtToken) {
+    const localToken = localStorage.jwtToken;
+    const data = JSON.parse(localToken);
+    store.dispatch(loginDispatch(data))}
 
 ReactDOM.render(
   <React.StrictMode>
