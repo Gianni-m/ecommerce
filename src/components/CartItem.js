@@ -12,7 +12,7 @@ const CartItem = () => {
 
       <div className="cart">
         <div className="cartitem-image">
-            <img src={logo} alt=""/>
+            <img src={logo} alt="test"/>
         </div>
 
           <Link to={`/product/${111}`} className="cartitem-name">
