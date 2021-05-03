@@ -10,7 +10,7 @@ const CartItem = () => {
     return (
         <Fragment>
 
-      <div className="cart">
+      <div className="cartitem">
         <div className="cartitem-image">
             <img src={logo} alt="test"/>
         </div>
@@ -29,6 +29,8 @@ const CartItem = () => {
           <button className="cartitem-deletebtn">
               <RiDeleteBin6Line/>
           </button>
+
+
       </div>
         </Fragment>
     );

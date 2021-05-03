@@ -104,17 +104,29 @@ function Navbar() {
                     </li>
 
                 </ul>
+                    <div className="searchbar">
+                        <input type="text" placeholder="Search..."/>
+                    </div>
+                    <div className="searchbutton"><button> Search</button> </div>
 
-                <div className="searchbar">
-                    <input type="text" placeholder="Search..."/>
-                </div>
-                <div className="searchbutton"><button> Search</button> </div>
-                <Link to='/login' className="logo">
-                    <VscAccount className="loginlogo" />
-                </Link>
-                <Link to='/cart' className="logop">
-                    <AiOutlineShoppingCart className="panierlogo"/>
-                </Link>
+                    <div className="logo">
+                        <Link to='/login' className="logo">
+                            <VscAccount className="loginlogo" />
+                        </Link>
+                        <Link to='/cart' className="logop">
+                            <span>
+                            <AiOutlineShoppingCart className="panierlogo"/>
+
+                    <span className="tests"> 0 </span>
+                    </span>
+                        </Link>
+
+
+                    </div>
+
+
+
+
 
             </nav>
         </>
