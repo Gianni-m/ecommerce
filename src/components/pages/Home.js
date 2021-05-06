@@ -35,6 +35,8 @@ class Home extends Component {
                     <div className="home-products" >
                         <Product/>
                         <Product/>
+                        <Product/>
+                        <Product/>
                     </div>
                 </div>
             </Fragment>
