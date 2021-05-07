@@ -1,15 +1,16 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component } from 'react';
 import '../../style/Form.scss';
 import {connect} from "react-redux";
 import {loginUser} from "../../actions/authActions";
-import {Link} from "react-router-dom";
+
 class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isSubmitted: false,
-            username: '',
+            email: '',
             password: '',
+            error: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this)
@@ -24,62 +25,82 @@ class LoginForm extends Component {
 
     async handleSubmit(e) {
         e.preventDefault();
-        const {isSubmitted, username, password} = this.state
+        const {isSubmitted, email, password} = this.state
         if(!isSubmitted) {
-            if(username.length < 3 && password.length < 5) {
-                return;
+            if(email.length < 3) {
+                this.setState({error: "email incorrect"})
+            }
+            else if(password.length < 5) {
+                this.setState({error: "longueur du mot de passe insuffisante"})
             } else {
-                this.setState({isSubmitted: true})
-                await this.props.loginUser(this.state.username, this.state.password)
+                this.setState({isSubmitted: true, error: ''})
+                document.querySelector('#error-display').classList.remove('show')
+                await this.props.loginUser(email, password)
+                    .then(() => this.props.history.push('/home'))
+                    .catch((err) => {
+                        this.setState({error: 'Email ou mot de passe incorrect'})
+                        document.querySelector('#error-display').classList.add('show')
+                    })
                 this.setState({isSubmitted: false})
             }
         }
     }
 
     render() {
-        const {isSubmitted} = this.state
-        const {handleChange, handleSubmit} = this;
+        const {isSubmitted, error} = this.state
 
         return (
-            <Fragment>
-                <div className='form-container'>
-                    <Link to={'/home'} className='close-btn'>×</Link>
-                    <div className='form-content-right'>
-                        <form onSubmit={handleSubmit} className='form' noValidate>
-                            <div className='form-inputs'>
-                                <label className='form-label'>Username</label>
-                                <input
-                                    className='form-input'
-                                    type='text'
-                                    name='username'
-                                    placeholder='Enter your username'
-                                    onChange={handleChange}
-                                />
-                                {/*errors.username && <p>{errors.username}</p>*/}
-                            </div>
+            <div className="auth-form">
 
-                            <div className='form-inputs'>
-                                <label className='form-label'>Password</label>
-                                <input
-                                    className='form-input'
-                                    type='password'
-                                    name='password'
-                                    placeholder='Enter your password'
-                                    onChange={handleChange}
-                                />
-                                {/*errors.password && <p>{errors.password}</p>*/}
-                            </div>
-
-                            <button className='form-input-btn' type='submit'>
-                                Sign In
-                            </button>
-                            <span className='form-input-login'>
-          Don't have an account? Register <Link to='/register'>here</Link>
-        </span>
-                        </form>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-header">
+                        <h2>Connexion</h2>
                     </div>
-                </div>
-            </Fragment>
+                    <div className="input-box email-box">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required={true}
+                            onChange={this.handleChange}
+                            placeholder='example@email.com'
+                        />
+                    </div>
+                    <div className="input-box password-box">
+                        <label htmlFor="username">Mot de passe</label>
+                        <input
+                            type="password"
+                            id="username"
+                            name="password"
+                            minLength="5"
+                            placeholder="*******"
+                            required={true}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="error-container">
+                        <span id="error-display">{error}</span>
+                    </div>
+
+                    <div className="form-submit">
+                        {
+                            isSubmitted
+                                ? <button type="submit" disabled>Connexion</button>
+                                : <button type="submit">Connexion</button>
+                        }
+                    </div>
+                    <div className="links">
+                        <div>
+                            <a href='/register'>Créer un compte</a>
+                        </div>
+                        <div>
+                            <a href='/resetPassword'>Mot de passe oublié?</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
         )
     }
 }
