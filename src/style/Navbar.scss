@@ -39,7 +39,7 @@ body {
 }
 
 .nav-item {
-    display: flex;
+    display: inline-grid;
     align-items: center;
     height: 80px;
 }
@@ -172,9 +172,20 @@ body {
 .panierlogo {
     width: 50px;
     height: 50px;
-    margin-right: 50px;
+  //  margin-right: 100px;
+   // padding-right: 100px ;
+   // margin-top: 22px;
+
 
 }
+
+.logop span{
+    display: flex;
+}
+
+
+
+
 
 .logo {
 
@@ -183,4 +194,7 @@ body {
     justify-content: flex-end;
     padding-right: 25px;
 
+
+
 }
+

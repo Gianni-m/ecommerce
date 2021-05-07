@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-//import "../../App.css";
-import "./Navbar.css"
-import logo from './../images/vet_03.jpg'
+//import "../../App.scss";
+import "../../style/Navbar.scss"
+import logo from '../../assets/images/vet_03.jpg'
 
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -15,14 +15,14 @@ import Dropdown from './Dropdown'
 
 function Navbar() {
 
-    const [showLinks, setShowLinks] = useState(false);
+
     const [click, setClick] = useState(false);
     const [dropdown1, setDropdown1] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);
 
-    const handleClick = () => setClick(!click);
-    const close = () => setShowLinks(false);
+
+    const close = () => setDropdown1(false);
 
     const onMouseEnter = () => {
         if (window.innerWidth < 960) {
@@ -80,9 +80,9 @@ function Navbar() {
                 </Link>
 
                 <div className="test">
-                    <button onClick={() => setShowLinks(!showLinks)}> <IoMenu/> </button>
+                    <button onClick={() => setClick(!click)}> <IoMenu/> </button>
                 </div>
-                <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={showLinks ? "hidden" : "" }>
+                <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={click ? "hidden" : "" }>
 
                     <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                         <Link to ='/homme' className='nav-links' onClick={close}>
@@ -104,17 +104,29 @@ function Navbar() {
                     </li>
 
                 </ul>
+                    <div className="searchbar">
+                        <input type="text" placeholder="Search..."/>
+                    </div>
+                    <div className="searchbutton"><button> Search</button> </div>
 
-                <div className="searchbar">
-                    <input type="text" placeholder="Search..."/>
-                </div>
-                <div className="searchbutton"><button> Search</button> </div>
-                <Link to='/login' className="logo">
-                    <VscAccount className="loginlogo" />
-                </Link>
-                <Link to='/panier' className="logop">
-                    <AiOutlineShoppingCart className="panierlogo"/>
-                </Link>
+                    <div className="logo">
+                        <Link to='/login' className="logo">
+                            <VscAccount className="loginlogo" />
+                        </Link>
+                        <Link to='/cart' className="logop">
+                            <span>
+                            <AiOutlineShoppingCart className="panierlogo"/>
+
+                    <span className="tests"> 0 </span>
+                    </span>
+                        </Link>
+
+
+                    </div>
+
+
+
+
 
             </nav>
         </>

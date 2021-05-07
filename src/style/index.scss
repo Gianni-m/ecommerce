@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+  background-color: gray;
+  margin: 0;
+  font-family: "Montserrat";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+div.app-header {
+
+}
+
+div#root {
+  height: 100%;
+  width: 100%;
+}
+
+div.app-body {
+  width: 100%;
+  display: flex;
+  height: 100%;
+}
+
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+}

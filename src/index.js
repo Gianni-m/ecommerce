@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style/index.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import rooReducer from "./reducers";
+import {createStore} from "redux";
+import middleware from "./middlewares"
+import {composeWithDevTools} from "redux-devtools-extension";
+import {Provider} from "react-redux";
+import {loginDispatch} from "./actions/authActions";
+const store = createStore(rooReducer, composeWithDevTools(middleware))
+
+if(localStorage.jwtToken) {
+    const localToken = localStorage.jwtToken;
+    const data = JSON.parse(localToken);
+    store.dispatch(loginDispatch(data))}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Provider store={store}>
+          <App />
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
