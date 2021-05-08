@@ -5,6 +5,8 @@ import Navbar from "../Navbar/Navbar";
 import Product from "../Product"
 import {connect} from "react-redux";
 import {connectUser} from "../../actions/authActions";
+import MomentProduct from "../../MomentProduct";
+import Footer from "../../components/Footer"
 
 
 class Home extends Component {
@@ -38,6 +40,15 @@ class Home extends Component {
                         <Product/>
                         <Product/>
                     </div>
+
+                    <div className="latest-product">
+                        <h2 className="article-moment"> Article du moment</h2>
+                            <MomentProduct/>
+                        <MomentProduct/>
+
+                    </div>
+
+                    <Footer/>
                 </div>
             </Fragment>
         );
