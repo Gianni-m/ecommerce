@@ -39,16 +39,17 @@
   display: block;
   text-decoration: none;
   text-align: center;
-  color: #171717;
+  color: white;
   width: auto;
   padding: 8px 16px;
-  background-color: cyan;
+  background-color: black;
   border: 1px solid #171717;
   font-size: 1rem;
 }
 
-.info__button:hover {
+.info-button:hover {
   background: #171717;
   color: #f4f4f4;
+  opacity: 0.9;
 }
 
