@@ -1,7 +1,9 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import '../../style/Form.scss';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom"
+import {loginUser, registerUser} from "../../actions/authActions";
+
 
 
 class RegisterForm extends Component {
@@ -13,6 +15,7 @@ class RegisterForm extends Component {
             email:'',
             password:'',
             password2:'',
+            error:''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this)
@@ -29,11 +32,25 @@ class RegisterForm extends Component {
         e.preventDefault();
         const {isSubmitted, username,email, password, password2} = this.state
         if(!isSubmitted) {
-            if(username.length < 3 && email.length < 1 && password.length < 5 && password2.length < 5) {
-                return;
+            if(username.length < 2) {
+                this.setState({error: "username incorrect"})
+            }
+            else if(email.length < 3) {
+                this.setState({error: "email incorrect"})
+            }
+            else if(password.length < 5) {
+                this.setState({error: "longueur du mot de passe insuffisante"})
+            }
+            else if(password2 !== password) {
+                    this.setState({error: "les 2 mots de passes ne correspondent pas"})
             } else {
-                this.setState({isSubmitted: true})
-                await this.props.registerUser(this.state.username, this.state.email, this.state.password, this.state.password2)
+                document.querySelector('#error-display').classList.remove('show')
+                await this.props.registerUser(username, email, password, password2)
+                    .then(() => this.props.history.push('/home'))
+                    .catch((err) => {
+                        this.setState({error: 'erreur'})
+                        document.querySelector('#error-display').classList.add('show')
+                    })
                 this.setState({isSubmitted: false})
             }
         }
@@ -41,77 +58,85 @@ class RegisterForm extends Component {
 
     render() {
 
-        const {isSubmitted} = this.state
+        const {isSubmitted, error} = this.state
         const {handleChange, handleSubmit} = this;
 
         return(
 
-            <Fragment>
-                <div className='form-container'>
-                    <Link to={'/home'} className='close-btn'>×</Link>
+            <div className="auth-form">
 
-                    <div className='form-content-right'>
-
-                        <form onSubmit={handleSubmit} className='form' noValidate>
-                            <div className='form-inputs'>
-                                <label className='form-label'>Username</label>
-                                <input
-                                    className='form-input'
-                                    type='text'
-                                    name='username'
-                                    placeholder='Enter your username'
-
-                                    onChange={handleChange}
-                                />
-                                {/*errors.username && <p>{errors.username}</p>*/}
-                            </div>
-                            <div className='form-inputs'>
-                                <label className='form-label'>Email</label>
-                                <input
-                                    className='form-input'
-                                    type='email'
-                                    name='email'
-                                    placeholder='Enter your email'
-
-                                    onChange={handleChange}
-                                />
-                                {/*errors.email && <p>{errors.email}</p>*/}
-                            </div>
-                            <div className='form-inputs'>
-                                <label className='form-label'>Password</label>
-                                <input
-                                    className='form-input'
-                                    type='password'
-                                    name='password'
-                                    placeholder='Enter your password'
-
-                                    onChange={handleChange}
-                                />
-                                {/*errors.password && <p>{errors.password}</p>*/}
-                            </div>
-                            <div className='form-inputs'>
-                                <label className='form-label'>Confirm Password</label>
-                                <input
-                                    className='form-input'
-                                    type='password'
-                                    name='password2'
-                                    placeholder='Confirm your password'
-
-                                    onChange={handleChange}
-                                />
-                                {/*errors.password2 && <p>{errors.password2}</p>*/}
-                            </div>
-                            <button className='form-input-btn' type='submit'>
-                                Sign up
-                            </button>
-                            <span className='form-input-login'>
-          Already have an account? Login <Link to='/login'>here</Link>
-        </span>
-                        </form>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-header">
+                        <h2>Inscription</h2>
                     </div>
-                </div>
-            </Fragment>
+                    <div className="input-box username-box">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="username"
+                            id="username"
+                            name="username"
+                            required={true}
+                            onChange={this.handleChange}
+                            placeholder='username'
+                        />
+                    </div>
+                    <div className="input-box email-box">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required={true}
+                            onChange={this.handleChange}
+                            placeholder='example@email.com'
+                        />
+                    </div>
+                    <div className="input-box password-box">
+                        <label htmlFor="username">Mot de passe</label>
+                        <input
+                            type="password"
+                            id="username"
+                            name="password"
+                            minLength="5"
+                            placeholder="*******"
+                            required={true}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="input-box password2-box">
+                        <label htmlFor="username">Mot de passe</label>
+                        <input
+                            type="password2"
+                            id="username"
+                            name="password2"
+                            minLength="5"
+                            placeholder="*******"
+                            required={true}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="error-container">
+                        <span id="error-display">{error}</span>
+                    </div>
 
+                    <div className="form-submit">
+                        {
+                            isSubmitted
+                                ? <button type="submit" disabled>Inscription</button>
+                                : <button type="submit">Inscription</button>
+                        }
+                    </div>
+                    <div className="links">
+                        <div>
+                            <a href='/login'>Se connecter</a>
+                        </div>
+                        <div>
+                            <a href='/resetPassword'>Mot de passe oublié?</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
         )
     }
 
@@ -119,5 +144,7 @@ class RegisterForm extends Component {
 
 
 
-
-export default RegisterForm;
+const mapStateToProps = state => ({
+    auth: state.auth,
+});
+export default connect(mapStateToProps, {registerUser})(RegisterForm);

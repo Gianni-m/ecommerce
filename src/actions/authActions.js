@@ -37,3 +37,30 @@ export const loginDispatch = (payload) => {
         }
     }
 }
+
+export const registerUser = (username, email, password, password2) => async  dispatch => {
+    try {
+        const user = await axios.post(`auth/login`, {
+            username:username,
+            email:email,
+            password: password,
+            password2: password2
+        })
+            .then((response) => response.data);
+        dispatch(registerDispatch(user.data))
+        localStorage.setItem("jwtToken",    JSON.stringify(user.data));
+        return user;
+    } catch (err) {
+        console.log(err);
+        throw err
+    }
+}
+
+export const registerDispatch = (payload) => {
+    return {
+        type: UPDATE_AUTH,
+        payload: {
+            user: payload
+        }
+    }
+}

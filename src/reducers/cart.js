@@ -1,4 +1,4 @@
-import {
+/*import {
     ADD_PRODUCT_TO_CART,
     CLEAR_CART,
     REMOVE_PRODUCT_FROM_CART,
@@ -30,8 +30,8 @@ const getProductIndex = (products, productId) => {
         if(products[i].id === productId) return i;
     }
     return null;
-}
-
+}*/
+/*
 const removeProductFromCart = (products, productId, quantity) => {
     const index = getProductIndex(products, productId);
     if(index) {
@@ -55,4 +55,4 @@ const addProductToCart = (products, product, quantity) => {
         })
     }
     return products;
-}
+}*/

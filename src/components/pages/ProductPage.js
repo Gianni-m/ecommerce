@@ -1,10 +1,9 @@
 import "./ProductPage.scss";
 import logo from '../../assets/images/vet_03.jpg'
-import Navbar from "../Navbar/Navbar";
+
 const ProductPage =() => {
     return (
         <>
-        <Navbar/>
         <div className="productpage">
             <div className="productpage-left">
                 <div className="left-image">

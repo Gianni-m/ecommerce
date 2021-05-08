@@ -1,12 +1,13 @@
 import React, {Component, Fragment} from 'react';
-import '../../App.scss';
-//import Cards from '../Cards';
-import Navbar from "../Navbar/Navbar";
+//import '../../App.scss';
+
+
 import Product from "../Product"
 import {connect} from "react-redux";
 import {connectUser} from "../../actions/authActions";
 import MomentProduct from "../../MomentProduct";
 import Footer from "../../components/Footer"
+import "./Home.scss"
 
 
 class Home extends Component {
@@ -21,7 +22,7 @@ class Home extends Component {
         console.log(this.props)
         return (
             <Fragment>
-                <Navbar/>
+
                 <div className="home">
                     <button
                         onClick={() => this.props.connectUser()}
@@ -39,10 +40,11 @@ class Home extends Component {
                         <Product/>
                         <Product/>
                         <Product/>
-                    </div>
+                        <Product/>
 
+                    </div>
+                    <h2 className="article-moment"> Article du moment</h2>
                     <div className="latest-product">
-                        <h2 className="article-moment"> Article du moment</h2>
                             <MomentProduct/>
                         <MomentProduct/>
 

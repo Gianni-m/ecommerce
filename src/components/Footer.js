@@ -12,7 +12,7 @@ return (
     <div className="footer-basic">
         <footer>
             <div className="social">
-                <a href="#"><AiFillInstagram/></a>
+                <a href="/"><AiFillInstagram/></a>
                 <a href="/"><AiOutlineTwitter/> </a>
                 <a href="/"> <AiFillFacebook/> </a>
             </div>
