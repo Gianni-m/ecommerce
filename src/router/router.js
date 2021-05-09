@@ -6,7 +6,8 @@ import LoginForm from "../components/Auth/LoginForm";
 import ProductPage from "../components/pages/ProductPage"
 import Cart from "../components/pages/Cart"
 import Navbar from "../components/Navbar/Navbar";
-
+import ProductDisplay from '../components/Product/ProductDisplay';
+import Dashboard from "../components/productManagement/Dashboard";
 class RouterList extends Component {
     render() {
         return (
@@ -21,6 +22,11 @@ class RouterList extends Component {
                         <Route path='/login' component={LoginForm}/>
                         <Route path='/register' component={RegisterForm} />
                         {<Route path='/cart' component={Cart}/>}
+                        <Route path='/product/:productId/' component={ProductDisplay}/>
+
+                        <Route path='/dashboard'>
+                            <Dashboard/>
+                        </Route>
                         <Route path="*">
                             <Redirect to='/'/>
                         </Route>

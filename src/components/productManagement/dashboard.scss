@@ -1,0 +1,39 @@
+div.product-dashboard {
+  padding: 2% 10% 0;
+  width: 80%;
+  height: 100%;
+
+
+  div.sidebar {
+    position: absolute;
+    left: 0px;
+    top: 60px;
+    height: 100%;
+    width: 250px;
+    background-color: red;
+    div.links {
+      margin: 50px 20px 0;
+
+      div.link {
+        margin: 15px 0;
+        font-size: 17px;
+        color: yellow;
+      }
+    }
+  }
+
+  div.dashboard-header {
+    width: 50%;
+    margin: auto;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    div.link {
+      button {
+        height: 40px;
+        width: 100px;
+      }
+    }
+  }
+}
