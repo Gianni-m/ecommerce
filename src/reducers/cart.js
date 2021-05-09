@@ -12,11 +12,11 @@ export default function cartReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART: return {
             ...state,
-            products: addProductToCart(state.products, payload.product, payload.quantity)
+            products: addProductToCart(state.products, action.payload.product, action.payload.quantity)
         }
         case REMOVE_PRODUCT_FROM_CART: return {
             ...state,
-            products: removeProductFromCart(state.products, payload.productId, payload.quantity)
+            products: removeProductFromCart(state.products, action.payload.productId, action.payload.quantity)
         }
         case CLEAR_CART: return initialState
         default:
@@ -35,7 +35,7 @@ const getProductIndex = (products, productId) => {
 const removeProductFromCart = (products, productId, quantity) => {
     const index = getProductIndex(products, productId);
     if(index) {
-        products[index]?.quantity -= quantity;
+        products[index].quantity -= quantity;
         if(products[index].quantity <= 0) {
             products.splice(index, 1);
         }
@@ -47,7 +47,7 @@ const addProductToCart = (products, product, quantity) => {
     //TODO check for product conflict
     const index = getProductIndex(products, product.id);
     if(index) {
-        products[index]?.quantity += quantity;
+        products[index].quantity += quantity;
     } else {
         products.push({
             ...product,
