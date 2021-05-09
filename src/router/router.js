@@ -1,4 +1,4 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import Home from "../components/pages/Home";
 import RegisterForm from "../components/Auth/RegisterForm"
@@ -8,6 +8,7 @@ import Cart from "../components/pages/Cart"
 import Navbar from "../components/Navbar/Navbar";
 import ProductDisplay from '../components/Product/ProductDisplay';
 import Dashboard from "../components/productManagement/Dashboard";
+import Footer from "../components/Footer";
 class RouterList extends Component {
     render() {
         return (
@@ -32,6 +33,10 @@ class RouterList extends Component {
                         </Route>
                     </Switch>
                 </div>
+                <div className="app-footer">
+                    <Footer/>
+                </div>
+
             </Router>
         )
     }

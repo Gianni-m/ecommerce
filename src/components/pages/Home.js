@@ -1,12 +1,9 @@
 import React, {Component, Fragment} from 'react';
-//import '../../App.scss';
-
 
 import Product from "../Product"
 import {connect} from "react-redux";
 import {connectUser} from "../../actions/authActions";
 import MomentProduct from "../../MomentProduct";
-import Footer from "../../components/Footer"
 import "./Home.scss"
 
 
@@ -49,8 +46,6 @@ class Home extends Component {
                         <MomentProduct/>
 
                     </div>
-
-                    <Footer/>
                 </div>
             </Fragment>
         );
