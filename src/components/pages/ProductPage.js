@@ -1,12 +1,14 @@
 import "./ProductPage.scss";
 import logo from '../../assets/images/vet_03.jpg'
-import {useEffect, useState, Fragment} from "react";
+import React, {useEffect, useState, Fragment} from "react";
 import {useDispatch} from "react-redux";
 import {getProduct} from "../../actions/productActions";
 import {addProductToCart} from "../../actions/cartActions";
+
+
 const productExample = {
     "id": 1,
-    "color": "rouge",
+    "color": "red",
     "price": 12,
     "name": "t-shirt rouge incroyable insane du cul",
     "description": "Ce t-shirt est INCROYABLE ACHETE LE ",
@@ -79,6 +81,9 @@ const ProductPage =(props) => {
                                 <p className="left-name">{product.name}</p>
                                 <p> Price : {product.price} € </p>
                                 <p> {product.description} </p>
+                                <p>
+                                  <button className="test" style={{background:product.color}}> </button>
+                             </p>
                             </div>
                             <div className="productpage-left">
                                 <div className="left-info">
@@ -96,6 +101,7 @@ const ProductPage =(props) => {
                                     </p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     : <p>LOADING</p>
