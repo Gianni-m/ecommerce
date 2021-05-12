@@ -1,10 +1,5 @@
-div.product-dashboard {
-  padding: 2% 10% 0;
-  width: 80%;
-  height: 100%;
 
-
-  div.sidebar {
+div.sidebar {
     position: absolute;
     left: 0px;
     top: 60px;
@@ -12,28 +7,81 @@ div.product-dashboard {
     width: 250px;
     background-color: red;
     div.links {
-      margin: 50px 20px 0;
+        margin: 50px 20px 0;
 
-      div.link {
-        margin: 15px 0;
-        font-size: 17px;
-        color: yellow;
-      }
+        div.link {
+            margin: 15px 0;
+            font-size: 17px;
+            color: yellow;
+        }
     }
-  }
+}
 
-  div.dashboard-header {
-    width: 50%;
-    margin: auto;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
+div.product-dashboard {
+    padding: 2% 10% 0;
+    width: 80%;
+    height: 100%;
 
-    div.link {
-      button {
-        height: 40px;
-        width: 100px;
-      }
+    div.dashboard-header {
+        width: 50%;
+        margin: auto, -5%;
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+
+        div.link {
+            button {
+                height: 40px;
+                width: 100px;
+            }
+        }
     }
-  }
+
+    div.stats-graph {
+        display: flex;
+        justify-content: space-around;
+
+        div.graph {
+            width: 500px;
+            height: 300px;
+            border: solid 1px black;
+            border-radius: 5px;
+            background-color: gray;;
+        }
+    }
+
+    div.quick-data {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+        div.card {
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: red;
+            min-height: 350px;
+        }
+        div.recent-commands-display {
+            justify-content: space-between;
+            div.recent-command {
+                display: flex;
+                justify-content: space-between;
+                div {
+                    display: block;
+                    span {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+div.marmoud {
+    width: 100px;
+
+    div.jb {
+
+    }
 }
