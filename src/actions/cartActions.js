@@ -3,7 +3,7 @@ import {ADD_PRODUCT_TO_CART, CLEAR_CART, REMOVE_PRODUCT_FROM_CART} from "./types
 export const addProductToCart = (product, quantity) => (dispatch) => {
     try {
         //TODO: add request
-        dispatch(addProductDispatch(product, quantity));
+        addProductDispatch(product, quantity);
     } catch(err) {
         console.log(err);
         throw err

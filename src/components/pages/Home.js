@@ -21,17 +21,7 @@ class Home extends Component {
             <Fragment>
 
                 <div className="home">
-                    <button
-                        onClick={() => this.props.connectUser()}
-                    >CLICK ME</button>
                     <h2 className="hometitle"> Latest Products</h2>
-                    <div style={{color: 'blue'}}>
-                        {
-                            this.props.auth.isAuthenticated
-                                ? "je suis connecté"
-                                : "je ne suis pas connecté"
-                        }
-                    </div>
                     <div className="home-products" >
                         <Product/>
                         <Product/>

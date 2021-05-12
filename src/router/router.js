@@ -19,11 +19,10 @@ class RouterList extends Component {
                 <div className="app-body">
                     <Switch>
                         <Route exact path='/' component={Home} />
-                        <Route path='/productest' component={ProductPage}/>
                         <Route path='/login' component={LoginForm}/>
                         <Route path='/register' component={RegisterForm} />
                         {<Route path='/cart' component={Cart}/>}
-                        <Route path='/product/:productId/' component={ProductDisplay}/>
+                        <Route path='/product/:productId/' component={ProductPage}/>
 
                         <Route path='/dashboard'>
                             <Dashboard/>
