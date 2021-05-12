@@ -7,7 +7,9 @@ import MomentProduct from "../../MomentProduct";
 import "./Home.scss"
 
 
+
 class Home extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,6 +18,7 @@ class Home extends Component {
     }
 
     render() {
+
         console.log(this.props)
         return (
             <Fragment>
