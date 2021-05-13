@@ -72,35 +72,37 @@ const ProductPage =(props) => {
                     ?
 
                     <div className="productpage">
-                        <div className="productpage-left">
+                            <div className="left-image">
                                 <img src={logo} alt="product name"/>
-                            <div className="left-info">
-                                <p className="left-name">{product.name}</p>
-                                <p> <h3>Price :  {product.price} €  </h3> </p>
-                                <p> {product.description} </p>
-                                <p>
-                                    <h2> Coloris possible :</h2>
-                                  <button className="test" style={{background:product.color}}> </button>
-                             </p>
                             </div>
 
-                            </div>
-                        <div className="productpage-right">
-                            <div className="right-info">
-                                <p> Status : <span> In Stock</span></p>
-                                <p> Qty :
-                                   <input className="quantity" type="number" step="1"
-                                   defaultValue={1}/>
-                                </p>
+
+                        <div className="prems">
+                            <div className="left-info">
+                                <p className="left-name">{product.name}</p>
+                                <p> Price : {product.price} € </p>
+                                <p> {product.description} </p>
                                 <p>
-                                    <button type="button" onClick={() => dispatch(addProductToCart(product.id, 1))}> Add to cart</button>
+                                    <h2> Coloris au choix : </h2>
+                                    <button className="test" style={{background:product.color}}> </button>
                                 </p>
                             </div>
+                                <div className="left-info">
+                                    <p> Status : <span> In Stock</span></p>
+                                        <p> Qty :
+                                            <input className="quantity" type="number" step="1"
+                                                   defaultValue={1}/>
+                                        </p>
+                                <div className="add-product">
+                                    <button type="button" onClick={() => dispatch(addProductToCart(product.id, 1))}> Add to cart</button>
+                                </div>
+                                </div>
+
                         </div>
 
 
+                        </div>
 
-                    </div>
                     : <p>LOADING</p>
             }
         </Fragment>
