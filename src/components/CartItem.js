@@ -3,7 +3,7 @@ import "../style/CartItem.scss"
 import logo from '../assets/images/vet_03.jpg'
 import {Link} from "react-router-dom"
 import { RiDeleteBin6Line } from "react-icons/ri";
-import Navbar from "./Navbar/Navbar";
+
 
 
 const CartItem = () => {

@@ -1,23 +1,19 @@
 export const MenuItems = [
     {
-        title: 'Home',
+        title: 'T-shirts',
         url: '/home',
         cName:'dropdown-link'
     },
     {
-        title: 'Service',
+        title: 'Pantalons',
         url: '/services',
         cName:'dropdown-link'
     },
     {
-        title: 'Products',
+        title: 'Chaussures',
         url: '/products',
         cName:'dropdown-link'
     },
-    {
-        title: 'Sign up',
-        url: '/sign',
-        cName:'dropdown-link'
-    },
+
 
 ]

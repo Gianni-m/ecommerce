@@ -1,13 +1,13 @@
 import "../../style/Cart.scss"
 import React, { Fragment} from 'react';
 import CartItem from "../../components/CartItem"
-import Navbar from "../Navbar/Navbar";
+
 
 const Cart = () => {
     return (
 
         <Fragment>
-        <Navbar/>
+
         <div className="cart">
         <div className="cart-left">
         <h2>Shopping Cart </h2>
