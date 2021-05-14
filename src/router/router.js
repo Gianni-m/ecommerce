@@ -9,6 +9,8 @@ import Navbar from "../components/Navbar/Navbar";
 import ProductDisplay from '../components/Product/ProductDisplay';
 import Dashboard from "../components/productManagement/Dashboard";
 import Footer from "../components/Footer";
+import DashboardSidebar from "../components/productManagement/DashboardSidebar";
+import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
 class RouterList extends Component {
     render() {
         return (
@@ -24,8 +26,18 @@ class RouterList extends Component {
                         {<Route path='/cart' component={Cart}/>}
                         <Route path='/product/:productId/' component={ProductPage}/>
 
-                        <Route path='/dashboard'>
-                            <Dashboard/>
+                        <Route path='/dashboard/'>
+                            <Switch>
+                                <Route exact path='/dashboard/'>
+                                    <Dashboard/>
+                                </Route>
+                                <Route exact path='/dashboard/stock'>
+                                    <StockDashboard/>
+                                </Route>
+                                <Route>
+                                    <Redirect to='/dashboard'/>
+                                </Route>
+                            </Switch>
                         </Route>
                         <Route path="*">
                             <Redirect to='/'/>
