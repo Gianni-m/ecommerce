@@ -17,7 +17,9 @@ div.App {
 }
 
 
-* {
+*, *:focus, *:focus-visible, *:target {
   margin: 0;
   padding: 0;
+  outline-offset: unset;
+  outline: none;
 }

@@ -4,7 +4,7 @@ import StockCard from "./cards/StockCard";
 import RecentCommandCard from "./cards/RecentCommandCard";
 const Dashboard = () => {
     return (
-        <div className='product-dashboard'>
+        <div className='seller-dashboard'>
             <StatGraphs/>
             <div className='quick-data'>
                 <StockCard/>

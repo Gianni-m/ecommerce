@@ -10,7 +10,7 @@ import ProductDisplay from '../components/Product/ProductDisplay';
 import Dashboard from "../components/productManagement/Dashboard";
 import Footer from "../components/Footer";
 import DashboardSidebar from "../components/productManagement/DashboardSidebar";
-import StockDashboard from "../components/productManagement/StockDashboard";
+import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
 class RouterList extends Component {
     render() {
         return (
@@ -28,7 +28,6 @@ class RouterList extends Component {
                         <Route path='/product/:productId/' component={ProductDisplay}/>
 
                         <Route path='/dashboard/'>
-                            <DashboardSidebar/>
                             <Switch>
                                 <Route exact path='/dashboard/'>
                                     <Dashboard/>
