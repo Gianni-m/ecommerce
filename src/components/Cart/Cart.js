@@ -1,6 +1,6 @@
-import "../../style/Cart.scss"
+import "./Cart.scss"
 import React, { Fragment} from 'react';
-import CartItem from "../../components/CartItem"
+import CartItem from "./CartItem"
 
 
 const Cart = () => {

@@ -1,16 +1,12 @@
-import {Component} from "react";
-import '../style/Footer.scss'
+import {Fragment} from "react";
+import './Footer.scss'
 import { AiFillFacebook, AiFillInstagram, AiOutlineTwitter,  } from "react-icons/ai";
 
 
-class Footer extends Component {
+const Footer = () => {
 
-render() {
-
-return (
-
-    <div className="footer-basic">
-        <footer>
+    return (
+        <Fragment>
             <div className="social">
                 <a href="/"><AiFillInstagram/></a>
                 <a href="/"><AiOutlineTwitter/> </a>
@@ -23,13 +19,12 @@ return (
                 <li className="list-inline-item"><a href="/">Terms</a></li>
                 <li className="list-inline-item"><a href="/">Privacy Policy</a></li>
             </ul>
-            <p className="copyright">Les touristes © 2021</p>
-        </footer>
-    </div>
+            <div>
+                <p className="copyright">Les touristes © 2021</p>
+            </div>
+        </Fragment>
+    )
 
-)
-
-}
 }
 
 

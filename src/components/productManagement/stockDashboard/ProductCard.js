@@ -28,7 +28,12 @@ const ProductCard = (props) => {
     return (
         <div className='product-card'>
              <div className='product-icon'>
-               <img src={props.icon} alt='not found'/>
+                 {
+                     props.icon ?
+                         <img src={props.icon} alt='rerer'/>
+                         : <img src='https://cdn.discordapp.com/emojis/753518147750985739.png?v=1' alt='not found'/>
+
+                 }
             </div>
             <div className='product-data'>
                 <div className='product-header'>

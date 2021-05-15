@@ -29,13 +29,21 @@ div.app-body {
   background-color: #434343;
 }
 
-div.app-footer {
-  width: 100%;
-  height: 10%;
-}
+
 html {
   height: 100vh;
 }
 body {
   height: 100%;
+}
+
+
+@media only screen and (max-width: 640px) {
+  div.app-body {
+    width: 100%;
+    margin: 0;
+  }
+
+  html {
+  }
 }

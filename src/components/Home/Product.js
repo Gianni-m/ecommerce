@@ -1,6 +1,6 @@
 import './Product.scss';
 import {Link} from "react-router-dom"
-import logo from '../assets/images/vet_03.jpg'
+import logo from '../../assets/images/vet_03.jpg'
 
 
 

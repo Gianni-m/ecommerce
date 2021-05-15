@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-import Product from "../Product"
+import Product from "./Product"
 import {connect} from "react-redux";
 import {connectUser} from "../../actions/authActions";
 import MomentProduct from "../../MomentProduct";

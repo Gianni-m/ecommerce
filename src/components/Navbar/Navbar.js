@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 //import "../../App.scss";
-import "../../style/Navbar.scss"
+import "./Navbar.scss"
 import logo from '../../assets/images/vet_03.jpg'
 
 import { VscAccount } from "react-icons/vsc";

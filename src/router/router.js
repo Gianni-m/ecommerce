@@ -1,14 +1,13 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-import Home from "../components/pages/Home";
+import Home from "../components/Home/Home";
 import RegisterForm from "../components/Auth/RegisterForm"
 import LoginForm from "../components/Auth/LoginForm";
-import ProductPage from "../components/pages/ProductPage"
-import Cart from "../components/pages/Cart"
+import ProductPage from "../components/Product/ProductPage"
+import Cart from "../components/Cart/Cart"
 import Navbar from "../components/Navbar/Navbar";
-import ProductDisplay from '../components/Product/ProductDisplay';
 import Dashboard from "../components/productManagement/Dashboard";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import DashboardSidebar from "../components/productManagement/DashboardSidebar";
 import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
 class RouterList extends Component {
@@ -27,6 +26,7 @@ class RouterList extends Component {
                         <Route path='/product/:productId/' component={ProductPage}/>
 
                         <Route path='/dashboard/'>
+                            <DashboardSidebar/>
                             <Switch>
                                 <Route exact path='/dashboard/'>
                                     <Dashboard/>
