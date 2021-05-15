@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+  margin:0;
+  padding:0;
+
+}
+
+
+div.App {
+  font-family: "Montserrat";
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+
+}
+
+
+*, *:focus, *:focus-visible, *:target {
+  margin: 0;
+  padding: 0;
+  outline-offset: unset;
+  outline: none;
+}

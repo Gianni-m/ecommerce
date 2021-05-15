@@ -1,0 +1,35 @@
+.product-info > p {
+  margin-bottom: 8px;
+}
+
+.info-price {
+  font-weight: bold;
+}
+
+.info-name {
+  font-size: 1rem;
+  overflow: hidden;
+}
+
+.info-description {
+  font-size: 0.8rem;
+}
+
+.info-button {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  width: auto;
+  padding: 8px 16px;
+  background-color: black;
+  border: 1px solid #171717;
+  font-size: 1rem;
+}
+
+.info-button:hover {
+  background: #171717;
+  color: #f4f4f4;
+  opacity: 0.9;
+}
+

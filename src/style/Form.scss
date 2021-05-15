@@ -1,0 +1,127 @@
+.form-container {
+    width: 40%;
+    margin: auto;
+    position: relative;
+    border-radius: 10px;
+    height: 600px;
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
+div.auth-form {
+    position: absolute;
+    margin: 100px auto 10px;
+    top: 40%;
+    left: 50%;
+    width: 380px;
+    padding: 50px;
+    transform: translate(-50%, -50%);
+    background-color: #323232;
+    border-radius: 6px;
+    overflow: hidden;
+
+    form {
+        margin: 0 10px;
+        h2 {
+            text-align: left;
+            color: white;
+        }
+
+        div.input-box {
+            width: 100%;
+            margin-top: 35px;
+            margin-bottom: 25px;
+
+            label {
+                text-transform: uppercase;
+                color: white;
+            }
+
+            input {
+                border: none;
+                margin-top: 10px;
+                border: 0;
+                width: 100%;
+                color: #fff;
+                height: 40px;
+                background-color: #5f5f5f;
+                outline: none;
+                padding: 20px;
+                font-size: 20px;
+
+
+                border-radius: 4px;
+                box-sizing: border-box;
+
+                &:invalid{
+                    &:focus {
+                        border-bottom: 2px solid red;
+                    }
+                }
+
+                &:valid {
+                    &:valid {
+                        border-bottom: 2px solid green;
+                    }
+                }
+
+                &::placeholder {
+                    color: #a4a4a4;
+                    font-size: 20px;
+                }
+            }
+        }
+
+        div.links {
+            display: flex;
+            width: 100%;
+            margin-top: 10px;
+            justify-content: space-between;
+            div {
+                a {
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: #4285F4;
+                    border: none;
+                    text-decoration: inherit;
+                    transition: all 0.2s;
+                    &:hover {
+                        color: #69a4ff;
+                    }
+                }
+            }
+        }
+
+        div.form-submit {
+            width: 100%;
+            margin-top: 20px;
+            button {
+                font-size: 23px;
+                background-color: #ffffff;
+                border-radius: 2px;
+                box-shadow: none;
+                border: none;
+                width: 100%;
+                height: 45px;
+            }
+        }
+
+        div.error-container {
+            display: flex;
+            margin: auto;
+            min-height: 20px;
+            span#error-display {
+                margin: auto;
+                font-size: 18px;
+                color: red;
+                opacity: 0;
+
+                &.show {
+                    opacity: 1;
+                    transition: all 0.2s;
+                }
+            }
+        }
+    }
+}
