@@ -1,14 +1,15 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-import Home from "../components/pages/Home";
+import Home from "../components/Home/Home";
 import RegisterForm from "../components/Auth/RegisterForm"
 import LoginForm from "../components/Auth/LoginForm";
-import ProductPage from "../components/pages/ProductPage"
-import Cart from "../components/pages/Cart"
+import ProductPage from "../components/Product/ProductPage"
+import Cart from "../components/Cart/Cart"
 import Navbar from "../components/Navbar/Navbar";
-import ProductDisplay from '../components/Product/ProductDisplay';
 import Dashboard from "../components/productManagement/Dashboard";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
+import DashboardSidebar from "../components/productManagement/DashboardSidebar";
+import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
 class RouterList extends Component {
     render() {
         return (
@@ -24,8 +25,19 @@ class RouterList extends Component {
                         {<Route path='/cart' component={Cart}/>}
                         <Route path='/product/:productId/' component={ProductPage}/>
 
-                        <Route path='/dashboard'>
-                            <Dashboard/>
+                        <Route path='/dashboard/'>
+                            <DashboardSidebar/>
+                            <Switch>
+                                <Route exact path='/dashboard/'>
+                                    <Dashboard/>
+                                </Route>
+                                <Route exact path='/dashboard/stock'>
+                                    <StockDashboard/>
+                                </Route>
+                                <Route>
+                                    <Redirect to='/dashboard'/>
+                                </Route>
+                            </Switch>
                         </Route>
                         <Route path="*">
                             <Redirect to='/'/>

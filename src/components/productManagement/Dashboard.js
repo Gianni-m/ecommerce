@@ -1,24 +1,17 @@
 import './dashboard.scss'
+import StatGraphs from "./StatsGraph";
+import StockCard from "./cards/StockCard";
+import RecentCommandCard from "./cards/RecentCommandCard";
 const Dashboard = () => {
     return (
-        <div className='product-dashboard'>
-            <div className='sidebar'>
-                <div className="links">
-                <div className='link'>
-                    Mes produits
-                </div>
-                <div className='link'>
-                    Stats des ventes
-                </div>
-                    <div className='link'>
-                        Gestion des stocks
-                    </div>
-                </div>
+        <div className='seller-dashboard'>
+            <StatGraphs/>
+            <div className='quick-data'>
+                <StockCard/>
+                <RecentCommandCard/>
+                <RecentCommandCard/>
+            </div>
 
-            </div>
-            <div className='stats'>
-                <span>nombre de ventes...</span>
-            </div>
         </div>
     )
 }
