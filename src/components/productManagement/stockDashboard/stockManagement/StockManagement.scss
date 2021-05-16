@@ -1,7 +1,17 @@
+div.stockManagement {
+
+  h1.title{
+    color: white;
+    padding: 20px;
+  }
+
+
 div.table {
   margin-left: 20%;
+  padding: 20px;
 
-  tr{
+
+  tr.header-table{
     background-color: green;
     th {
       border: 1px solid #ddd;
@@ -12,7 +22,7 @@ div.table {
     }
   }
 
- tbody.ouis{
+ tbody.body-table{
 
      td {
        text-align: center;
@@ -26,6 +36,6 @@ div.table {
 
    }
 
-
+}
 }
 
