@@ -66,7 +66,29 @@ export const registerDispatch = (payload) => {
 }
 
 
-export const logout = () =>  {
-    localStorage.removeItem("jwtToken")
+export const logout = () => async dispatch => {
+    try {
+        const user = await axios.post(`auth/login`, {
 
+
+        })
+            .then((response) => response.data);
+        dispatch(logoutDispatch(user.data))
+    localStorage.removeItem("jwtToken")
+        return user;
+    }
+    catch (err) {
+            console.log(err);
+            throw err
+        }
+
+}
+
+export const logoutDispatch = (payload) => {
+    return {
+        type : UPDATE_AUTH,
+        payload: {
+            user:payload
+        }
+    }
 }

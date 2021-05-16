@@ -101,12 +101,28 @@ nav.navbar {
             // margin-top: 22px;
 
 
-        }
-
-        .logop span{
-            display: flex;
 
         }
+
+        .logop {
+            margin-right: 20px;
+            span{
+                display: flex;
+            }
+
+        }
+
+        .logout{
+            margin-left: 20px;
+            svg {
+                height: 50px;
+                width: 50px;
+
+            }
+
+        }
+
+
 
 
 

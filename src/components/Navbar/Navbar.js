@@ -6,9 +6,10 @@ import logo from '../../assets/images/vet_03.jpg'
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoMenu } from "react-icons/io5";
-import { GrLogout } from "react-icons/gr";
+
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown'
+import LogoutForm from "../Auth/LogoutForm";
 
 
 
@@ -125,7 +126,7 @@ function Navbar() {
                         </Link>
 
                         <Link to ='/home' className="logout">
-                            <GrLogout className="logoutlogo"/>
+                            <LogoutForm/>
                         </Link>
 
 
