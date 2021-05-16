@@ -64,3 +64,9 @@ export const registerDispatch = (payload) => {
         }
     }
 }
+
+
+export const logout = () =>  {
+    localStorage.removeItem("jwtToken")
+
+}

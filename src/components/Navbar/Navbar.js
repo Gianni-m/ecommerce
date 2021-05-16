@@ -6,6 +6,7 @@ import logo from '../../assets/images/vet_03.jpg'
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoMenu } from "react-icons/io5";
+import { GrLogout } from "react-icons/gr";
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown'
 
@@ -104,10 +105,13 @@ function Navbar() {
                     </li>
 
                 </ul>
+                <form action='/' method="get">
                     <div className="searchbar">
-                        <input type="text" placeholder="Search..."/>
+                        <input type="text" placeholder="Search..." name="s"/>
                     </div>
+                </form>
                     <div className="searchbutton"><button> Search</button> </div>
+
 
                     <div className="logo">
                         <Link to='/login' className="logo">
@@ -116,9 +120,12 @@ function Navbar() {
                         <Link to='/cart' className="logop">
                             <span>
                             <AiOutlineShoppingCart className="panierlogo"/>
-
                     <span className="tests"> 0 </span>
                     </span>
+                        </Link>
+
+                        <Link to ='/home' className="logout">
+                            <GrLogout className="logoutlogo"/>
                         </Link>
 
 
