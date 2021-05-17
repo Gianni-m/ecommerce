@@ -2,7 +2,7 @@ import "./ProductPage.scss";
 import logo from '../../assets/images/vet_03.jpg'
 import React, {useEffect, useState, Fragment} from "react";
 import {useDispatch} from "react-redux";
-import {getProduct} from "../../actions/productActions";
+import {getProductById} from "../../actions/productActions";
 import {addProductToCart} from "../../actions/cartActions";
 
 
@@ -45,7 +45,7 @@ const ProductPage =(props) => {
     }, []);
 
     async function loadProduct(productId) {
-        const productData = await dispatch(getProduct(productId))
+        const productData = await dispatch(getProductById(productId))
             .then((product) => {
                 if(productData) {
                     console.log("PRODUIT TROUVE");
