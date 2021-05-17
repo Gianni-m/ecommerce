@@ -11,6 +11,8 @@ import Footer from "../components/Footer/Footer";
 import DashboardSidebar from "../components/productManagement/DashboardSidebar";
 import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
 import Profile from "../components/Profile/Profile";
+import Commandes from "../components/Profile/Commandes";
+import Infos from "../components/Profile/Infos";
 class RouterList extends Component {
 
 
@@ -27,7 +29,10 @@ class RouterList extends Component {
                         <Route path='/register' component={RegisterForm} />
                         {<Route path='/cart' component={Cart}/>}
                         <Route path='/product/:productId/' component={ProductPage}/>
-                        <Route path='/profile' component={Profile}/>
+                        <Route path='/profil' component={Profile}/>
+                        <Route path='/profil/commandes' component={Commandes}/>
+                        <Route path='/profil/infos' component={Infos}/>
+
 
                         <Route path='/dashboard/'>
                             <DashboardSidebar/>
