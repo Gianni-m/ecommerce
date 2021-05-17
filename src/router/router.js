@@ -11,6 +11,7 @@ import Footer from "../components/Footer/Footer";
 import DashboardSidebar from "../components/productManagement/DashboardSidebar";
 import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
 import StockManagement from "../components/productManagement/stockDashboard/stockManagement/StockManagement";
+import LogoutForm from "../components/Auth/LogoutForm";
 class RouterList extends Component {
     render() {
         return (
@@ -23,6 +24,7 @@ class RouterList extends Component {
                         <Route exact path='/' component={Home} />
                         <Route path='/login' component={LoginForm}/>
                         <Route path='/register' component={RegisterForm} />
+                        <Route path='/logout' component={LogoutForm} />
                         {<Route path='/cart' component={Cart}/>}
                         <Route path='/product/:productId/' component={ProductPage}/>
 

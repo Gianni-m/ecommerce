@@ -1,31 +1,24 @@
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import {logout} from "../../actions/authActions";
 import {GrLogout} from "react-icons/gr";
-import React from "react";
+import React, {useEffect} from "react";
 import '../Navbar/Navbar.scss'
 
 
 
 const LogoutForm = () => {
 
- const logout = () => {
 
-        localStorage.removeItem('jwtToken');
+
+    const dispatch = useDispatch()
+
+    const degage = async () => {
+        await dispatch(logout())
         window.location.href = "/home";
     }
-
-
-        return(
-            <GrLogout className="logoutlogo" onClick={logout}/>
-
-        )
-
-
-
+    useEffect(() => degage())
+    return (<h1>aurevoir</h1>)
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth,
-});
-export default connect(mapStateToProps, {logout})(LogoutForm);
+export default LogoutForm
 

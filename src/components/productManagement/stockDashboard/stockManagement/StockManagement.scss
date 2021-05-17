@@ -6,33 +6,57 @@ div.stockManagement {
   }
 
 
-div.table {
+table.table {
+
+  td, tr, th {
+    border:none;
+    border-collapse:collapse;
+    border-spacing:0;
+  }
   margin-left: 20%;
   padding: 20px;
+  border:none;
+  border-collapse:collapse;
+  border-spacing:0;
 
 
-  tr.header-table{
+  thead.header-table{
+    border:none;
+    border-collapse:collapse;
+    border-spacing:0;
     background-color: green;
-    th {
-      border: 1px solid #ddd;
-      padding: 8px;
-
-
-
+    tr {
+      th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
     }
   }
 
  tbody.body-table{
-
+   border:none;
+   border-collapse:collapse;
+   border-spacing:0;
+   tr {
      td {
+       span {
+         display: block;
+         &.product-name {
+           font-size: 20px;
+
+         }
+         &.product-id {
+           font-size: 15px;
+           color: gray;
+         }
+       }
        text-align: center;
        border: 1px solid #ddd;
        padding: 35px;
        background-color: white;
        width: 25%;
-
      }
-
+   }
 
    }
 

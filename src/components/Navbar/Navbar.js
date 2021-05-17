@@ -9,7 +9,6 @@ import { IoMenu } from "react-icons/io5";
 
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown'
-import LogoutForm from "../Auth/LogoutForm";
 
 
 
@@ -126,7 +125,6 @@ function Navbar() {
                         </Link>
 
                         <Link to ='/home' className="logout">
-                            <LogoutForm/>
                         </Link>
 
 

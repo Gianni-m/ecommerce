@@ -1,4 +1,4 @@
-import {UPDATE_AUTH} from "./types";
+import {LOGOUT, UPDATE_AUTH} from "./types";
 import axios from "axios";
 
 export const connectUser = () => async dispatch => {
@@ -68,14 +68,9 @@ export const registerDispatch = (payload) => {
 
 export const logout = () => async dispatch => {
     try {
-        const user = await axios.post(`auth/login`, {
-
-
-        })
-            .then((response) => response.data);
-        dispatch(logoutDispatch(user.data))
-    localStorage.removeItem("jwtToken")
-        return user;
+        console.log("ici")
+        localStorage.removeItem('jwtToken');
+        dispatch(logoutDispatch())
     }
     catch (err) {
             console.log(err);
@@ -84,11 +79,9 @@ export const logout = () => async dispatch => {
 
 }
 
-export const logoutDispatch = (payload) => {
+export const logoutDispatch = () => {
     return {
-        type : UPDATE_AUTH,
-        payload: {
-            user:payload
-        }
+        type : LOGOUT,
+        payload: null
     }
 }

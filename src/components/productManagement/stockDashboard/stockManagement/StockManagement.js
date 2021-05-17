@@ -35,34 +35,20 @@ const products = [
 
 const StockManagement = () => {
 
-
-
-const renderStock = (product, index) => {
-    return (
-        <tr key={index}>
-            <td>{product.name} </td>
-            <td> {product.size} </td>
-            <td> {product.quantity}</td>
-
-        </tr>
-
-
-    )
-
-}
     return (
 
         <div className="stockManagement">
             <h1 className="title"> Gestion du stock</h1>
 
-            <div className="table">
+            <table className="table">
 
-                    <tr className="header-table">
+                    <thead className="header-table">
+                        <tr>
                         <th>Name</th>
                         <th>Size</th>
                         <th>Quantity</th>
-
-                    </tr>
+                        </tr>
+                    </thead>
 
                     <tbody className="body-table">
 
@@ -70,9 +56,24 @@ const renderStock = (product, index) => {
 
                     </tbody>
 
-            </div>
+            </table>
         </div>
     );
+}
+
+
+const renderStock = (product, index) => {
+    return (
+        <tr key={index}>
+            <td>
+                <span className='product-name'>{product.name}</span>
+                <span className='product-id'>{'id:' + product.id}</span>
+            </td>
+            <td> {product.size} </td>
+            <td> {product.quantity}</td>
+        </tr>
+    )
+
 }
 
 export default StockManagement;
