@@ -22,4 +22,16 @@ div.App {
   padding: 0;
   outline-offset: unset;
   outline: none;
+
+}
+
+table,
+table tr, tr td, table tbody, table thead, table footer, tr th {
+  margin:0;
+  padding:0;
+  background:none;
+  border:none;
+  border-collapse:collapse;
+  border-spacing:0;
+  background-image:none;
 }

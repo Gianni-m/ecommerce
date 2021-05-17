@@ -1,0 +1,58 @@
+h2 {
+  font-size: 50px;
+  color: aliceblue;
+}
+
+.profile{
+  margin-top : 15px;
+  background-color: aliceblue;
+  display: flex;
+
+
+
+
+
+
+
+  .profile-right {
+
+    background-color: aliceblue;
+    border: 1px solid black;
+    height: 1000px;
+    width: 100%;
+    padding-top: 50px;
+    display: grid;
+
+
+  }
+
+
+
+
+
+
+  .profile-left {
+    background-color: aliceblue;
+    height : 1000px;
+    display: grid ;
+    padding : 50px 15px 0 15px;
+    border: 1px solid black ;
+    
+    p{
+      margin-top: 20px;
+      font-size: 30px;
+      font-weight: bold;
+      a {
+        text-decoration : unset;
+      color : black ;
+      }
+
+    }
+
+  }
+
+
+}
+
+
+

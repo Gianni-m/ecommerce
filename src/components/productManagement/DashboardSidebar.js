@@ -16,6 +16,9 @@ const DashboardSidebar = () => {
                     <div>Stats des ventes</div>
                 </Link>
                 <Link className='link' to="/dashboard/stock">
+                    <div>Gestion des produits</div>
+                </Link>
+                <Link className='link' to="/dashboard/stockManagement">
                     <div>Gestion des stocks</div>
                 </Link>
             </div>
