@@ -1,4 +1,4 @@
-import {UPDATE_AUTH} from "../actions/types";
+import {LOGOUT, UPDATE_AUTH} from "../actions/types";
 
 const initialState = {
     isAuthenticated: false,
@@ -12,6 +12,8 @@ export default function authReducer(state = initialState, action) {
             isAuthenticated: true,
             user: action.payload.user
         }
+        case LOGOUT: return initialState
+
         default:
             return state;
     }
