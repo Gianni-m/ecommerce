@@ -10,9 +10,17 @@ import Dashboard from "../components/productManagement/Dashboard";
 import Footer from "../components/Footer/Footer";
 import DashboardSidebar from "../components/productManagement/DashboardSidebar";
 import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
+
 import StockManagement from "../components/productManagement/stockDashboard/stockManagement/StockManagement";
 import LogoutForm from "../components/Auth/LogoutForm";
+
+import Profile from "../components/Profile/Profile";
+import Commandes from "../components/Profile/Commandes";
+import Infos from "../components/Profile/Infos";
+
 class RouterList extends Component {
+
+
     render() {
         return (
             <Router>
@@ -27,6 +35,10 @@ class RouterList extends Component {
                         <Route path='/logout' component={LogoutForm} />
                         {<Route path='/cart' component={Cart}/>}
                         <Route path='/product/:productId/' component={ProductPage}/>
+                        <Route path='/profil' component={Profile}/>
+                        <Route path='/profil/commandes' component={Commandes}/>
+                        <Route path='/profil/infos' component={Infos}/>
+
 
                         <Route path='/dashboard/'>
                             <DashboardSidebar/>
