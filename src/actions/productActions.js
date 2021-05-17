@@ -1,17 +1,27 @@
 import axios from "axios";
 
-export const getProduct = (productId) => async  () => {
+export const getProductById = (productId, params = {}) => async  () => {
     try {
-        return await axios.get(`/api/products/by-id/${productId}/get-details`)
+        return await axios.get(`/api/products/by-id/${productId}`, {params: params})
             .then((response) => response.data.data)
     } catch (err) {
         console.log(err);
         throw err
     }
 }
-export const getSellerProducts = () => async () => {
+
+export const getProducts = (params = {}) => async  () => {
     try {
-        return await axios.get(`/api/products/get-products-detailed`)
+        return await axios.get(`/api/products/`, {params: params})
+            .then((response) => response.data.data)
+    } catch (err) {
+        console.log(err);
+        throw err
+    }
+}
+export const getSellerProducts = (sellerId, params) => async () => {
+    try {
+        return await axios.get(`/api/products//from-seller/${sellerId}`, {params})
             .then((response) => response.data.data);
     } catch(err) {
         throw err;

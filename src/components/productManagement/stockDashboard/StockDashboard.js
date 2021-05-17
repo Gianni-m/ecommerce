@@ -2,38 +2,8 @@ import './stockDashboard.scss'
 import ProductCard from "./ProductCard";
 import ProductAddCard from "./AddProduct/ProductAddCard";
 import {useEffect, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getSellerProducts} from "../../../actions/productActions";
-
-const products = [
-    {
-        id: 1212,
-        name: 'tshirt',
-        quantity: 3,
-        icon: 'https://cdn.discordapp.com/emojis/740272748332449873.png?v=1',
-        price: 32323.12,
-    },
-    {
-        id: 23,
-        name: 'pull',
-        quantity: 59354,
-        price: 32323,
-        icon: 'https://cdn.discordapp.com/emojis/772755297588346900.png?v=1'
-    },
-    {id: 535434,
-        name: 'Pantalon Sport',
-        quantity: 2323,
-        icon: 'https://cdn.discordapp.com/emojis/753518147750985739.png?v=1',
-        price: 32323.4343,
-    },
-    {
-        id: 3232,
-        name: 'Casquette Vigile',
-        quantity: 1220,
-        icon: 'https://cdn.discordapp.com/emojis/772755297588346900.png?v=1',
-        price: 32.5,
-    },
-]
 
 
 const StockDashboard = () => {
@@ -41,11 +11,18 @@ const StockDashboard = () => {
     const dispatch = useDispatch()
 
 
+    const authStore = useSelector(state => state.auth);
+    console.log(authStore);
+
     async function initData() {
-        const data = await dispatch(getSellerProducts());
+        const params = {
+            expansions: ['sizes','createdBy'].join(',')
+        }
+        const data = await dispatch(getSellerProducts(authStore.user.id, params));
         setData(data);
     }
     useEffect(initData, []);
+
 
     return (
         <div className='product-dashboard'>
