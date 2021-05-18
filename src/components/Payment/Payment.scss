@@ -1,0 +1,96 @@
+
+.payment {
+
+  display: grid;
+  h2 {
+    color: white;
+  }
+
+  .left-info{
+    margin: 100px;
+    flex: 0.4 1;
+    font-size: 100px;
+    background-color: white;
+    height: fit-content;
+    width: 80%;
+    border-radius: 10px;
+
+    p {
+      font-size: 30px;
+    }
+
+    h2 {
+      color: black;
+      font-size: 20px;
+    }
+
+    input {
+      width: 80%;
+      height: 60px;
+      font-size: 25px;
+
+    }
+
+    .oui {
+      display: flex;
+      padding: 25px;
+      margin-left: 10px;
+      .test {
+        flex: 50%;
+        p{
+          h2{
+            color: #69a4ff;
+          }
+
+           select{
+            width: 30%;
+            height: 50px;
+
+          }
+          & .expiration-year{
+            margin-left: 15px;
+          }
+
+        }
+      }
+
+      .tests {
+        flex: 50%;
+
+
+
+        input {
+          width: 15%;
+          height: 40px;
+        }
+      }
+
+    }
+
+
+
+  }
+  .left-info > p {
+    padding: 35px;
+
+  }
+
+  .left-info > p:last-child {
+    border: none;
+  }
+
+
+    button {
+      margin: auto;
+      width: 150px;
+      height: 50px;
+      border-radius: 5px;
+    }
+
+
+
+
+}
+
+
+

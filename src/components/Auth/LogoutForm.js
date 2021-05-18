@@ -12,11 +12,11 @@ const LogoutForm = () => {
 
     const dispatch = useDispatch()
 
-    const degage = async () => {
+    const logoutUser = async () => {
         await dispatch(logout())
         window.location.href = "/home";
     }
-    useEffect(() => degage())
+    useEffect(() => logoutUser())
     return (<h1>aurevoir</h1>)
 }
 

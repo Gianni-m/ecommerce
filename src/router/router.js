@@ -17,6 +17,7 @@ import LogoutForm from "../components/Auth/LogoutForm";
 import Profile from "../components/Profile/Profile";
 import Commandes from "../components/Profile/Commandes";
 import Infos from "../components/Profile/Infos";
+import Payment from "../components/Payment/Payment";
 
 class RouterList extends Component {
 
@@ -38,6 +39,8 @@ class RouterList extends Component {
                         <Route path='/profil' component={Profile}/>
                         <Route path='/profil/commandes' component={Commandes}/>
                         <Route path='/profil/infos' component={Infos}/>
+                        <Route path='/payment' component={Payment}/>
+
 
 
                         <Route path='/dashboard/'>
