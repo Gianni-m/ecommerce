@@ -1,9 +1,11 @@
 
 .payment {
 
+
   display: grid;
   h2 {
     color: white;
+    margin: auto;
   }
 
   .left-info{
@@ -31,30 +33,38 @@
 
     }
 
-    .oui {
+    .bottom {
       display: flex;
       padding: 25px;
       margin-left: 10px;
-      .test {
+      .expiration-date {
         flex: 50%;
         p{
-          h2{
-            color: #69a4ff;
-          }
 
            select{
             width: 30%;
             height: 50px;
+             font-size: 30px;
+             padding-left: 50px;
+
+             option {
+               font-size: 15px;
+
+             }
 
           }
           & .expiration-year{
             margin-left: 15px;
+
+            option {
+              font-size: 15px;
+            }
           }
 
         }
       }
 
-      .tests {
+      .button-cvv {
         flex: 50%;
 
 
@@ -86,6 +96,10 @@
       height: 50px;
       border-radius: 5px;
     }
+
+  button:hover {
+    opacity: 0.8;
+  }
 
 
 
