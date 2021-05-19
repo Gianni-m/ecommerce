@@ -1,7 +1,7 @@
 import {
     ADD_PRODUCT_TO_CART,
     CLEAR_CART,
-    REMOVE_PRODUCT_FROM_CART,
+    REMOVE_PRODUCT_FROM_CART, UPDATE_CART_PRODUCT_QUANTITY,
 } from "../actions/types";
 
 const initialState = {
@@ -19,6 +19,10 @@ export default function cartReducer(state = initialState, action) {
             products: removeProductFromCart(state.products, action.payload.productId, action.payload.quantity)
         }
         case CLEAR_CART: return initialState
+        case UPDATE_CART_PRODUCT_QUANTITY: return {
+            ...state,
+            products: updateProductQuantity(state.products, action.payload.productId, action.payload.quantity)
+        }
         default:
             return state;
     }
@@ -44,15 +48,28 @@ const removeProductFromCart = (products, productId, quantity) => {
 }
 
 const addProductToCart = (products, product, quantity) => {
+    console.log(products)
+    console.log(product)
+    console.log(quantity)
     //TODO check for product conflict
     const index = getProductIndex(products, product.id);
-    if(index) {
+    console.log(index)
+    if(index != null) {
         products[index].quantity += quantity;
     } else {
+        console.log('ici ?')
         products.push({
             ...product,
             quantity: quantity
         })
+    }
+    return products;
+}
+
+const updateProductQuantity = (products, productId, quantity) => {
+    const index = getProductIndex(products, productId)
+    if(index != null) {
+        products[index].quantity = quantity
     }
     return products;
 }

@@ -1,9 +1,12 @@
-import {ADD_PRODUCT_TO_CART, CLEAR_CART, REMOVE_PRODUCT_FROM_CART} from "./types";
+import {ADD_PRODUCT_TO_CART, CLEAR_CART, REMOVE_PRODUCT_FROM_CART, UPDATE_CART_PRODUCT_QUANTITY} from "./types";
 
 export const addProductToCart = (product, quantity) => (dispatch) => {
     try {
         //TODO: add request
-        addProductDispatch(product, quantity);
+        const payload = addProductDispatch(product, quantity);
+        console.log(payload)
+        dispatch(payload)
+
     } catch(err) {
         console.log(err);
         throw err
@@ -20,6 +23,15 @@ export const removeProductFromCart = (productId, quantity) => (dispatch) => {
     }
 }
 
+export const updateProductQuantity = (productId, quantity) => dispatch => {
+    try {
+        dispatch(updateProductQuantityDispatch(productId, quantity))
+    } catch(err) {
+        throw err;
+    }
+}
+
+
 export const clearCart = () => (dispatch) => {
     try {
         // TODO: add request
@@ -30,13 +42,23 @@ export const clearCart = () => (dispatch) => {
     }
 }
 
+const updateProductQuantityDispatch = (productId, quantity) => {
+    return {
+        payload: {
+            productId,
+            quantity
+        },
+        type: UPDATE_CART_PRODUCT_QUANTITY
+    }
+}
+
 const addProductDispatch = (product, quantity) => {
     return {
         payload: {
-            products: product,
+            product: product,
             quantity: quantity
         },
-        action: ADD_PRODUCT_TO_CART
+        type: ADD_PRODUCT_TO_CART
     }
 }
 
@@ -46,13 +68,13 @@ const removeProductDispatch = (productId, quantity) => {
             productId: productId,
             quantity: quantity
         },
-        action: REMOVE_PRODUCT_FROM_CART
+        type: REMOVE_PRODUCT_FROM_CART
     }
 }
 
 const clearCartDispatch = () => {
     return {
         payload: {},
-        action: CLEAR_CART
+        type: CLEAR_CART
     }
 }

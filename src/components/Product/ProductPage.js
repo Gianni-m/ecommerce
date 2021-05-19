@@ -36,20 +36,30 @@ const productExample = {
 
 
 const ProductPage =(props) => {
-    const [product, setProduct] = useState();
+    const [product, setProduct] = useState(null);
     const {productId} = props.match.params;
-
+    const [quantity, setQuantity] = useState(1)
     const dispatch = useDispatch();
+
     useEffect(() => {
         loadProduct(productId)
     }, []);
 
+    function handleInputChange(e) {
+        if(e.target.value && e.target.value > 0) {
+            setQuantity(e.target.value)
+        }
+    }
+    function addToCart() {
+        dispatch(addProductToCart(product, quantity))
+    }
+
     async function loadProduct(productId) {
         const productData = await dispatch(getProductById(productId))
             .then((product) => {
-                if(productData) {
+                if(product) {
                     console.log("PRODUIT TROUVE");
-                    setProduct(productData)
+                    setProduct(product)
                 } else {
                     console.log("PRODUIT INTROUVABLE");
 
@@ -91,10 +101,12 @@ const ProductPage =(props) => {
                                     <p> Status : <span> In Stock</span></p>
                                         <p> Qty :
                                             <input className="quantity" type="number" step="1"
-                                                   defaultValue={1}/>
+                                                   defaultValue={1}
+                                                   onChange={handleInputChange}
+                                            />
                                         </p>
                                 <div className="add-product">
-                                    <button type="button" onClick={() => dispatch(addProductToCart(product.id, 1))}> Add to cart</button>
+                                    <button type="button" onClick={() => addToCart()}> Add to cart</button>
                                 </div>
                                 </div>
 
