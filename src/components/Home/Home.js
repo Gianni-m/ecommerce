@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 
 import Product from "./Product"
 import {connect} from "react-redux";
-import {connectUser} from "../../actions/authActions";
 import MomentProduct from "./MomentProduct";
 import "./Home.scss"
 
@@ -45,4 +44,4 @@ class Home extends Component {
 const mapStateToProps = state => ({
     auth: state.auth,
 });
-export default connect(mapStateToProps, {connectUser})(Home);
+export default connect(mapStateToProps, {})(Home);

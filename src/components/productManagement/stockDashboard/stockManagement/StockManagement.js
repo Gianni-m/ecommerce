@@ -40,14 +40,15 @@ const StockManagement = () => {
         <div className="stockManagement">
             <h1 className="title"> Gestion du stock</h1>
 
-            <table className="table">
+            <div>
+                <table className="table">
 
                     <thead className="header-table">
-                        <tr>
+                    <tr>
                         <th>Name</th>
                         <th>Size</th>
                         <th>Quantity</th>
-                        </tr>
+                    </tr>
                     </thead>
 
                     <tbody className="body-table">
@@ -56,7 +57,9 @@ const StockManagement = () => {
 
                     </tbody>
 
-            </table>
+                </table>
+            </div>
+
         </div>
     );
 }

@@ -1,17 +1,6 @@
 import {LOGOUT, UPDATE_AUTH} from "./types";
 import axios from "axios";
-
-export const connectUser = () => async dispatch => {
-    dispatch({
-        type: UPDATE_AUTH,
-        payload: {
-            user: {
-                username: 'marmoud',
-                age: 12,
-            }
-        }
-    })
-};
+import jwt_decode from "jwt-decode";
 
 export const loginUser = (email, password) => async  dispatch => {
     try {
@@ -20,8 +9,9 @@ export const loginUser = (email, password) => async  dispatch => {
             password: password
         })
             .then((response) => response.data);
-        dispatch(loginDispatch(user.data))
-        localStorage.setItem("jwtToken",    JSON.stringify(user.data));
+        const decoded = jwt_decode(user.data);
+        dispatch(loginDispatch(decoded))
+        localStorage.setItem("jwtToken", user.data);
         return user;
     } catch (err) {
         console.log(err);
@@ -47,8 +37,9 @@ export const registerUser = (username, email, password, password2) => async  dis
             password2: password2
         })
             .then((response) => response.data);
-        dispatch(registerDispatch(user.data))
-        localStorage.setItem("jwtToken",    JSON.stringify(user.data));
+        const decoded = jwt_decode(user.data);
+        dispatch(loginDispatch(decoded))
+        localStorage.setItem("jwtToken", user.data);
         return user;
     } catch (err) {
         console.log(err);
@@ -68,7 +59,6 @@ export const registerDispatch = (payload) => {
 
 export const logout = () => async dispatch => {
     try {
-        console.log("ici")
         localStorage.removeItem('jwtToken');
         dispatch(logoutDispatch())
     }
