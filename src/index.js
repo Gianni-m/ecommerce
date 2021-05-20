@@ -10,12 +10,16 @@ import middleware from "./middlewares"
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
 import {loginDispatch} from "./actions/authActions";
+import setAuthToken from "./utils/setAuthToken";
+import jwt_decode from "jwt-decode";
+
 const store = createStore(rooReducer, composeWithDevTools(middleware))
 
 if(localStorage.jwtToken) {
     const localToken = localStorage.jwtToken;
-    const data = JSON.parse(localToken);
-    store.dispatch(loginDispatch(data))}
+    const decoded = jwt_decode(localToken);
+    setAuthToken(decoded)
+    store.dispatch(loginDispatch(decoded))}
 
 ReactDOM.render(
   <React.StrictMode>

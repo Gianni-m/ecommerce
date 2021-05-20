@@ -1,0 +1,110 @@
+
+.payment {
+
+
+  display: grid;
+  h2 {
+    color: white;
+    margin: auto;
+  }
+
+  .left-info{
+    margin: 100px;
+    flex: 0.4 1;
+    font-size: 100px;
+    background-color: white;
+    height: fit-content;
+    width: 80%;
+    border-radius: 10px;
+
+    p {
+      font-size: 30px;
+    }
+
+    h2 {
+      color: black;
+      font-size: 20px;
+    }
+
+    input {
+      width: 80%;
+      height: 60px;
+      font-size: 25px;
+
+    }
+
+    .bottom {
+      display: flex;
+      padding: 25px;
+      margin-left: 10px;
+      .expiration-date {
+        flex: 50%;
+        p{
+
+           select{
+            width: 30%;
+            height: 50px;
+             font-size: 30px;
+             padding-left: 50px;
+
+             option {
+               font-size: 15px;
+
+             }
+
+          }
+          & .expiration-year{
+            margin-left: 15px;
+
+            option {
+              font-size: 15px;
+            }
+          }
+
+        }
+      }
+
+      .button-cvv {
+        flex: 50%;
+
+
+
+        input {
+          width: 15%;
+          height: 40px;
+        }
+      }
+
+    }
+
+
+
+  }
+  .left-info > p {
+    padding: 35px;
+
+  }
+
+  .left-info > p:last-child {
+    border: none;
+  }
+
+
+    button {
+      margin: auto;
+      width: 150px;
+      height: 50px;
+      border-radius: 5px;
+    }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+
+
+
+}
+
+
+

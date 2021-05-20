@@ -3,10 +3,23 @@ import "./CartItem.scss"
 import logo from '../../assets/images/vet_03.jpg'
 import {Link} from "react-router-dom"
 import { RiDeleteBin6Line } from "react-icons/ri";
+import {updateProductQuantity} from "../../actions/cartActions";
+import {useDispatch} from "react-redux";
 
 
 
-const CartItem = () => {
+const CartItem = (props) => {
+    console.log(props)
+
+    const dispatch = useDispatch();
+    function handleInputChange(e) {
+        if(e.target.value) {
+            const quantity = parseInt(e.target.value);
+            if(quantity && quantity > 0) {
+                dispatch(updateProductQuantity(props.id, quantity))
+            }
+        }
+    }
     return (
         <Fragment>
 
@@ -16,15 +29,17 @@ const CartItem = () => {
         </div>
 
           <Link to={`/product/${111}`} className="cartitem-name">
-              <p>Product 1</p>
+              <p>{props.name}</p>
           </Link>
-          <p className="cartitem-price">10.99€ </p>
-          <select className="cartitem-select">
-              <option value="1">1 </option>
-              <option value="2">2 </option>
-              <option value="3">3 </option>
-              <option value="4">4 </option>
-          </select>
+          <p className="cartitem-price">{props.price} €</p>
+          <input
+              className="cartitem-select"
+              type='number'
+              step='1'
+              min='1'
+              defaultValue={props.quantity}
+              onChange={handleInputChange}
+          />
 
           <button className="cartitem-deletebtn">
               <RiDeleteBin6Line/>
