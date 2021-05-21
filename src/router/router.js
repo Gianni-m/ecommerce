@@ -19,12 +19,15 @@ import Commandes from "../components/Profile/Commandes";
 import Infos from "../components/Profile/Infos";
 import Payment from "../components/Payment/Payment";
 import DisplayCategories from "../components/Categories/DisplayCategories";
+import PrivateRoute from "./PrivateRoute";
+import {useSelector} from "react-redux";
 
 
-class RouterList extends Component {
+function RouterList() {
+
+    const authStore = useSelector(state => state.auth);
 
 
-    render() {
         return (
             <Router>
                 <div className="app-header">
@@ -36,35 +39,35 @@ class RouterList extends Component {
                         <Route path='/login' component={LoginForm}/>
                         <Route path='/register' component={RegisterForm} />
                         <Route path='/logout' component={LogoutForm} />
-                        {<Route path='/cart' component={Cart}/>}
+                        <Route path='/cart' component={Cart}/>
                         <Route path='/product/:productId/' component={ProductPage}/>
-                        <Route path='/profil' component={Profile}/>
-                        <Route path='/profil/commandes' component={Commandes}/>
-                        <Route path='/profil/infos' component={Infos}/>
-                        <Route path='/payment' component={Payment}/>
+                        <PrivateRoute path='/profil' component={Profile}/>
+                        <PrivateRoute path='/profil/commandes' component={Commandes}/>
+                        <PrivateRoute path='/profil/infos' component={Infos}/>
+                        <PrivateRoute path='/payment' component={Payment}/>
                         <Route path='/category/:categoryId' component={DisplayCategories}/>
 
 
 
 
-                        <Route path='/dashboard/'>
+                        <PrivateRoute authed={authStore.isAuthenticated} path='/dashboard/'>
                             <DashboardSidebar/>
                             <Switch>
-                                <Route exact path='/dashboard/'>
+                                <PrivateRoute exact path='/dashboard/'>
                                     <Dashboard/>
-                                </Route>
-                                <Route exact path='/dashboard/stock'>
+                                </PrivateRoute>
+                                <PrivateRoute exact path='/dashboard/stock'>
                                     <StockDashboard/>
-                                </Route>
-                                <Route exact path='/dashboard/stockManagement'>
+                                </PrivateRoute>
+                                <PrivateRoute exact path='/dashboard/stockManagement'>
                                     <StockManagement/>
-                                </Route>
-                                <Route>
+                                </PrivateRoute>
+                                <PrivateRoute>
                                     <Redirect to='/dashboard'/>
-                                </Route>
+                                </PrivateRoute>
 
                             </Switch>
-                        </Route>
+                        </PrivateRoute>
                         <Route path="*">
                             <Redirect to='/'/>
                         </Route>
@@ -76,7 +79,6 @@ class RouterList extends Component {
 
             </Router>
         )
-    }
 }
 
 export default RouterList
