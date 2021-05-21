@@ -12,7 +12,7 @@ export default function cartReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_PRODUCT_TO_CART: return {
             ...state,
-            products: addProductToCart(state.products, action.payload.product, action.payload.quantity)
+            products: addProductToCart(state.products, action.payload.productId, action.payload.quantity)
         }
         case REMOVE_PRODUCT_FROM_CART: return {
             ...state,
@@ -47,19 +47,16 @@ const removeProductFromCart = (products, productId, quantity) => {
     return products;
 }
 
-const addProductToCart = (products, product, quantity) => {
-    console.log(products)
-    console.log(product)
-    console.log(quantity)
+const addProductToCart = (products, productId, quantity) => {
+
     //TODO check for product conflict
-    const index = getProductIndex(products, product.id);
+    const index = getProductIndex(products, productId);
     console.log(index)
     if(index != null) {
         products[index].quantity += quantity;
     } else {
-        console.log('ici ?')
         products.push({
-            ...product,
+            productId: productId,
             quantity: quantity
         })
     }

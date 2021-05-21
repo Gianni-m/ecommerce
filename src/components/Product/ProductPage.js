@@ -51,7 +51,7 @@ const ProductPage =(props) => {
         }
     }
     function addToCart() {
-        dispatch(addProductToCart(product, quantity))
+        dispatch(addProductToCart(productId, quantity))
     }
 
     async function loadProduct(productId) {
