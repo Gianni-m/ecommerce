@@ -18,7 +18,7 @@ const store = createStore(rooReducer, composeWithDevTools(middleware))
 if(localStorage.jwtToken) {
     const localToken = localStorage.jwtToken;
     const decoded = jwt_decode(localToken);
-    setAuthToken(decoded)
+    setAuthToken(localToken)
     store.dispatch(loginDispatch(decoded))}
 
 ReactDOM.render(

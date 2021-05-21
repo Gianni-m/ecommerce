@@ -13,11 +13,12 @@ div.product-dashboard {
     div.stock-display {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 400px));
-        margin-top: 1.5rem;
-        justify-content: space-around;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        margin: 1.5rem auto 0;
+        //justify-content: space-between;
 
         div.product-card {
+            max-width: 400px;
             margin: 50px min(10px) auto min(10px);
             height: 165px;
             background-color: #fff;
@@ -27,7 +28,7 @@ div.product-dashboard {
             display: flex;
             flex-flow: row;
             div.product-icon {
-                width: 165px;
+                max-width: 165px;
                 height: 165px;
                 img {
                     width: 90%;

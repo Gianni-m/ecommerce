@@ -1,11 +1,14 @@
-import './dashboard.scss'
+import './sidebar.scss'
 import {Link} from "react-router-dom";
 
-const DashboardSidebar = () => {
+const DashboardSidebar = (props) => {
+    const {user} = props;
     return (
-        <div className='sidebar'>
-
-            <div className="links">
+        <nav className='seller-dashboard-sidebar'>
+            <div className='sidebar-header'>
+                <h3>{"Bienvenue " + user.username}</h3>
+            </div>
+            <div className='action-list'>
                 <Link className='link' to='/dashboard'>
                     <div>Home</div>
                 </Link>
@@ -22,7 +25,7 @@ const DashboardSidebar = () => {
                     <div>Gestion des stocks</div>
                 </Link>
             </div>
-        </div>
+        </nav>
 
     )
 }

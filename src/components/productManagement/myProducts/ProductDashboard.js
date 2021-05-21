@@ -1,4 +1,4 @@
-import './stockDashboard.scss'
+import './productDashboard.scss'
 import ProductCard from "./ProductCard";
 import ProductAddCard from "./AddProduct/ProductAddCard";
 import {useEffect, useState} from "react";
@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getSellerProducts} from "../../../actions/productActions";
 
 
-const StockDashboard = () => {
+const ProductDashboard = () => {
     const [data, setData] = useState([])
     const dispatch = useDispatch()
 
@@ -28,7 +28,7 @@ const StockDashboard = () => {
         <div className='product-dashboard'>
 
             <div className='header'>
-                <h2>Gestion des stocks</h2>
+                <h2>Gestion des Produits</h2>
             </div>
             <div className="stock-display">
                 <ProductAddCard/>
@@ -54,4 +54,4 @@ const StockDashboard = () => {
     )
 }
 
-export default StockDashboard;
+export default ProductDashboard;

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import Home from "../components/Home/Home";
 import RegisterForm from "../components/Auth/RegisterForm"
@@ -8,8 +8,8 @@ import Cart from "../components/Cart/Cart"
 import Navbar from "../components/Navbar/Navbar";
 import Dashboard from "../components/productManagement/Dashboard";
 import Footer from "../components/Footer/Footer";
-import DashboardSidebar from "../components/productManagement/DashboardSidebar";
-import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
+import DashboardSidebar from "../components/productManagement/Sidebar/DashboardSidebar";
+import ProductDashboard from "../components/productManagement/myProducts/ProductDashboard";
 
 import StockManagement from "../components/productManagement/stockDashboard/stockManagement/StockManagement";
 import LogoutForm from "../components/Auth/LogoutForm";
@@ -51,20 +51,20 @@ function RouterList() {
 
 
                         <PrivateRoute authed={authStore.isAuthenticated} path='/dashboard/'>
-                            <DashboardSidebar/>
+                            <DashboardSidebar user={authStore.user}/>
                             <Switch>
-                                <PrivateRoute exact path='/dashboard/'>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/'>
                                     <Dashboard/>
                                 </PrivateRoute>
-                                <PrivateRoute exact path='/dashboard/stock'>
-                                    <StockDashboard/>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/stock'>
+                                    <ProductDashboard/>
                                 </PrivateRoute>
-                                <PrivateRoute exact path='/dashboard/stockManagement'>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/stockManagement'>
                                     <StockManagement/>
                                 </PrivateRoute>
-                                <PrivateRoute>
+                                <Route>
                                     <Redirect to='/dashboard'/>
-                                </PrivateRoute>
+                                </Route>
 
                             </Switch>
                         </PrivateRoute>
