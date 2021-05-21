@@ -1,6 +1,36 @@
 
 div.profile-infos {
     h2 {
-        color: blue;
+        color: coral;
+    }
+
+    margin-top : 10px;
+
+
+
+
+
+    .profile-coords {
+        h3 {
+            font-size: 20px;
+            padding-top: 40px;
+            color: aliceblue;
+        }
+        p {
+            font-size: 15px;
+            color: lightgrey;
+            padding-top: 5px;
+        }
+
+        button.edit {
+            height: 25px;
+            width: 60px;
+            margin-top: 50px;
+            color: black;
+            font-size: 20px;
+
+        }
+
+
     }
 }
