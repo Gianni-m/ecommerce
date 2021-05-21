@@ -1,18 +1,18 @@
 import './Profile.scss'
 import {Link} from "react-router-dom";
 
-const DashboardSidebar = () => {
+const ProfileSidebar = () => {
     return (
         <div className='sidebar'>
 
             <div className="links">
-                <Link className='link' to='/profil'>
+                <Link className='link' to='/profile'>
                     <div>Profil</div>
                 </Link>
-                <Link className='link' to='/profil/infos'>
+                <Link className='link' to='/profile/infos'>
                     <div>Infos</div>
                 </Link>
-                <Link className='link' to='/Profile/commandes'>
+                <Link className='link' to='/profile/commands'>
                     <div>Commandes</div>
                 </Link>
 

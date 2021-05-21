@@ -18,6 +18,9 @@ import Profile from "../components/Profile/Profile";
 import Commandes from "../components/Profile/Commandes";
 import Infos from "../components/Profile/Infos";
 import Payment from "../components/Payment/Payment";
+import ProfileSidebar from "../components/Profile/ProfileSidebar";
+import ProfileCommands from "../components/Profile/Commandes";
+import ProfileInfos from "../components/Profile/Infos";
 
 class RouterList extends Component {
 
@@ -61,6 +64,25 @@ class RouterList extends Component {
 
                             </Switch>
                         </Route>
+                        <Route path='/profile/'>
+                            <ProfileSidebar/>
+                            <Switch>
+                                <Route exact path='/profile'>
+                                    <Profile/>
+                                </Route>
+                                <Route exact path='/profile/infos'>
+                                    <ProfileInfos/>
+                                </Route>
+                                <Route exact path='/profile/commands'>
+                                    <ProfileCommands/>
+                                </Route>
+                                <Route>
+                                    <Redirect to='/profile'/>
+                                </Route>
+
+                            </Switch>
+                        </Route>
+
                         <Route path="*">
                             <Redirect to='/'/>
                         </Route>

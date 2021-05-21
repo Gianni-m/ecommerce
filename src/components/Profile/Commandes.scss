@@ -1,20 +1,16 @@
-h2 {
-  font-size: 50px;
-  color: aliceblue;
-}
 
-.profile{
+
+.profile-commands-dashboard{
+  h2 {
+    font-size: 50px;
+    color: aliceblue;
+  }
+
   margin-top : 15px;
   background-color: aliceblue;
   display: flex;
 
-
-
-
-
-
-
-  .Commandes {
+  div.Commandes {
 
     background-color: aliceblue;
     border: 10px solid black;
@@ -26,12 +22,7 @@ h2 {
 
   }
 
-
-
-
-
-
-  .profile-left {
+  div.profile-left {
     background-color: aliceblue;
     height : 1000px;
     display: grid ;
