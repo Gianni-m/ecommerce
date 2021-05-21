@@ -1,6 +1,6 @@
 import "./Infos.scss"
 import React, { Fragment} from 'react';
-import { VscEdit } from "react-icons/vsc";
+import { VscAdd } from "react-icons/vsc";
 
 
 
@@ -10,20 +10,25 @@ const ProfileInfos = () => {
         <Fragment>
 
             <div className="profile-infos">
-                <h2 className="Header">Vos Informations de Livraison </h2>
-                <div className="profile-coords">
-                    <h3 >Votre adresse :</h3>
-                    <p>128 rue Victor Hugo </p>
-                    <h3 >Ville : </h3>
-                    <p>Avignon</p>
-                    <button className="edit">
-                        <VscEdit />
-                    </button>
-                    <h3 >Code Postal : </h3>
-                    <p>84000</p>
-                    <button className="edit">
-                        <VscEdit />
-                    </button>
+                <h1 className="Header">Vos Informations de Livraison </h1>
+                <button className="add">
+                    <VscAdd/>
+                </button>
+
+                <div className="prems">
+
+                    <div className="left-info">
+
+                        <h2>Votre adresse : </h2>
+                        <p>"128 rue du mur"</p>
+                        <h2> Ville : </h2>
+                        <p> Avignon </p>
+                        <h2>Code Postal :</h2>
+                        <p>84000</p>
+
+                    </div>
+
+
                 </div>
 
 

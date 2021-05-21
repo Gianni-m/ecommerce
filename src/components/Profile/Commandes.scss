@@ -1,26 +1,75 @@
 
 
-.profile-commands-dashboard{
-  h2 {
+.commandes {
+  h1 {
     font-size: 50px;
     color: palegreen;
   }
 
   display: flex;
 
-  div.product {
-    width: 300px;
-    margin-top: 30px;
-    background: #fff;
-    cursor: pointer;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
+
+    table.table {
+
+      td, tr, th {
+        border: none;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      margin: auto;
+      padding: 20px;
+      border: none;
+      border-collapse: collapse;
+      border-spacing: 0;
+
+
+      thead.header-table {
+        border: none;
+        border-collapse: collapse;
+        border-spacing: 0;
+        background-color: green;
+
+        tr {
+          th {
+            border: 1px solid #ddd;
+            padding: 8px;
+          }
+        }
+      }
+
+      tbody.body-table {
+        border: none;
+        border-collapse: collapse;
+        border-spacing: 0;
+
+        tr {
+          td {
+            span {
+              display: block;
+
+              &.product-name {
+                font-size: 20px;
+
+              }
+
+              &.product-id {
+                font-size: 15px;
+                color: gray;
+              }
+            }
+
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 35px;
+            background-color: white;
+            width: 25%;
+          }
+        }
+
+      }
+
+    }
   }
-
-
-
-
-}
 
 
