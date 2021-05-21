@@ -42,7 +42,7 @@ class RouterList extends Component {
                         <Route path='/profil/commandes' component={Commandes}/>
                         <Route path='/profil/infos' component={Infos}/>
                         <Route path='/payment' component={Payment}/>
-                        <Route path='/test' component={DisplayCategories}/>
+                        <Route path='/category/:categoryId' component={DisplayCategories}/>
 
 
 
