@@ -11,7 +11,7 @@ export const MenuItems = [
     },
     {
         title: 'Chaussures',
-        url: '/products',
+        url: '/',
         cName:'dropdown-link'
     },
 
