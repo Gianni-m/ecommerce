@@ -2,6 +2,7 @@ import "./Profile.scss"
 import React, { Fragment} from 'react';
 
 
+
 const Profile = () => {
     return (
 

@@ -9,7 +9,7 @@ const Infos = () => {
 
             <div className="infos">
                 <h2 className="Header">Vos Informations </h2>
-                <div className="cart-left">
+                <div className="profile-left">
                     <p>
                         <a href="/profile">
                             Mon Profil
@@ -28,14 +28,9 @@ const Infos = () => {
 
 
                 </div>
-                <div className="cart-right">
-                    <div className="cart-info">
-                        <p> Subtotal (0) items</p>
-                        <p> 10.99 €</p>
-                    </div>
-                    <div>
-                        <button> Proceed to Checkout</button>
-                    </div>
+                <div className="profile-right">
+
+
 
                 </div>
             </div>
