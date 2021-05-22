@@ -3,89 +3,21 @@ import React, {Fragment, useState} from 'react';
 import ProfileSidebar from "./ProfileSidebar";
 import { VscEdit } from "react-icons/vsc";
 import ProductAddForm from "../productManagement/stockDashboard/AddProduct/ProductAddForm";
+import {useSelector} from "react-redux";
 
 
 
 
 const Profile = () => {
-    const [addWindow, setAddWindow] = useState(null);
-    const[state, setState] = useState(true);
+    const authReducer = useSelector(store => store.auth);
+    const {user} = authReducer;
 
-    function toggleEditorWindow(state) {
-        console.log("?")
-        console.log(state)
-        if(state) {
-            setAddWindow(
-                <input className="edit"
-                />
-
-            )
-            setState(false);
-        } else {
-            console.log('close')
-            setAddWindow(null);
-            setState(true);
-        }
-
-    }
-    const [addWindow1, setAddWindow1] = useState(null);
-    const[state1, setState1] = useState(true);
-
-    function toggleEditorWindow1(state1) {
-        console.log("?")
-        console.log(state1)
-        if(state1) {
-            setAddWindow1(
-                <input className="edit"
-                />
-            )
-            setState1(false);
-        } else {
-            console.log('close')
-            setAddWindow1(null);
-            setState1(true);
-        }
-    }
-
-    const [addWindow2, setAddWindow2] = useState(null);
-    const[state2, setState2] = useState(true);
-
-    function toggleEditorWindow2(state2) {
-        console.log("?")
-        console.log(state2)
-        if(state2) {
-            setAddWindow2(
-                <input className="edit"
-                />
-            )
-            setState2(false);
-        } else {
-            console.log('close')
-            setAddWindow2(null);
-            setState2(true);
-        }
-    }
-
-    const [addWindow3, setAddWindow3] = useState(null);
-    const[state3, setState3] = useState(true);
-
-    function toggleEditorWindow3(state3) {
-        console.log("?")
-        console.log(state3)
-        if(state3) {
-            setAddWindow3(
-                <input className="edit"
-                />
-            )
-            setState3(false);
-        } else {
-            console.log('close')
-            setAddWindow3(null);
-            setState3(true);
-        }
-    }
-
-
+    const [editing, setEditing] = useState(false);
+    const [username, setUsername] = useState(user.username || undefined);
+    const [firstName, setFirstName] = useState(user.firstName || undefined);
+    const [lastName, setLastName] = useState(user.lastName || undefined);
+    const [email, setEmail] = useState(user.email || undefined)
+    const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber || undefined)
 
     return (
 
@@ -95,58 +27,73 @@ const Profile = () => {
             <h2 className="Header">Votre Profil </h2>
 
             <div className="profile">
-                <ProfileSidebar/>
+                    <form className="profile-coords">
+                        <div className='profile-field'>
+                            <label htmlFor='username'>Nom d'utilisateur:</label>
+                            <input
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                disabled={!editing}
+                                id='username'
+                                name='username'
+                            />
+                        </div>
+                        <div className='profile-field'>
+                            <label htmlFor='lastName'>Nom:</label>
+                            <input
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                disabled={!editing}
+                                id='lastName'
+                                name='lastName'
+                            />
+                        </div>
+                        <div className='profile-field'>
+                            <label htmlFor='firstName'>Prénom:</label>
+                            <input
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                disabled={!editing}
+                                id='firstName'
+                                name='firstName'
+                            />
+                        </div>
 
-                    <div className="profile-coords">
-                        <h3 >Votre Nom :</h3>
-                        <p>Pichard</p>
-                        <button className= "edit" onClick={() => toggleEditorWindow(state)}>
-
-
-                            <VscEdit />
-
-                        </button>
-                        {addWindow}
-
-                        <h3 >Votre Prénom :</h3>
-                        <p>Benoit</p>
-                        <button className= "edit" onClick={() => toggleEditorWindow1(state1)}>
-
-
-                            <VscEdit />
-
-                        </button>
-                        {addWindow1}
-
-                        <h3 >Votre adresse mail :</h3>
-                        <p>BenoitP@hotmail.fr</p>
-                         <button className= "edit" onClick={() => toggleEditorWindow2(state2)}>
-
-
+                        <div className='profile-field'>
+                            <label htmlFor='email'>Email:</label>
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                disabled={!editing}
+                                id='email'
+                                name='email'
+                            />
+                        </div>
+                        <div className='profile-field'>
+                            <label htmlFor='phoneNumber'>Numéro de téléphone:</label>
+                            <input
+                                type='text'
+                                value={phoneNumber}
+                                placeholder='phone number'
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                disabled={!editing}
+                                id='phoneNumber'
+                                name='phoneNumber'
+                            />
+                        </div>
+                        {
+                            editing
+                                ? <button type='submit'>Mettre a jour</button>
+                                : null
+                        }
+                    </form>
+                <div className='edit'>
+                    <button className= "edit" onClick={() => setEditing(true)}>
                         <VscEdit />
+                    </button>
+                </div>
 
-                        </button>
-                        {addWindow2}
-                        <h3 >Votre numéro de téléphone :</h3>
-                        <p>07 01 02 03 04</p>
-                        <button className= "edit" onClick={() => toggleEditorWindow3(state3)}>
-
-
-                        <VscEdit />
-
-                        </button>
-                        {addWindow3}
-                    </div>
             </div>
-
-
-
-
-
-
-
-
-
         </Fragment>
     );
 }

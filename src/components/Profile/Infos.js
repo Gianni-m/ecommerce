@@ -1,37 +1,38 @@
 import "./Infos.scss"
-import React, { Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import { VscAdd } from "react-icons/vsc";
+import AddressCard from "./AddressCard";
+import AddAddressForm from "./addAddressForm";
 
+const userAddress = [{}, {}, {}, {}]
 
 
 const ProfileInfos = () => {
+    const [displayForm, setDisplayForm] = useState(false);
     return (
 
         <Fragment>
 
             <div className="profile-infos">
                 <h1 className="Header">Vos Informations de Livraison </h1>
-                <button className="add">
+                <button className="add"
+                onClick={() => setDisplayForm(true)}>
                     <VscAdd/>
                 </button>
 
-                <div className="prems">
-
-                    <div className="left-info">
-
-                        <h2>Votre adresse : </h2>
-                        <p>"128 rue du mur"</p>
-                        <h2> Ville : </h2>
-                        <p> Avignon </p>
-                        <h2>Code Postal :</h2>
-                        <p>84000</p>
-
-                    </div>
-
-
+                <div className="address-list">
+                    {
+                        userAddress.map((address) => {
+                            return <AddressCard {...address}/>
+                        })
+                    }
                 </div>
-
-
+                {
+                    displayForm ? <AddAddressForm
+                        closeForm={() => setDisplayForm(false)}
+                        />
+                        : null
+                }
             </div>
         </Fragment>
     );
