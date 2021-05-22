@@ -22,6 +22,7 @@ div.product-edit {
         border-radius: 2px;
         display: flex;
         div.product-edit-form {
+
             width: 40%;
             form {
                 padding: 10%;
@@ -137,6 +138,9 @@ div.product-edit {
         }
 
         div.product-size-pannel {
+
+
+
             width: 55%;
             height: 100%;
             padding: 0 2.5%;
@@ -144,6 +148,13 @@ div.product-edit {
             overflow-x: hidden;
             display: block;
             div.product-size-card {
+
+                &.error {
+                    border-color: red;
+                }
+                &.warning {
+                    border-color: orange;
+                }
                 margin-top: 30px;
                 border-radius: 3px;
                 border: 1px solid rgba(0, 0, 0, 0.8);

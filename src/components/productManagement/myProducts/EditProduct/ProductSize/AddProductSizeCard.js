@@ -1,8 +1,8 @@
 const AddProductSizeCard = (props) => {
 
     return (
-        <div className='product-size add-card'>
-            <div>
+        <div className='product-size-card add-card'>
+            <div onClick={() => props.addProductSize()}>
                 <span>+</span>
             </div>
 

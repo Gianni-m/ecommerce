@@ -54,3 +54,15 @@ export const addProduct = (name, description, price) => async () => {
         throw(err);
     }
 }
+
+export const addProductSize = (productId, sizeName) => async () => {
+    try {
+        return await axios.post(`/api/products/by-id/${productId}/add-size`,
+            {
+                sizeName,
+            }).then((response) => response.data.data);
+    } catch(err) {
+        throw(err);
+    }
+}
+

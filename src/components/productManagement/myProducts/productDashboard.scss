@@ -79,7 +79,9 @@ div.product-dashboard {
                         color: $text-color;
                         border: 1px solid $negative-bg-color;
                         cursor: pointer;
+                        width: 30px;
                         height: 30px;
+                        text-align: center;
                         text-align: center;
                         align-items: center;
                         border-radius: 3px;
@@ -89,7 +91,7 @@ div.product-dashboard {
                             margin: 5%;
                             width: 90%;
                             height: 90%;
-                            font-size: 24px;
+                            font-size: 35px;
                         }
                         transition: opacity 0.1s;
 
