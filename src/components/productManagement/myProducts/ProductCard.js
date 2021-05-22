@@ -6,6 +6,7 @@ import { VscTrash, VscSymbolProperty } from "react-icons/vsc";
 import { FiCamera } from "react-icons/fi";
 const ProductCard = (props) => {
     const [window, setWindow] = useState(null);
+
     const dispatch = useDispatch();
     function toggleEditorWindow(state) {
         if(state) {
@@ -22,7 +23,7 @@ const ProductCard = (props) => {
     }
 
     async function update(name, description, price) {
-        return dispatch(updateProduct(props.id, name, description, price))
+        dispatch(updateProduct(props.id, name, description, price))
     }
 
     return (
@@ -47,10 +48,10 @@ const ProductCard = (props) => {
                     </span>
                 </div>
                 <div className='actions'>
-                    <button onClick={() => toggleEditorWindow(true)}><VscSymbolProperty/>Editer</button>
-                    <button><FiCamera/>Images</button>
+                    <button onClick={() => toggleEditorWindow(true)}><VscSymbolProperty/></button>
+                    <button><FiCamera/></button>
 
-                    <button className='warn VscTrash'><VscTrash/>Supprimer</button>
+                    <button className='warn VscTrash'><VscTrash/></button>
                 </div>
             </div>
             {window}

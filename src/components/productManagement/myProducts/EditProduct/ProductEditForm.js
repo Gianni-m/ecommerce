@@ -4,30 +4,13 @@ import AddProductSizeCard from "./ProductSize/AddProductSizeCard";
 import './editForm.scss'
 
 const ProductEditForm = (props) => {
-    const {name, description, price, sizes} = props.product
-    console.log(props)
-    const [loading, setLoading] = useState(false);
+    const {name, description, price, id} = props.product
+
     const [error, setError] = useState(null);
     const [productName, setProductName] = useState(name)
     const [productDescription, setProductDescription] = useState(description)
     const [productPrice, setProductPrice] = useState(price)
-
-    function handleChange(e) {
-        switch(e.target.name) {
-            case 'description': {
-                setProductDescription(e.target.value)
-                break;
-            }
-            case 'price': {
-                setProductPrice(e.target.value)
-                break;
-            }
-            case 'name': {
-                setProductName(e.target.value)
-                break;
-            }
-        }
-    }
+    const [sizes, setSizes] = useState(props.product.sizes)
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -43,7 +26,9 @@ const ProductEditForm = (props) => {
             })
     }
 
-
+    function addSizeCard() {
+        setSizes([...sizes,{}])
+    }
     return (
         <div className='product-edit'>
             <div className='product-edit-panel'>
@@ -57,7 +42,7 @@ const ProductEditForm = (props) => {
                                 id='name'
                                 name='name'
                                 defaultValue={productName}
-                                onChange={handleChange}
+                                onChange={(e) =>setProductDescription(e.target.value)}
                             />
                         </div>
                         <div className='field'>
@@ -66,7 +51,7 @@ const ProductEditForm = (props) => {
                                 id='description'
                                 name='description'
                                 defaultValue={productDescription}
-                                onChange={handleChange}
+                                onChange={(e) => setProductPrice(e.target.value)}
                             />
                         </div>
                         <div className='multi-field'>
@@ -77,7 +62,7 @@ const ProductEditForm = (props) => {
                                     type='number'
                                     name='price'
                                     defaultValue={productPrice}
-                                    onChange={handleChange}
+                                    onChange={(e) => setProductName(e.target.value)}
                                 />
                             </div>
                             <div className='field'>
@@ -114,16 +99,20 @@ const ProductEditForm = (props) => {
                 <div className='product-size-pannel'>
 
                     {
-                        sizes ? sizes.map((size) => {
+                        sizes ? sizes.map((size, key) => {
                             return (<ProductSizeCard
+                                id={size.id}
                                 sizeName={size.sizeName}
                                 Largeur={3.2}
                                 longueur={5.2}
+                                key={key}
+                                productId={id}
                             />)
                         })
                             : null
                     }
-                    <AddProductSizeCard/>
+                    <AddProductSizeCard
+                    addProductSize={addSizeCard}/>
                 </div>
             </div>
 
