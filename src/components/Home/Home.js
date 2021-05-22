@@ -1,22 +1,39 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, useEffect, useState} from 'react';
 
 import Product from "./Product"
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import MomentProduct from "./MomentProduct";
 import "./Home.scss"
+import {getProducts} from "../../actions/productActions";
+import ProductCategories from "../Categories/ProductCategories";
 
 
 
-class Home extends Component {
+const Home = (props) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            color: 'blue',
-        }
+    const [products, setProduct] = useState([]);
+    const dispatch = useDispatch();
+
+    const {categoryId} = props.match.params
+
+    useEffect(() => {
+        displayProduct()
+    }, []);
+
+    async function displayProduct() {
+        await dispatch(getProducts(categoryId))
+            .then((product) => {
+                if(product) {
+                    setProduct(product.concat(product))
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
     }
 
-    render() {
+
 
         return (
             <Fragment>
@@ -24,10 +41,16 @@ class Home extends Component {
                 <div className="home">
                     <h3 className="hometitle"> Latest Products</h3>
                     <div className="home-products" >
-                        <Product/>
-                        <Product/>
-                        <Product/>
-                        <Product/>
+                        {
+                        products.length > 0 ?
+                        products.map((product) => {
+                        return <Product
+                        key={product.id}
+                    {...product}
+                        />
+                    })
+                        : <p>Aucun article pour cette catégorie</p>
+                        }
                     </div>
 
                     <h3 className="article-moment"> Article du moment</h3>
@@ -38,7 +61,7 @@ class Home extends Component {
                 </div>
             </Fragment>
         );
-    }
+
 }
 
 const mapStateToProps = state => ({

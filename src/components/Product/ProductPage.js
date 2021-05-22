@@ -94,7 +94,7 @@ const ProductPage =(props) => {
                                 <p> {product.description} </p>
                                 <p>
                                     <h2> Coloris au choix : </h2>
-                                    <button className="coloris" style={{background:product.color}}> </button>
+                                    <button className="coloris" style={{backgroundColor:product.color}}> </button>
                                 </p>
                             </div>
                                 <div className="left-info">
