@@ -1,3 +1,6 @@
+import {useEffect, useState} from "react";
+import {getCommands} from "../../../actions/commandActions";
+import {useDispatch} from "react-redux";
 
 const commands = [
     {id: 1233, status: 'PENDING', createAt: new Date() },
@@ -9,9 +12,17 @@ const commands = [
 
 
 const RecentCommandCard = () => {
+    const dispatch = useDispatch();
+    const [commands, setCommmands] = useState([])
+
+    useEffect(() => {
+        dispatch(getCommands())
+            .then(commands => setCommmands(commands.slice(0,5)))
+    })
     return (
         <div className='card recent-commands-display'>
             {commands.map((command) => {
+                console.log(command)
                 return (
                 <div className="recent-command">
                     <div>
@@ -22,7 +33,7 @@ const RecentCommandCard = () => {
                         </div>
                         <div>
                         <span>
-                            {getDateAsString(command.createAt)}
+                            {getDateAsString(new Date(command.createdAt))}
                         </span>
                         </div>
                     </div>
@@ -42,6 +53,6 @@ export default RecentCommandCard;
 
 const getDateAsString = (date) => {
     return ("00" + date.getDate()).slice(-2) + "/"
-    + ("00" + date.getMonth()).slice(-2) + "/"
+    + ("00" + (date.getMonth()+1)).slice(-2) + "/"
     + date.getFullYear();
 }

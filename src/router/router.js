@@ -22,6 +22,7 @@ import DisplayCategories from "../components/Categories/DisplayCategories";
 import PrivateRoute from "./PrivateRoute";
 import {useSelector} from "react-redux";
 import ProfileSidebar from "../components/Profile/ProfileSideBar";
+import SellerCommands from "../components/productManagement/Commands/Commandes";
 
 
 function RouterList() {
@@ -69,6 +70,9 @@ function RouterList() {
                                 </PrivateRoute>
                                 <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/stockManagement'>
                                     <StockManagement/>
+                                </PrivateRoute>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/commands'>
+                                    <SellerCommands/>
                                 </PrivateRoute>
                                 <Route>
                                     <Redirect to='/dashboard'/>

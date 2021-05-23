@@ -21,6 +21,9 @@ const ProductPage =(props) => {
                 if(product) {
                     console.log(product)
                     setProduct(product)
+                    if(product.sizes.length > 0) {
+                        setSelectedSize(product.sizes.shift())
+                    }
                 } else {
                     props.history.push('/')
 
@@ -46,6 +49,10 @@ const ProductPage =(props) => {
         }
     }
 
+    function isAvailable() {
+        return selectedSize && selectedSize.quantity > 0
+    }
+
     return (
         <Fragment>
             {
@@ -61,28 +68,27 @@ const ProductPage =(props) => {
                         <div className="prems">
                             <div className="left-info">
                                 <p className="left-name">{product.name}</p>
-                                <p> Price : {product.price} € </p>
+                                <p> Prix : {product.price} € </p>
                                 <p> {product.description} </p>
-                                <p>
-                                    <h2> Tailles disponibles : </h2>
+                                <div className='size-selector'>
+                                    <h3> Tailles disponibles : </h3>
                                     {
-                                        product.sizes ?
-                                        product.sizes.map(size => {
-                                            console.log(size)
-                                            return <button
-                                                onClick={() => setSelectedSize(size)}
-                                                key={size.id}
-                                            >{size.sizeName}</button>
-                                        })
+                                        (product.sizes)
+                                        ? product.sizes.map((size) => {
+                                            console.log(size);
+                                                return <button
+                                                    onClick={() => setSelectedSize(size)}
+                                                    key={size.id}
+                                                >
+                                                    {size.sizeName}
+                                                </button>
+                                            })
                                             : <p>Aucune taille disponible pour le moment...</p>
                                     }
-                                    {
-                                        //<button className="coloris" style={{backgroundColor:product.color}}> </button>
-                                    }
-                                </p>
+                                </div>
                             </div>
                                 <div className="left-info">
-                                    <p> Status : <span> In Stock</span></p>
+                                        <p>{isAvailable() ? "En stock" : "Actuellement indisponible"}</p>
                                         <p> Qty :
                                             <input className="quantity" type="number" step="1"
                                                    defaultValue={1}
@@ -90,7 +96,7 @@ const ProductPage =(props) => {
                                             />
                                         </p>
                                 <div className="add-product">
-                                    <button type="button" onClick={() => addToCart()}> Add to cart</button>
+                                    <button type="button" disabled={!isAvailable()} onClick={() => addToCart()}> Add to cart</button>
                                 </div>
                                 </div>
 
@@ -103,6 +109,6 @@ const ProductPage =(props) => {
             }
         </Fragment>
     )
-}
+};
 
 export default ProductPage;

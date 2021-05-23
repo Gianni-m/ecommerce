@@ -26,6 +26,18 @@
   h2 {
     color: black;
   }
+  div.size-selector {
+    h3 {
+      margin-top: 20px;
+      margin-left: 30px;
+    }
+    button {
+      height: 30px;
+      width: 50px;
+      color: black;
+    }
+    min-height: 100px;
+  }
 
 
   .left-name {

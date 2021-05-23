@@ -12,8 +12,8 @@ const DashboardSidebar = (props) => {
                 <Link className='link' to='/dashboard'>
                     <div>Home</div>
                 </Link>
-                <Link className='link' to='/dashboard/cartProduct'>
-                    <div>Mes produits</div>
+                <Link className='link' to='/dashboard/commands'>
+                    <div>Commandes</div>
                 </Link>
                 <Link className='link' to='/dashboard/stats'>
                     <div>Stats des ventes</div>
