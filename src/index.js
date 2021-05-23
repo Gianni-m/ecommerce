@@ -12,6 +12,7 @@ import {Provider} from "react-redux";
 import {loginDispatch} from "./actions/authActions";
 import setAuthToken from "./utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { setCartDispatch} from "./actions/cartActions";
 
 const store = createStore(rooReducer, composeWithDevTools(middleware))
 
@@ -19,7 +20,17 @@ if(localStorage.jwtToken) {
     const localToken = localStorage.jwtToken;
     const decoded = jwt_decode(localToken);
     setAuthToken(localToken)
-    store.dispatch(loginDispatch(decoded))}
+    store.dispatch(loginDispatch(decoded))
+}
+if(localStorage.cart) {
+    const localCart = localStorage.cart;
+    try {
+        const products = JSON.parse(localCart);
+        store.dispatch(setCartDispatch(products))
+    } catch(err) {
+        console.log(err)
+    }
+}
 
 ReactDOM.render(
   <React.StrictMode>

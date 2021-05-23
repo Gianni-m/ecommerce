@@ -1,4 +1,10 @@
-import {ADD_PRODUCT_TO_CART, CLEAR_CART, REMOVE_PRODUCT_FROM_CART, UPDATE_CART_PRODUCT_QUANTITY} from "./types";
+import {
+    ADD_PRODUCT_TO_CART,
+    CLEAR_CART,
+    REMOVE_PRODUCT_FROM_CART,
+    SET_CART,
+    UPDATE_CART_PRODUCT_QUANTITY
+} from "./types";
 
 export const addProductToCart = (productId, quantity) => (dispatch) => {
     try {
@@ -10,6 +16,19 @@ export const addProductToCart = (productId, quantity) => (dispatch) => {
     } catch(err) {
         console.log(err);
         throw err
+    }
+}
+
+export const loadCartFromCache = () => (dispatch) => {
+    try {
+        const cart = localStorage.getItem('cart')
+        if(cart) {
+            const products = JSON.parse(cart);
+            dispatch(setCartDispatch(products))
+        }
+
+    } catch(err) {
+        console.log(err);
     }
 }
 
@@ -76,5 +95,14 @@ const clearCartDispatch = () => {
     return {
         payload: {},
         type: CLEAR_CART
+    }
+}
+
+export const setCartDispatch = (products) => {
+    return {
+        payload: {
+            products: products
+        },
+        type: SET_CART
     }
 }

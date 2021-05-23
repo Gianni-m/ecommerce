@@ -1,7 +1,7 @@
 import {
     ADD_PRODUCT_TO_CART,
     CLEAR_CART,
-    REMOVE_PRODUCT_FROM_CART, UPDATE_CART_PRODUCT_QUANTITY,
+    REMOVE_PRODUCT_FROM_CART, SET_CART, UPDATE_CART_PRODUCT_QUANTITY,
 } from "../actions/types";
 
 const initialState = {
@@ -22,6 +22,10 @@ export default function cartReducer(state = initialState, action) {
         case UPDATE_CART_PRODUCT_QUANTITY: return {
             ...state,
             products: updateProductQuantity(state.products, action.payload.productId, action.payload.quantity)
+        }
+        case SET_CART: return {
+            ...state,
+            products: action.payload.products
         }
         default:
             return state;
@@ -44,6 +48,7 @@ const removeProductFromCart = (products, productId, quantity) => {
             products.splice(index, 1);
         }
     }
+    saveCartToCache(products);
     return products;
 }
 
@@ -60,6 +65,7 @@ const addProductToCart = (products, productId, quantity) => {
             quantity: quantity
         })
     }
+    saveCartToCache(products)
     return products;
 }
 
@@ -68,5 +74,16 @@ const updateProductQuantity = (products, productId, quantity) => {
     if(index != null) {
         products[index].quantity = quantity
     }
+    saveCartToCache(products);
     return products;
+}
+
+
+export const saveCartToCache = (products) => {
+    try {
+        localStorage.setItem("cart", JSON.stringify(products));
+    } catch(err) {
+        console.log(err)
+    }
+
 }
