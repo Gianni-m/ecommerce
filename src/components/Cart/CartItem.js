@@ -3,7 +3,7 @@ import "./CartItem.scss"
 import logo from '../../assets/images/vet_03.jpg'
 import {Link} from "react-router-dom"
 import { RiDeleteBin6Line } from "react-icons/ri";
-import {updateProductQuantity} from "../../actions/cartActions";
+import {removeProductFromCart, updateProductQuantity} from "../../actions/cartActions";
 import {useDispatch} from "react-redux";
 
 
@@ -41,7 +41,9 @@ const CartItem = (props) => {
               onChange={handleInputChange}
           />
 
-          <button className="cartitem-deletebtn">
+          <button className="cartitem-deletebtn"
+                  onClick={() => dispatch(removeProductFromCart(props.id, props.quantity))}
+          >
               <RiDeleteBin6Line/>
           </button>
 

@@ -42,7 +42,8 @@ const getProductIndex = (products, productId) => {
 
 const removeProductFromCart = (products, productId, quantity) => {
     const index = getProductIndex(products, productId);
-    if(index) {
+    console.log(index)
+    if(index != null) {
         products[index].quantity -= quantity;
         if(products[index].quantity <= 0) {
             products.splice(index, 1);

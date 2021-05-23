@@ -1,38 +1,20 @@
 import "./Commandes.scss"
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {getCommands, getUserCommands} from "../../actions/commandActions";
+import {useDispatch} from "react-redux";
 
-
-
-const products = [
-    {
-        commandID: 1212,
-        quantity: 3,
-        state: 'livré',
-        instock:'instock',
-    },
-    {
-        commandID : 23,
-        quantity: 59354,
-        state:'en préparation',
-        instock : 'out of stock',
-
-    },
-    {   commandID : 535434,
-        quantity: 2323,
-        state:'expédié',
-        instock : 'instock',
-    },
-    {
-        commandID : 3232,
-        quantity: 1220,
-        state :'livré',
-        instock: 'instock',
-    },
-]
 
 
 
 const Commandes = () => {
+    const [commands, setCommands] = useState([])
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getUserCommands())
+            .then(commands => setCommands(commands))
+            .catch(err => console.log(err))
+    }, [])
 
     return (
 
@@ -44,16 +26,16 @@ const Commandes = () => {
 
                     <thead className="header-table">
                     <tr>
-                        <th>Command ID</th>
-                        <th>Quantity</th>
-                        <th>State</th>
-                        <th>inStock</th>
+                        <th>numéro de commande:</th>
+                        <th>status:</th>
+                        <th>nombre d'articles:</th>
+                        <th>Commandé le:</th>
                     </tr>
                     </thead>
 
                     <tbody className="body-table">
 
-                    {products.map(renderStock)}
+                    {commands.map(renderStock)}
 
                     </tbody>
 
@@ -65,20 +47,23 @@ const Commandes = () => {
 }
 
 
-const renderStock = (product, index) => {
+const renderStock = (command, index) => {
     return (
         <tr key={index}>
             <td>
-                <span className='command-id'>{product.commandID}</span>
+                <span className='command-id'>{command.id}</span>
             </td>
-            <td> {product.quantity}</td>
-            <td>{product.state}</td>
-            <td>{product.instock}</td>
-
+            <td> {command.status}</td>
+            <td>{command.quantity}</td>
+            <td>{parseDate(new Date(command.createdAt))}</td>
         </tr>
     )
-
 }
 
+const parseDate = (date) => {
+    return (
+        ('00' + date.getDate()).slice(-2) + "/" + ('00' + (date.getMonth() +1)).slice(-2) + "/" + date.getFullYear()
+    )
+}
 
 export default Commandes;

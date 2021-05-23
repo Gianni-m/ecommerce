@@ -1,15 +1,25 @@
 import axios from 'axios'
-export const addAddress = (address, city, postalCode) => (dispatch) => {
+export const addAddress = (address, city, com) => () => {
     try {
         //TODO: add request
-        return axios.post('/api/profile/address/add', {
+        return axios.post('/api/userAddress/add', {
             address,
             city,
-            postalCode
-        }).then(data => data.data)
+            com
+        }).then(data => data.data.data)
 
     } catch(err) {
         console.log(err);
         throw err
+    }
+}
+
+export const getUserAddress = () => () => {
+    try {
+        return axios.get('/api/userAddress/')
+            .then(data => data.data.data)
+    } catch (err) {
+        console.log(err)
+        throw err;
     }
 }

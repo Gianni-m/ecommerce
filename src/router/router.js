@@ -21,6 +21,7 @@ import Payment from "../components/Payment/Payment";
 import DisplayCategories from "../components/Categories/DisplayCategories";
 import PrivateRoute from "./PrivateRoute";
 import {useSelector} from "react-redux";
+import ProfileSidebar from "../components/Profile/ProfileSideBar";
 
 
 function RouterList() {
@@ -41,12 +42,19 @@ function RouterList() {
                         <Route path='/logout' component={LogoutForm} />
                         <Route path='/cart' component={Cart}/>
                         <Route path='/product/:productId/' component={ProductPage}/>
-                        <PrivateRoute path='/profil' component={Profile}/>
-                        <PrivateRoute path='/profil/commandes' component={Commandes}/>
-                        <PrivateRoute path='/profil/infos' component={Infos}/>
-                        <PrivateRoute path='/payment' component={Payment}/>
-                        <Route path='/category/:categoryId' component={DisplayCategories}/>
 
+                        <Route path='/category/:categoryId' component={DisplayCategories}/>
+                        <PrivateRoute authed={authStore.isAuthenticated} exact path='/payment' component={Payment}/>
+
+                        <PrivateRoute path='/profile' authed={authStore.isAuthenticated}>
+                            <ProfileSidebar/>
+                            <Switch>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/profile' component={Profile}/>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/profile/commands' component={Commandes}/>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/profile/infos' component={Infos}/>
+                                <Redirect to='/profile'/>
+                            </Switch>
+                        </PrivateRoute>
 
 
 

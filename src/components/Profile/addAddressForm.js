@@ -7,16 +7,13 @@ function AddAddressForm(props) {
     const dispatch = useDispatch();
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
-    const [postalCode, setPostalCode] = useState('')
+    const [com, setCom] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
-        dispatch(addAddress())
+        dispatch(addAddress(address, city, com))
             .then(() => props.closeForm)
             .catch(err => console.log(err))
-    }
-
-    function createCard(address,city,postalCode) {
     }
 
     return (
@@ -40,24 +37,17 @@ function AddAddressForm(props) {
                     />
                 </label>
                 <label>
-                    <p>Code posta l:</p>
-                    <input
-                        onChange={(e) => {
-                            console.log(e.target.size)
-                            setPostalCode(e.target.value)
-                        }}
+                    <p>Commentaire:</p>
+                    <textarea
+                        onChange={(e) => setCom(e.target.value)}
                         className="postal"
-                        value={postalCode}
+                        value={com}
                     />
                 </label>
-                <button
-                    onSubmit={createCard(setAddress,setCity,setPostalCode)}
-                    type='submit'>Ajouter,
-                </button>
-                <button
-                    onClick={props.closeForm}
-                >Retour</button>
-
+                <div className='actions'>
+                    <button type='submit'>Ajouter</button>
+                    <button onClick={props.closeForm}>Retour</button>
+                </div>
             </form>
         </div>
 
