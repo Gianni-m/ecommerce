@@ -1,17 +1,17 @@
 export const MenuItems = [
     {
         title: 'T-shirts',
-        url: '/home',
+        url: '/t-shirt',
         cName:'dropdown-link'
     },
     {
         title: 'Pantalons',
-        url: '/services',
+        url: '/pantalons',
         cName:'dropdown-link'
     },
     {
         title: 'Chaussures',
-        url: '/products',
+        url: '/chaussures',
         cName:'dropdown-link'
     },
 

@@ -9,13 +9,14 @@ const items = [
 const StockCard = () => {
     return (
         <div className='card product-stock-display'>
-            {items.map((item) => {
+            <div className='products'>
+            {items.slice(0,5).map((item) => {
                 return (
                 <div className="product-display">
                     <div className='product-icon'>
-                        <img/>
+                        <img src=''/>
                     </div>
-                    <div>
+                    <div className='product-infos'>
                         <span>
                             {item.name}
                         </span>
@@ -26,6 +27,12 @@ const StockCard = () => {
                 </div>
                 )
             })}
+        </div>
+            <div className='more-details'>
+                <button>
+                    Voir plus
+                </button>
+            </div>
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import {ADD_PRODUCT_TO_CART, CLEAR_CART, REMOVE_PRODUCT_FROM_CART, UPDATE_CART_PRODUCT_QUANTITY} from "./types";
 
-export const addProductToCart = (product, quantity) => (dispatch) => {
+export const addProductToCart = (productId, quantity) => (dispatch) => {
     try {
         //TODO: add request
-        const payload = addProductDispatch(product, quantity);
+        const payload = addProductDispatch(productId, quantity);
         console.log(payload)
         dispatch(payload)
 
@@ -52,10 +52,10 @@ const updateProductQuantityDispatch = (productId, quantity) => {
     }
 }
 
-const addProductDispatch = (product, quantity) => {
+const addProductDispatch = (productId, quantity) => {
     return {
         payload: {
-            product: product,
+            productId: productId,
             quantity: quantity
         },
         type: ADD_PRODUCT_TO_CART

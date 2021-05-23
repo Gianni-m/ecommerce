@@ -1,7 +1,7 @@
 import './dashboard.scss'
 import StatGraphs from "./StatsGraph";
-import StockCard from "./cards/StockCard";
-import RecentCommandCard from "./cards/RecentCommandCard";
+import StockCard from "./homeCards/StockCard";
+import RecentCommandCard from "./homeCards/RecentCommandCard";
 const Dashboard = () => {
     return (
         <div className='seller-dashboard'>

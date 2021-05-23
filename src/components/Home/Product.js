@@ -4,18 +4,19 @@ import logo from '../../assets/images/vet_03.jpg'
 
 
 
-const Product  = () => {
+const Product  = (props) => {
 
+    const { name, logo, price, description} = props;
     return (
         <div className="product">
             <img src={logo} alt="product name"/>
 
             <div className="product-info">
-                <p className="info-name"> Product 1</p>
-                <p className="info-description"> oui tres bon produit </p>
-                <p className="info-price"> 10.99 € </p>
+                <p className="info-name"> {name}</p>
+                <p className="info-description"> {description} </p>
+                <p className="info-price"> {price} € </p>
 
-                <Link to={'/productest'} className="info-button"> View </Link>
+                <Link to={`/product/${props.id}`} className="info-button"> View </Link>
             </div>
         </div>
     )

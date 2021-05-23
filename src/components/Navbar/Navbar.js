@@ -9,6 +9,8 @@ import { IoMenu } from "react-icons/io5";
 
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown'
+import NavbarSearchbar from "./NavbarSearchbar";
+import {useSelector} from "react-redux";
 
 
 
@@ -16,6 +18,8 @@ import Dropdown from './Dropdown'
 
 function Navbar() {
 
+    const authStore = useSelector(state => state.auth);
+    const {isAuthenticated, user} = authStore
 
     const [click, setClick] = useState(false);
     const [dropdown1, setDropdown1] = useState(false);
@@ -76,13 +80,16 @@ function Navbar() {
     return(
         <>
             <nav className = "navbar">
+                <div className='icon'>
+
+
                 <Link to='/' className='navbar-logo'>
                     <img src={logo} alt="logo du site"/>
                 </Link>
-
-                <div className="test">
-                    <button onClick={() => setClick(!click)}> <IoMenu/> </button>
                 </div>
+
+
+                <div className='nav-links'>
                 <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={click ? "hidden" : "" }>
 
                     <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -105,30 +112,31 @@ function Navbar() {
                     </li>
 
                 </ul>
-                <form action='/' method="get">
-                    <div className="searchbar">
-                        <input type="text" placeholder="Search..." name="s"/>
+                </div>
+                <NavbarSearchbar/>
+
+                <div className='user-actions'>
+                    <div className='action action-profile'>
+                        {
+                            isAuthenticated ?
+                                <Link to='/profile' className="logo">
+                                    <VscAccount className="loginlogo"/>
+                                    {'Bonjour ' + user.username}
+                                </Link>
+                                :
+                                <Link to='/login' className="logo">
+                                    <VscAccount className="loginlogo"/>
+                                    S'identifier
+                                </Link>
+                        }
                     </div>
-                </form>
-                    <div className="searchbutton"><button> Search</button> </div>
-
-
-                    <div className="logo">
-                        <Link to='/login' className="logo">
-                            <VscAccount className="loginlogo" />
-                        </Link>
-                        <Link to='/cart' className="logop">
-                            <span>
+                    <div className='action action-cart'>
+                        <Link to='/cart' className="logo">
                             <AiOutlineShoppingCart className="panierlogo"/>
-                    <span className="tests"> 0 </span>
-                    </span>
+                            Mon panier
                         </Link>
-
-                        <Link to ='/home' className="logout">
-                        </Link>
-
-
                     </div>
+                </div>
 
 
 

@@ -28,13 +28,14 @@ export const loginDispatch = (payload) => {
     }
 }
 
-export const registerUser = (username, email, password, password2) => async  dispatch => {
+export const registerUser = (username, email, password, firstName, lastName) => async  dispatch => {
     try {
-        const user = await axios.post(`auth/login`, {
+        const user = await axios.post(`auth/register`, {
             username:username,
             email:email,
             password: password,
-            password2: password2
+            firstName,
+            lastName
         })
             .then((response) => response.data);
         const decoded = jwt_decode(user.data);

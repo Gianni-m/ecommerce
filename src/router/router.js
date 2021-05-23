@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import Home from "../components/Home/Home";
 import RegisterForm from "../components/Auth/RegisterForm"
@@ -8,8 +8,8 @@ import Cart from "../components/Cart/Cart"
 import Navbar from "../components/Navbar/Navbar";
 import Dashboard from "../components/productManagement/Dashboard";
 import Footer from "../components/Footer/Footer";
-import DashboardSidebar from "../components/productManagement/DashboardSidebar";
-import StockDashboard from "../components/productManagement/stockDashboard/StockDashboard";
+import DashboardSidebar from "../components/productManagement/Sidebar/DashboardSidebar";
+import ProductDashboard from "../components/productManagement/myProducts/ProductDashboard";
 
 import StockManagement from "../components/productManagement/stockDashboard/stockManagement/StockManagement";
 import LogoutForm from "../components/Auth/LogoutForm";
@@ -18,11 +18,16 @@ import Profile from "../components/Profile/Profile";
 import Commandes from "../components/Profile/Commandes";
 import Infos from "../components/Profile/Infos";
 import Payment from "../components/Payment/Payment";
+import DisplayCategories from "../components/Categories/DisplayCategories";
+import PrivateRoute from "./PrivateRoute";
+import {useSelector} from "react-redux";
 
-class RouterList extends Component {
+
+function RouterList() {
+
+    const authStore = useSelector(state => state.auth);
 
 
-    render() {
         return (
             <Router>
                 <div className="app-header">
@@ -34,33 +39,35 @@ class RouterList extends Component {
                         <Route path='/login' component={LoginForm}/>
                         <Route path='/register' component={RegisterForm} />
                         <Route path='/logout' component={LogoutForm} />
-                        {<Route path='/cart' component={Cart}/>}
+                        <Route path='/cart' component={Cart}/>
                         <Route path='/product/:productId/' component={ProductPage}/>
-                        <Route path='/profil' component={Profile}/>
-                        <Route path='/profil/commandes' component={Commandes}/>
-                        <Route path='/profil/infos' component={Infos}/>
-                        <Route path='/payment' component={Payment}/>
+                        <PrivateRoute path='/profil' component={Profile}/>
+                        <PrivateRoute path='/profil/commandes' component={Commandes}/>
+                        <PrivateRoute path='/profil/infos' component={Infos}/>
+                        <PrivateRoute path='/payment' component={Payment}/>
+                        <Route path='/category/:categoryId' component={DisplayCategories}/>
 
 
 
-                        <Route path='/dashboard/'>
-                            <DashboardSidebar/>
+
+                        <PrivateRoute authed={authStore.isAuthenticated} path='/dashboard/'>
+                            <DashboardSidebar user={authStore.user}/>
                             <Switch>
-                                <Route exact path='/dashboard/'>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/'>
                                     <Dashboard/>
-                                </Route>
-                                <Route exact path='/dashboard/stock'>
-                                    <StockDashboard/>
-                                </Route>
-                                <Route exact path='/dashboard/stockManagement'>
+                                </PrivateRoute>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/stock'>
+                                    <ProductDashboard/>
+                                </PrivateRoute>
+                                <PrivateRoute authed={authStore.isAuthenticated} exact path='/dashboard/stockManagement'>
                                     <StockManagement/>
-                                </Route>
+                                </PrivateRoute>
                                 <Route>
                                     <Redirect to='/dashboard'/>
                                 </Route>
 
                             </Switch>
-                        </Route>
+                        </PrivateRoute>
                         <Route path="*">
                             <Redirect to='/'/>
                         </Route>
@@ -72,7 +79,6 @@ class RouterList extends Component {
 
             </Router>
         )
-    }
 }
 
 export default RouterList

@@ -1,30 +1,3 @@
-
-div.sidebar {
-    position: fixed;
-    left: 0;
-    top: 60px;
-    height: 100%;
-    width: 250px;
-    background-color: red;
-    div.links {
-        margin: 50px 20px 0;
-        display: block;
-        a.link {
-            color: white;
-            margin: 15px 0;
-            font-size: 17px;
-            text-decoration: none;
-
-            div {
-                &:hover {
-                    background-color: black;
-                }
-            }
-        }
-
-    }
-}
-
 div.seller-dashboard {
     padding: 2% 10% 0;
     width: 80%;
@@ -46,27 +19,37 @@ div.seller-dashboard {
     }
 
     div.stats-graph {
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        margin: 1.5rem auto 0;
+        width: 100%;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 
         div.graph {
-            width: 500px;
+            max-width: 500px;
             height: 300px;
+            margin: 10px min(10px) auto min(10px);
+
             border: solid 1px black;
             border-radius: 5px;
-            background-color: gray;;
+            background-color: #ffffff;;
         }
     }
 
     div.quick-data {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 50px;
+        display: grid;
+        //justify-content: space-between;
+        margin: 1.5rem auto 0;
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
         div.card {
-            width: 250px;
+            max-width: 320px;
             border-radius: 5px;
+            margin: 10px min(10px) auto min(10px);
+
             border: 1px solid black;
-            background-color: red;
+            background-color: #ffffff;
             min-height: 350px;
         }
         div.recent-commands-display {
@@ -82,14 +65,53 @@ div.seller-dashboard {
                 }
             }
         }
-    }
-}
 
+        div.product-stock-display {
+            width: 100%;
+            div.products {
+                width: 100%;
+                div.product-display {
+                    border-bottom: 1px solid gray;
+                    padding: 5px 20px 5px 5px;
+                    display: flex;
+                    align-items: center;
 
-div.marmoud {
-    width: 100px;
+                    &:last-child {
+                        border-bottom: none;
+                    }
 
-    div.jb {
+                    div.product-icon {
 
+                        img {
+                            height: 50px;
+                            width: 50px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    div.product-infos {
+                        margin-left: 10px;
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-between;
+
+                        span {
+                            overflow: hidden;
+                            display: block;
+                        }
+                    }
+                }
+            }
+            div.more-details {
+                width: 100%;
+                margin-top: auto;
+                button {
+                    margin-top: auto;
+                    width: 100%;
+                    border: none;
+                    height: 50px;
+                }
+            }
+        }
     }
 }

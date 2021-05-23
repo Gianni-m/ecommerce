@@ -1,9 +1,11 @@
 div.app-footer {
-    background: linear-gradient(rgb(0,0,0), #0e0e0e);
+    background: linear-gradient(#1d1e2a, #0e0e0e);
+    //background-color:  #1d1e2a;
     color: white;
     display: block;
     align-items: center;
     height: 170px;
+    z-index: 30;
     justify-content: space-between;
     padding: 30px;
 
