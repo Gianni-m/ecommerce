@@ -21,10 +21,10 @@ const Home = (props) => {
     }, []);
 
     async function displayProduct() {
-        await dispatch(getProducts(categoryId))
+        await dispatch(getProducts({take: 20}))
             .then((product) => {
                 if(product) {
-                    setProduct(product.concat(product))
+                    setProduct(product)
                 }
             })
             .catch((err) => {
