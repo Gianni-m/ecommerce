@@ -6,32 +6,28 @@ import Product from "../Home/Product";
 
 const products = [
     {
-        id: 1212,
-        name: 'tshirt',
+        commandID: 1212,
         quantity: 3,
-        price: 32323.12,
-        size: 'L',
+        state: 'livré',
+        instock:'instock',
     },
     {
-        id: 23,
-        name: 'pull',
+        commandID : 23,
         quantity: 59354,
-        price: 32323,
-        size: 'M',
+        state:'en préparation',
+        instock : 'out of stock',
 
     },
-    {id: 535434,
-        name: 'Pantalon Sport',
+    {   commandID : 535434,
         quantity: 2323,
-        price: 32323.4343,
-        size: 'XXL',
+        state:'expédié',
+        instock : 'instock',
     },
     {
-        id: 3232,
-        name: 'Casquette Vigile',
+        commandID : 3232,
         quantity: 1220,
-        price: 32.5,
-        size: 'S',
+        state :'livré',
+        instock: 'instock',
     },
 ]
 
@@ -49,9 +45,10 @@ const Commandes = () => {
 
                     <thead className="header-table">
                     <tr>
-                        <th>Name</th>
-                        <th>Size</th>
+                        <th>Command ID</th>
                         <th>Quantity</th>
+                        <th>State</th>
+                        <th>inStock</th>
                     </tr>
                     </thead>
 
@@ -73,11 +70,12 @@ const renderStock = (product, index) => {
     return (
         <tr key={index}>
             <td>
-                <span className='product-name'>{product.name}</span>
-                <span className='product-id'>{'id:' + product.id}</span>
+                <span className='command-id'>{product.commandID}</span>
             </td>
-            <td> {product.size} </td>
             <td> {product.quantity}</td>
+            <td>{product.state}</td>
+            <td>{product.instock}</td>
+
         </tr>
     )
 

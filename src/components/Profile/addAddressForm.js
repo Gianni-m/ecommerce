@@ -16,6 +16,11 @@ function AddAddressForm(props) {
             .catch(err => console.log(err))
     }
 
+    function createCard(address,city,postalcode) {
+
+
+    }
+
     return (
         <div className='add-address-form'>
             <form onSubmit={handleSubmit}>
@@ -23,6 +28,7 @@ function AddAddressForm(props) {
                     <p>Adresse:</p>
                     <input
                         onChange={(e) => setAddress(e.target.value)}
+                        className="adresse"
                     />
                 </label>
 
@@ -30,6 +36,7 @@ function AddAddressForm(props) {
                     <p>Ville:</p>
                     <input
                         onChange={(e) => setCity(e.target.value)}
+                        className="ville"
                     />
                 </label>
                 <label>
@@ -39,9 +46,13 @@ function AddAddressForm(props) {
                             console.log(e.target.size)
                             setPostalCode(e.target.value)
                         }}
+                        className="postal"
                     />
                 </label>
-                <button type='submit'>Ajouter</button>
+                <button
+                    onSubmit={createCard(setAddress,setCity,setPostalCode)}
+                    type='submit'>Ajouter,
+                </button>
                 <button
                     onClick={props.closeForm}
                 >Retour</button>
