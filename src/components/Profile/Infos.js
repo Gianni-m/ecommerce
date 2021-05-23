@@ -1,46 +1,41 @@
 import "./Infos.scss"
-import React, { Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
+import { VscAdd } from "react-icons/vsc";
+import AddressCard from "./AddressCard";
+import AddAddressForm from "./addAddressForm";
+
+const userAddress = [{}, {}, {}, {}]
 
 
-const Infos = () => {
+const ProfileInfos = () => {
+    const [displayForm, setDisplayForm] = useState(false);
     return (
 
         <Fragment>
 
-            <div className="infos">
-                <h2 className="Header">Vos Informations </h2>
-                <div className="cart-left">
-                    <p>
-                        <a href="/profile">
-                            Mon Profil
-                        </a>
-                    </p>
-                    <p>
-                        <a href="/profile/Infos">
-                            Mes Infos
-                        </a>
-                    </p>
-                    <p>
-                        <a href={"/profile/Commandes"}>
-                            Mes commandes
-                        </a>
-                    </p>
+            <div className="profile-infos">
+                <h1 className="Header">Vos Informations de Livraison </h1>
+                <button className="add"
+                        onClick={() => setDisplayForm(true)}>
+                    <VscAdd/>
+                </button>
 
-
+                <div className="address-list">
+                    {
+                        userAddress.map((address) => {
+                            return <AddressCard {...address}/>
+                        })
+                    }
                 </div>
-                <div className="cart-right">
-                    <div className="cart-info">
-                        <p> Subtotal (0) items</p>
-                        <p> 10.99 €</p>
-                    </div>
-                    <div>
-                        <button> Proceed to Checkout</button>
-                    </div>
-
-                </div>
+                {
+                    displayForm ? <AddAddressForm
+                            closeForm={() => setDisplayForm(false)}
+                        />
+                        : null
+                }
             </div>
         </Fragment>
     );
 }
 
-export default Infos;
+export default ProfileInfos;

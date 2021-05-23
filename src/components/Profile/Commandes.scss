@@ -1,57 +1,71 @@
-h2 {
-  font-size: 50px;
-  color: aliceblue;
-}
+.commandes {
+  h1 {
+    font-size: 50px;
+    color: palegreen;
+  }
 
-.profile{
-  margin-top : 15px;
-  background-color: aliceblue;
   display: flex;
 
 
+  table.table {
+
+    td, tr, th {
+      border: none;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    margin: auto;
+    padding: 20px;
+    border: none;
+    border-collapse: collapse;
+    border-spacing: 0;
 
 
+    thead.header-table {
+      border: none;
+      border-collapse: collapse;
+      border-spacing: 0;
+      background-color: green;
 
+      tr {
+        th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+      }
+    }
 
+    tbody.body-table {
+      border: none;
+      border-collapse: collapse;
+      border-spacing: 0;
 
-  .Commandes {
+      tr {
+        td {
+          span {
+            display: block;
 
-    background-color: aliceblue;
-    border: 10px solid black;
-    height: 1000px;
-    width: 100%;
-    padding-top: 50px;
-    display: grid;
+            &.product-name {
+              font-size: 20px;
 
+            }
 
-  }
+            &.product-id {
+              font-size: 15px;
+              color: gray;
+            }
+          }
 
-
-
-
-
-
-  .profile-left {
-    background-color: aliceblue;
-    height : 1000px;
-    display: grid ;
-    padding : 50px 15px 0 15px;
-    border: 1px solid black ;
-
-    p{
-      margin-top: 20px;
-      font-size: 30px;
-      font-weight: bold;
-      a {
-        text-decoration : unset;
-        color : black ;
+          text-align: center;
+          border: 1px solid #ddd;
+          padding: 35px;
+          background-color: white;
+          width: 25%;
+        }
       }
 
     }
 
   }
-
-
 }
-
-
