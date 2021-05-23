@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import ProductAddCard from "./AddProduct/ProductAddCard";
 import {useEffect, useState, Fragment} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getSellerProducts} from "../../../actions/productActions";
+import {getProducts} from "../../../actions/productActions";
 
 
 const ProductDashboard = () => {
@@ -20,7 +20,7 @@ const ProductDashboard = () => {
         const params = {
             expansions: ['sizes','createdBy'].join(',')
         }
-        const data = await dispatch(getSellerProducts(authStore.user.id, params));
+        const data = await dispatch(getProducts(params));
         setData(data);
         setLoading(false)
     }

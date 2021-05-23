@@ -19,14 +19,6 @@ export const getProducts = (params = {}) => async  () => {
         throw err
     }
 }
-export const getSellerProducts = (sellerId, params) => async () => {
-    try {
-        return await axios.get(`/api/products//from-seller/${sellerId}`, {params})
-            .then((response) => response.data.data);
-    } catch(err) {
-        throw err;
-    }
-}
 
 export const updateProduct = (productId, name, description, price) => async () => {
     try {
