@@ -103,8 +103,6 @@ const ProductEditForm = (props) => {
                             return (<ProductSizeCard
                                 id={size.id}
                                 sizeName={size.sizeName}
-                                Largeur={3.2}
-                                longueur={5.2}
                                 key={key}
                                 productId={id}
                             />)

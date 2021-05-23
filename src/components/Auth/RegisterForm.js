@@ -1,150 +1,150 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import '../../style/Form.scss';
-import {connect} from "react-redux";
-import {Link} from "react-router-dom"
-import {loginUser, registerUser} from "../../actions/authActions";
+import {useDispatch} from "react-redux";
+import {registerUser} from "../../actions/authActions";
 
 
+const RegisterForm = (props) => {
+    console.log(props)
+    const dispatch = useDispatch();
+    const [submitted, setSubmitted]= useState(false)
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
+    const [passwordCheck, setPasswordCheck] = useState('')
+    const [error, setError] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [firstName, setFirstName] = useState('')
 
-class RegisterForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state ={
-            isSubmitted:false,
-            username:'',
-            email:'',
-            password:'',
-            password2:'',
-            error:''
-        }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleChange(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    }
-
-    async handleSubmit(e) {
-        e.preventDefault();
-        const {isSubmitted, username,email, password, password2} = this.state
-        if(!isSubmitted) {
+        if(!submitted) {
             if(username.length < 2) {
-                this.setState({error: "username incorrect"})
+                setError("username incorrect")
+            }
+            else if(firstName.length < 5 ) {
+                setError('prénom incorrect')
+            }
+            else if(lastName.length < 5) {
+                setError('nom incorrect')
             }
             else if(email.length < 3) {
-                this.setState({error: "email incorrect"})
+                setError("email incorrect")
             }
             else if(password.length < 5) {
-                this.setState({error: "longueur du mot de passe insuffisante"})
+                setError("longueur du mot de passe insuffisante")
             }
-            else if(password2 !== password) {
-                    this.setState({error: "les 2 mots de passes ne correspondent pas"})
+            else if(password !== passwordCheck) {
+                setError("les 2 mots de passes ne correspondent pas")
             } else {
                 document.querySelector('#error-display').classList.remove('show')
-                await this.props.registerUser(username, email, password, password2)
-                    .then(() => this.props.history.push('/home'))
+                await dispatch(registerUser(username, email, password, firstName, lastName))
+                    .then(() => props.history.push('/home'))
                     .catch((err) => {
-                        this.setState({error: 'erreur'})
+                        setError('erreur de requête')
                         document.querySelector('#error-display').classList.add('show')
                     })
-                this.setState({isSubmitted: false})
+                setSubmitted(false)
             }
         }
     }
 
-    render() {
+    return(
+        <div className="auth-form">
+            <form onSubmit={handleSubmit}>
+                <div className="form-header">
+                    <h2>Inscription</h2>
+                </div>
+                <div className="input-box username-box">
+                    <label htmlFor="username">Username</label>
+                    <input
+                        type="username"
+                        id="username"
+                        name="username"
+                        required={true}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder='username'
+                    />
+                </div>
+                <div className="input-box email-box">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required={true}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder='example@email.com'
+                    />
+                </div>
+                <div className="input-box username-box">
+                    <label htmlFor="username">Nom</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        required={true}
+                        onChange={(e) => setLastName(e.target.value)}
+                        placeholder='Nom'
+                    />
+                </div>
+                <div className="input-box username-box">
+                    <label htmlFor="username">Prénom</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        required={true}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        placeholder='Prénom'
+                    />
+                </div>
+                <div className="input-box password-box">
+                    <label htmlFor="username">Mot de passe</label>
+                    <input
+                        type="password"
+                        id="username"
+                        name="password"
+                        minLength="5"
+                        placeholder="*******"
+                        required={true}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div className="input-box password2-box">
+                    <label htmlFor="username">Mot de passe</label>
+                    <input
+                        type="password2"
+                        id="username"
+                        name="password2"
+                        minLength="5"
+                        placeholder="*******"
+                        required={true}
+                        onChange={(e) => setPasswordCheck(e.target.value)}
+                    />
+                </div>
+                <div className="error-container">
+                    <span id="error-display">{error}</span>
+                </div>
 
-        const {isSubmitted, error} = this.state
-        const {handleChange, handleSubmit} = this;
+                <div className="form-submit">
+                    {
+                        submitted
+                            ? <button type="submit" disabled>Inscription</button>
+                            : <button type="submit">Inscription</button>
+                    }
+                </div>
+                <div className="links">
+                    <div>
+                        <a href='/login'>Se connecter</a>
+                    </div>
+                    <div>
+                        <a href='/resetPassword'>Mot de passe oublié?</a>
+                    </div>
+                </div>
+            </form>
 
-        return(
-
-            <div className="auth-form">
-
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-header">
-                        <h2>Inscription</h2>
-                    </div>
-                    <div className="input-box username-box">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="username"
-                            id="username"
-                            name="username"
-                            required={true}
-                            onChange={this.handleChange}
-                            placeholder='username'
-                        />
-                    </div>
-                    <div className="input-box email-box">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required={true}
-                            onChange={this.handleChange}
-                            placeholder='example@email.com'
-                        />
-                    </div>
-                    <div className="input-box password-box">
-                        <label htmlFor="username">Mot de passe</label>
-                        <input
-                            type="password"
-                            id="username"
-                            name="password"
-                            minLength="5"
-                            placeholder="*******"
-                            required={true}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="input-box password2-box">
-                        <label htmlFor="username">Mot de passe</label>
-                        <input
-                            type="password2"
-                            id="username"
-                            name="password2"
-                            minLength="5"
-                            placeholder="*******"
-                            required={true}
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="error-container">
-                        <span id="error-display">{error}</span>
-                    </div>
-
-                    <div className="form-submit">
-                        {
-                            isSubmitted
-                                ? <button type="submit" disabled>Inscription</button>
-                                : <button type="submit">Inscription</button>
-                        }
-                    </div>
-                    <div className="links">
-                        <div>
-                            <a href='/login'>Se connecter</a>
-                        </div>
-                        <div>
-                            <a href='/resetPassword'>Mot de passe oublié?</a>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-        )
-    }
-
+        </div>
+    )
 }
-
-
-
-const mapStateToProps = state => ({
-    auth: state.auth,
-});
-export default connect(mapStateToProps, {registerUser})(RegisterForm);
+export default RegisterForm
