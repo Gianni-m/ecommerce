@@ -9,7 +9,9 @@ import {useDispatch} from "react-redux";
 
 
 const CartItem = (props) => {
+    const {product} = props
     const dispatch = useDispatch();
+
     function handleInputChange(e) {
         console.log("la")
         if(e.target.value) {
@@ -29,9 +31,10 @@ const CartItem = (props) => {
         </div>
 
           <Link to={`/product/${111}`} className="cartitem-name">
-              <p>{props.name}</p>
+              <p>{product.name}</p>
           </Link>
-          <p className="cartitem-price">{props.price} €</p>
+          <p className="cartitem-price">{props.sizeName}</p>
+          <p className="cartitem-price">{product.price} €</p>
           <input
               className="cartitem-select"
               type='number'

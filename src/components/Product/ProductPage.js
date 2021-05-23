@@ -6,43 +6,31 @@ import {getProductById} from "../../actions/productActions";
 import {addProductToCart} from "../../actions/cartActions";
 
 
-const productExample = {
-    "id": 1,
-    "color": "red",
-    "price": 12,
-    "name": "t-shirt rouge incroyable insane du cul",
-    "description": "Ce t-shirt est INCROYABLE ACHETE LE ",
-    "createdBy": {
-        "id": 1,
-        "username": "pulgan",
-        "email": "pulgan18@gmail.com",
-        "firstName": "Romain",
-        "lastName": "Blanquet",
-        "password": "cookie",
-        "createdAt": 1620825626599,
-        "phoneNumber": null,
-        "isAdmin": false,
-        "isSealer": false
-    },
-    "sizes": [
-        {
-            "id": 1,
-            "sizeName": "M",
-            "quantity": 10
-        }
-    ]
-}
-
-
-
 const ProductPage =(props) => {
-    const [product, setProduct] = useState(null);
     const {productId} = props.match.params;
+
+    const [product, setProduct] = useState(null);
+    const [selectedSize, setSelectedSize] = useState(undefined);
+
     const [quantity, setQuantity] = useState(1)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        loadProduct(productId)
+        dispatch(getProductById(productId, {expansions: 'sizes'}))
+            .then((product) => {
+                if(product) {
+                    console.log(product)
+                    setProduct(product)
+                } else {
+                    props.history.push('/')
+
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+                props.history.push('/')
+            })
+
     }, []);
 
     function handleInputChange(e) {
@@ -51,28 +39,11 @@ const ProductPage =(props) => {
         }
     }
     function addToCart() {
-        dispatch(addProductToCart(product.id, quantity))
-    }
-
-    async function loadProduct(productId) {
-        await dispatch(getProductById(productId))
-            .then((product) => {
-                if(product) {
-                    console.log("PRODUIT TROUVE");
-                    setProduct(product)
-                } else {
-                    console.log("PRODUIT INTROUVABLE");
-
-                    setProduct(productExample);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                console.log("ERREUR DE REQUÊTE");
-
-                setProduct(productExample);
-            })
-
+        if(selectedSize) {
+            dispatch(addProductToCart(selectedSize.id, quantity))
+        } else {
+            console.log("aucune taille selectionné")
+        }
     }
 
     return (
@@ -93,8 +64,21 @@ const ProductPage =(props) => {
                                 <p> Price : {product.price} € </p>
                                 <p> {product.description} </p>
                                 <p>
-                                    <h2> Coloris au choix : </h2>
-                                    <button className="coloris" style={{backgroundColor:product.color}}> </button>
+                                    <h2> Tailles disponibles : </h2>
+                                    {
+                                        product.sizes ?
+                                        product.sizes.map(size => {
+                                            console.log(size)
+                                            return <button
+                                                onClick={() => setSelectedSize(size)}
+                                                key={size.id}
+                                            >{size.sizeName}</button>
+                                        })
+                                            : <p>Aucune taille disponible pour le moment...</p>
+                                    }
+                                    {
+                                        //<button className="coloris" style={{backgroundColor:product.color}}> </button>
+                                    }
                                 </p>
                             </div>
                                 <div className="left-info">

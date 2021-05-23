@@ -34,13 +34,25 @@ div.app-body {
 
 html {
   height: 100vh;
-
   min-height: 100vh;
 }
 body {
   height: 100%;
 }
 
+body::-webkit-scrollbar {
+  width: 2px; /* width of the entire scrollbar */
+
+}
+body::-webkit-scrollbar-track {
+
+  background: #3c3c3c; /* color of the tracking area */
+}
+body::-webkit-scrollbar-thumb {
+
+  background-color: #3e4862; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
 
 @media only screen and (max-width: 640px) {
   div.app-body {

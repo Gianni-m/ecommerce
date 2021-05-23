@@ -7,7 +7,7 @@ import {getUserAddress} from "../../actions/userAddressActions";
 import {createCommands} from "../../actions/commandActions";
 
 
-const Cart = () => {
+const Cart = (props) => {
     const dispatch = useDispatch();
     const cartStore = useSelector(state => state.cart);
     const cartProducts = cartStore.products
@@ -54,19 +54,19 @@ const Cart = () => {
         </div>
         <div className="cart-right">
             <div className="cart-info">
-                <h3>Résumé:</h3>
+                <h3>Résumé :</h3>
                 <div className='price-display'>
-                    <p>Nombre d'articles:</p>
+                    <p>Nombre d'articles :</p>
                     <p className='price-value'>{totalStats.productCount}</p>
                 </div>
 
                 <div className='price-display'>
-                    <p>Prix total:</p>
+                    <p>Prix total :</p>
                     <p className='price-value'>{totalStats.totalPrice} €</p>
                 </div>
             </div>
             <div className='address'>
-                <h3>Adresse de livraison:</h3>
+                <h3>Adresse de livraison :</h3>
                 <select onChange={(e) => setSelectedAddress(e.target.value)}>
                     {
                         addressList.map((address) => {
@@ -74,11 +74,26 @@ const Cart = () => {
                         })
                     }
                 </select>
+
+                {
+                    addressList.length !== 0 ? <div className='no-address-error'>
+                        <p className='no-address-error'>Il semblerait que aucune addresse ne soit enregistrée.</p>
+                        <a>ajouter une adresse</a>
+                    </div> : null
+                }
+            </div>
+            <div className='payment'>
+                <h3>Moyen de payement :</h3>
+                <select disabled={true} onChange={(e) => setSelectedAddress(e.target.value)}>
+                    <option>automatique </option>
+                </select>
             </div>
             <div>
                 <button
                     disabled={selectedAddress != null}
-                    onClick={() => dispatch(createCommands(cartProducts, selectedAddress))}
+                    onClick={() => {
+                        dispatch(createCommands(cartProducts, selectedAddress)).then(() => props.history.push('/profile/commands'))
+                    }}
                 > Procéder au payement</button>
             </div>
 
@@ -98,7 +113,7 @@ const getTotalStats = (products = [], cartProducts = []) => {
         const product = products[i];
         const quantity = getProductQuantity(cartProducts, product.id)
         productCount+= quantity;
-        totalPrice+= (quantity * product.price);
+        totalPrice+= (quantity * product.product.price);
     }
     return {
         productCount,
