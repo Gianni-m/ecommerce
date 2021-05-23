@@ -8,7 +8,6 @@ import {getProducts} from "../../../actions/productActions";
 
 const ProductDashboard = () => {
     const [data, setData] = useState([])
-    const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
 
@@ -16,13 +15,16 @@ const ProductDashboard = () => {
     const authStore = useSelector(state => state.auth);
     console.log(authStore);
 
-    async function initData() {
+    function initData() {
         const params = {
             expansions: ['sizes','createdBy'].join(',')
         }
-        const data = await dispatch(getProducts(params));
-        setData(data);
-        setLoading(false)
+        dispatch(getProducts(params))
+            .then((data) => {
+                setData(data);
+                setLoading(false)
+            })
+
     }
     useEffect(initData, []);
 

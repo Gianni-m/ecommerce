@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-//import "../../App.scss";
 import "./Navbar.scss"
 import logo from '../../assets/images/vet_03.jpg'
 
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { IoMenu } from "react-icons/io5";
 
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown'
@@ -21,7 +19,7 @@ function Navbar() {
     const authStore = useSelector(state => state.auth);
     const {isAuthenticated, user} = authStore
 
-    const [click, setClick] = useState(false);
+    const [click,] = useState(false);
     const [dropdown1, setDropdown1] = useState(false);
     const [dropdown2, setDropdown2] = useState(false);
     const [dropdown3, setDropdown3] = useState(false);

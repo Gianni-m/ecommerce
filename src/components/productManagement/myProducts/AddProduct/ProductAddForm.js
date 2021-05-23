@@ -1,6 +1,6 @@
 import {useState} from "react";
 import './addForm.scss'
-const ProductEditForm = (props) => {
+const ProductAddForm = (props) => {
     const {name, description, price} = props.product
 
     const [loading, setLoading] = useState(false);
@@ -21,6 +21,9 @@ const ProductEditForm = (props) => {
             }
             case 'name': {
                 setProductName(e.target.value)
+                break;
+            }
+            default: {
                 break;
             }
         }
@@ -111,4 +114,4 @@ const ProductEditForm = (props) => {
    )
 }
 
-export default ProductEditForm
+export default ProductAddForm

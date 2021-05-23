@@ -20,6 +20,16 @@ export const getProducts = (params = {}) => async  () => {
     }
 }
 
+export const getProductsByIds = (products, params = {}) => async  () => {
+    try {
+        return await axios.post(`/api/products/by-ids`, {products: products.join(',')},{params: params})
+            .then((response) => response.data.data)
+    } catch (err) {
+        console.log(err);
+        throw err
+    }
+}
+
 export const updateProduct = (productId, name, description, price) => async () => {
     try {
         return await axios.put(`/api/products/by-id/${productId}/update`,

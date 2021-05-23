@@ -9,12 +9,12 @@ const items = [
 const StockCard = () => {
     return (
         <div className='card product-stock-display'>
-            <div className='products'>
+            <div className='cartProduct'>
             {items.slice(0,5).map((item) => {
                 return (
                 <div className="product-display">
                     <div className='product-icon'>
-                        <img src=''/>
+                        <img src='' alt='not found'/>
                     </div>
                     <div className='product-infos'>
                         <span>

@@ -8,33 +8,15 @@ import {
 
 export const addProductToCart = (productId, quantity) => (dispatch) => {
     try {
-        //TODO: add request
-        const payload = addProductDispatch(productId, quantity);
-        console.log(payload)
-        dispatch(payload)
-
+        dispatch(addProductDispatch(productId, quantity));
     } catch(err) {
         console.log(err);
         throw err
     }
 }
 
-export const loadCartFromCache = () => (dispatch) => {
-    try {
-        const cart = localStorage.getItem('cart')
-        if(cart) {
-            const products = JSON.parse(cart);
-            dispatch(setCartDispatch(products))
-        }
-
-    } catch(err) {
-        console.log(err);
-    }
-}
-
 export const removeProductFromCart = (productId, quantity) => (dispatch) => {
     try {
-        //TODO: add request
         dispatch(removeProductDispatch(productId, quantity))
     } catch(err) {
         console.log(err);
@@ -53,7 +35,6 @@ export const updateProductQuantity = (productId, quantity) => dispatch => {
 
 export const clearCart = () => (dispatch) => {
     try {
-        // TODO: add request
         dispatch(clearCartDispatch());
     } catch(err) {
         console.log(err);
@@ -64,8 +45,8 @@ export const clearCart = () => (dispatch) => {
 const updateProductQuantityDispatch = (productId, quantity) => {
     return {
         payload: {
-            productId,
-            quantity
+            id: productId,
+            quantity: quantity
         },
         type: UPDATE_CART_PRODUCT_QUANTITY
     }
@@ -74,7 +55,7 @@ const updateProductQuantityDispatch = (productId, quantity) => {
 const addProductDispatch = (productId, quantity) => {
     return {
         payload: {
-            productId: productId,
+            id: productId,
             quantity: quantity
         },
         type: ADD_PRODUCT_TO_CART
@@ -84,7 +65,7 @@ const addProductDispatch = (productId, quantity) => {
 const removeProductDispatch = (productId, quantity) => {
     return {
         payload: {
-            productId: productId,
+            id: productId,
             quantity: quantity
         },
         type: REMOVE_PRODUCT_FROM_CART

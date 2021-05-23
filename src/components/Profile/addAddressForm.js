@@ -16,9 +16,7 @@ function AddAddressForm(props) {
             .catch(err => console.log(err))
     }
 
-    function createCard(address,city,postalcode) {
-
-
+    function createCard(address,city,postalCode) {
     }
 
     return (
@@ -29,6 +27,7 @@ function AddAddressForm(props) {
                     <input
                         onChange={(e) => setAddress(e.target.value)}
                         className="adresse"
+                        value={address}
                     />
                 </label>
 
@@ -37,6 +36,7 @@ function AddAddressForm(props) {
                     <input
                         onChange={(e) => setCity(e.target.value)}
                         className="ville"
+                        value={city}
                     />
                 </label>
                 <label>
@@ -47,6 +47,7 @@ function AddAddressForm(props) {
                             setPostalCode(e.target.value)
                         }}
                         className="postal"
+                        value={postalCode}
                     />
                 </label>
                 <button

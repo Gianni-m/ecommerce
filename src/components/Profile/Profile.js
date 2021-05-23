@@ -1,8 +1,6 @@
 import "./Profile.scss"
 import React, {Fragment, useState} from 'react';
-import ProfileSidebar from "./ProfileSidebar";
 import { VscEdit } from "react-icons/vsc";
-import ProductAddForm from "../productManagement/stockDashboard/AddProduct/ProductAddForm";
 import {useSelector} from "react-redux";
 
 

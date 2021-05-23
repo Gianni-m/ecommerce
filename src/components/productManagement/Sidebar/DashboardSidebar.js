@@ -12,7 +12,7 @@ const DashboardSidebar = (props) => {
                 <Link className='link' to='/dashboard'>
                     <div>Home</div>
                 </Link>
-                <Link className='link' to='/dashboard/products'>
+                <Link className='link' to='/dashboard/cartProduct'>
                     <div>Mes produits</div>
                 </Link>
                 <Link className='link' to='/dashboard/stats'>

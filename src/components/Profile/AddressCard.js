@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function AddressCard(props) {
+function AddressCard() {
     return (
         <div className='address-card'>
             <h2>Votre adresse : </h2>

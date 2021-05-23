@@ -1,14 +1,31 @@
 import "./Cart.scss"
-import React, { Fragment} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import CartItem from "./CartItem"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getProductsByIds} from "../../actions/productActions";
 
 
 const Cart = () => {
+    const dispatch = useDispatch();
     const cartStore = useSelector(state => state.cart);
-    const products = cartStore.products
+    const cartProducts = cartStore.products
 
-    const totalStats = getTotalStats(products)
+    const [products, setProducts] = useState([]);
+    const totalStats = getTotalStats(products, cartProducts)
+
+    useEffect(() => {
+            dispatch(getProductsByIds(getProductsIds(cartProducts)))
+                .then((productData) => {
+                    console.log(productData)
+                    setProducts(productData);
+
+                    console.log("I SET THE DATAS")
+                    console.log(products)
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    }, [])
     return (
 
         <Fragment>
@@ -18,11 +35,13 @@ const Cart = () => {
         <h2>Shopping Cart </h2>
             {
                 products.length > 0
-                    ? cartStore.products.map((product) => {
+                    ? products.map((product) => {
                         return <CartItem
                             {...product}
+                            quantity={getProductQuantity(cartProducts, product.id)}
                             key={product.id}
                         />
+
                     })
                     : <p>Votre panier est vide.</p>
             }
@@ -45,16 +64,31 @@ const Cart = () => {
 
 export default Cart;
 
-const getTotalStats = (products = []) => {
+const getTotalStats = (products, cartProducts = []) => {
     let productCount = 0;
     let totalPrice = 0;
-    for(let i = 0; i < products.length ; i++) {
+    for(let i = 0; i < cartProducts.length ; i++) {
         const product = products[i];
-        productCount+= product.quantity;
-        totalPrice+= (product.quantity * product.price);
+        const quantity = getProductQuantity(cartProducts, product.id)
+        productCount+= quantity;
+        totalPrice+= (quantity * product.price);
     }
     return {
         productCount,
         totalPrice
     }
+}
+
+const getProductsIds = (products) => {
+    return products.map(product => product.id)
+}
+
+const getProductQuantity = (products, productId) => {
+    for(let i = 0; i < products.length ; i++) {
+        const product = products[i];
+        if(parseInt(product.id) === productId) {
+            return products[i].quantity;
+        }
+    }
+    return null;
 }

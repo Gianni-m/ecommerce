@@ -51,11 +51,11 @@ const ProductPage =(props) => {
         }
     }
     function addToCart() {
-        dispatch(addProductToCart(productId, quantity))
+        dispatch(addProductToCart(product.id, quantity))
     }
 
     async function loadProduct(productId) {
-        const productData = await dispatch(getProductById(productId))
+        await dispatch(getProductById(productId))
             .then((product) => {
                 if(product) {
                     console.log("PRODUIT TROUVE");

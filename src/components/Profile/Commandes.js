@@ -1,6 +1,5 @@
 import "./Commandes.scss"
-import React, { Fragment} from 'react';
-import Product from "../Home/Product";
+import React from 'react';
 
 
 

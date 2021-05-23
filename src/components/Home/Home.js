@@ -10,11 +10,14 @@ import {getProducts} from "../../actions/productActions";
 
 const Home = () => {
 
-    const [products, setProduct] = useState([]);
+    const [cartProduct, setProduct] = useState([]);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        displayProduct()
+    useEffect(() =>{
+        function onload() {
+            displayProduct()
+        }
+        onload()
     }, []);
 
     async function displayProduct() {
@@ -38,10 +41,10 @@ const Home = () => {
                     <MomentProduct/>
                     <MomentProduct/>
                 </div>
-                <div className="home-products" >
+                <div className="home-cartProduct" >
                     {
-                        products.length > 0 ?
-                            products.map((product) => {
+                        cartProduct.length > 0 ?
+                            cartProduct.map((product) => {
                                 return <Product
                                     key={product.id}
                                     {...product}

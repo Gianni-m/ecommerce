@@ -9,13 +9,13 @@ import {useDispatch} from "react-redux";
 
 
 const CartItem = (props) => {
-    console.log(props)
-
     const dispatch = useDispatch();
     function handleInputChange(e) {
+        console.log("la")
         if(e.target.value) {
             const quantity = parseInt(e.target.value);
             if(quantity && quantity > 0) {
+                console.log("ici")
                 dispatch(updateProductQuantity(props.id, quantity))
             }
         }

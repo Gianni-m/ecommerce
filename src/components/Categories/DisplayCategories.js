@@ -2,7 +2,7 @@
 import "./DisplayCategories.scss"
 import ProductCategories from "./ProductCategories";
 import {useEffect, useState, Fragment} from "react";
-import {getProductByCategory, getProductByCategoryName} from "../../actions/categoryActions";
+import {getProductByCategoryName} from "../../actions/categoryActions";
 import {useDispatch} from "react-redux";
 
 const DisplayCategories = (props) => {
