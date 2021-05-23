@@ -1,20 +1,17 @@
-import React, {Component, Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 
 import Product from "./Product"
 import {connect, useDispatch} from "react-redux";
 import MomentProduct from "./MomentProduct";
 import "./Home.scss"
 import {getProducts} from "../../actions/productActions";
-import ProductCategories from "../Categories/ProductCategories";
 
 
 
-const Home = (props) => {
+const Home = () => {
 
     const [products, setProduct] = useState([]);
     const dispatch = useDispatch();
-
-    const {categoryId} = props.match.params
 
     useEffect(() => {
         displayProduct()
@@ -30,37 +27,33 @@ const Home = (props) => {
             .catch((err) => {
                 console.log(err);
             })
-
     }
 
+    return (
+        <Fragment>
 
-
-        return (
-            <Fragment>
-
-                <div className="home">
-                    <h3 className="hometitle"> Latest Products</h3>
-                    <div className="home-products" >
-                        {
-                        products.length > 0 ?
-                        products.map((product) => {
-                        return <Product
-                        key={product.id}
-                    {...product}
-                        />
-                    })
-                        : <p>Aucun article pour cette catégorie</p>
-                        }
-                    </div>
-
-                    <h3 className="article-moment"> Article du moment</h3>
-                    <div className="latest-product">
-                        <MomentProduct/>
-                        <MomentProduct/>
-                    </div>
+            <div className="home">
+                <h3 className="hometitle"> Latest Products</h3>
+                <div className="latest-product">
+                    <MomentProduct/>
+                    <MomentProduct/>
                 </div>
-            </Fragment>
-        );
+                <div className="home-products" >
+                    {
+                        products.length > 0 ?
+                            products.map((product) => {
+                                return <Product
+                                    key={product.id}
+                                    {...product}
+                                />
+                            })
+                            : <p>Aucun article pour cette catégorie</p>
+                    }
+                </div>
+                <h3 className="article-moment"> Article du moment</h3>
+            </div>
+        </Fragment>
+    );
 
 }
 
