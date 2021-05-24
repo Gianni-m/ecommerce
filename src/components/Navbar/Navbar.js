@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./Navbar.scss"
-import logo from '../../assets/images/vet_03.jpg'
+import logo from '../../assets/images/icon.png'
 
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
