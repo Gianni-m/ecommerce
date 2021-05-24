@@ -23,6 +23,7 @@ import PrivateRoute from "./PrivateRoute";
 import {useSelector} from "react-redux";
 import ProfileSidebar from "../components/Profile/ProfileSideBar";
 import SellerCommands from "../components/productManagement/Commands/Commandes";
+import ToggleAdmin from "../components/Auth/toggleAdmin";
 
 
 function RouterList() {
@@ -43,7 +44,7 @@ function RouterList() {
                         <Route path='/logout' component={LogoutForm} />
                         <Route path='/cart' component={Cart}/>
                         <Route path='/product/:productId/' component={ProductPage}/>
-
+                        <PrivateRoute authed={authStore.isAuthenticated} exact path='/toggleAdmin' component={ToggleAdmin}/>
                         <Route path='/category/:categoryId' component={DisplayCategories}/>
                         <PrivateRoute authed={authStore.isAuthenticated} exact path='/payment' component={Payment}/>
 

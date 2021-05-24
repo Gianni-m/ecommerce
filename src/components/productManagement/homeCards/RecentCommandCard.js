@@ -18,7 +18,7 @@ const RecentCommandCard = () => {
     useEffect(() => {
         dispatch(getCommands())
             .then(commands => setCommmands(commands.slice(0,5)))
-    })
+    }, [])
     return (
         <div className='card recent-commands-display'>
             {commands.map((command) => {
