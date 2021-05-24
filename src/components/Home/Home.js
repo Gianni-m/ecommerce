@@ -1,4 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react';
+import casquetteIcon from "../../assets/images/casquette.jpg";
+import tshirtIcon from "../../assets/images/product1.jpg";
 
 import Product from "./Product"
 import {connect, useDispatch} from "react-redux";
@@ -36,10 +38,19 @@ const Home = () => {
         <Fragment>
 
             <div className="home">
-                <h3 className="hometitle"> Latest Products</h3>
                 <div className="latest-product">
-                    <MomentProduct/>
-                    <MomentProduct/>
+                    <MomentProduct
+                        logo={casquetteIcon}
+                        name='casquette noir'
+                        price={12}
+                        description="une casquette standard qui protège du soleil."
+                    />
+                    <MomentProduct
+                        logo={tshirtIcon}
+                        name='tshirt gris été'
+                        description="un tshirt pour l'été de haute qualité."
+                        price={15}
+                    />
                 </div>
                 <div className="home-cartProduct" >
                     {
@@ -48,12 +59,12 @@ const Home = () => {
                                 return <Product
                                     key={product.id}
                                     {...product}
+                                    icon={tshirtIcon}
                                 />
                             })
                             : <p>Aucun article pour cette catégorie</p>
                     }
                 </div>
-                <h3 className="article-moment"> Article du moment</h3>
             </div>
         </Fragment>
     );

@@ -16,7 +16,7 @@ div.famous-product-card {
             p {
                 font-size: 13px;
                 line-height: 1.4;
-                color: #aaa;
+                color: #000000;
                 margin: 20px 0;
             }
         }
@@ -32,30 +32,28 @@ div.famous-product-card {
                 font-weight: bold;
             }
             button {
-                width: 120px;
-                display: flex;
-                height: 40px;
-                align-items: center;
                 text-align: center;
+                width: 120px;
+                display: block;
+                height: 40px;
                 border: 1px solid #171717;
                 background-color: #171717;
                 color: #fff;
                 cursor: pointer;
-                padding: 12px;
             }
         }
 
     }
     div.card-icon {
-        background-color: red;
+        height: 100%;
+        display: flex;
         img {
+            border-radius: 2Px;
             display: block;
-            width: auto;
-            height: auto;
-            max-width: 300px;
-            max-height:300px;
+            width: 250px;
+            height: 250px;
+            margin: auto;
         }
-        height: 100px;
     }
 
 

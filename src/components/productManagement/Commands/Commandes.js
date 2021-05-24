@@ -59,7 +59,6 @@ const renderStock = (command, index) => {
             <td>
                 {
                     command.items.map(product => {
-                        console.log(product)
                         return <Fragment>
                             <p>{product.product.product.name}</p>
                             <p>{product.product.sizeName}</p>
