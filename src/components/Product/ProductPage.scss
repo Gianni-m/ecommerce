@@ -33,13 +33,16 @@
     }
     div.size-list {
       display: grid;
+      grid-gap: 1px;
       grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
       margin: 20px;
       button {
-        margin: auto;
+        margin: 0 30px;
         height: 35px;
-        width: 70px;
-        color: black;
+        max-width: 70px;
+        color: #ffffff;
+        background-color: black;
+        border: 1px solid #171717;
       }
     }
     min-height: 100px;

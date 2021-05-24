@@ -78,28 +78,31 @@ const RegisterForm = (props) => {
                         placeholder='example@email.com'
                     />
                 </div>
-                <div className="input-box username-box">
-                    <label htmlFor="username">Nom</label>
-                    <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        required={true}
-                        onChange={(e) => setLastName(e.target.value)}
-                        placeholder='Nom'
-                    />
+                <div className='multiple-input-box'>
+                    <div className="input-box username-box">
+                        <label htmlFor="username">Nom</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            required={true}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder='Nom'
+                        />
+                    </div>
+                    <div className="input-box username-box">
+                        <label htmlFor="username">Prénom</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            required={true}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder='Prénom'
+                        />
+                    </div>
                 </div>
-                <div className="input-box username-box">
-                    <label htmlFor="username">Prénom</label>
-                    <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        required={true}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        placeholder='Prénom'
-                    />
-                </div>
+                <div className='multiple-input-box'>
                 <div className="input-box password-box">
                     <label htmlFor="username">Mot de passe</label>
                     <input
@@ -113,7 +116,7 @@ const RegisterForm = (props) => {
                     />
                 </div>
                 <div className="input-box password2-box">
-                    <label htmlFor="username">Mot de passe</label>
+                    <label htmlFor="username">Mot de passe (verif)</label>
                     <input
                         type="password"
                         id="passwordCheck"
@@ -123,6 +126,7 @@ const RegisterForm = (props) => {
                         required={true}
                         onChange={(e) => setPasswordCheck(e.target.value)}
                     />
+                </div>
                 </div>
                 <div className="error-container">
                     <span id="error-display">{error}</span>

@@ -11,58 +11,104 @@
 
 div.auth-form {
     position: absolute;
-    margin: 100px auto 10px;
-    top: 40%;
+    margin: 50px auto 10px;
+    top: 45%;
     left: 50%;
-    width: 380px;
-    padding: 50px;
+    width: 450px;
+    padding: 40px;
     transform: translate(-50%, -50%);
-    background-color: #323232;
+    background-color: #ffffff;
+    color: #000000;
     border-radius: 6px;
     overflow: hidden;
 
     form {
-        margin: 0 10px;
+        margin: 0 5px;
         h2 {
             text-align: left;
-            color: white;
+            font-size: 25px;
+            color: black;
         }
+
+        div.multiple-input-box {
+            display: flex;
+            justify-content: space-between;
+            div.input-box {
+                width: 45%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                label {
+                    //text-transform: uppercase;
+                    color: #171717;
+                    display: block;
+                }
+                input {
+                    border: 1px solid black;
+                    margin-top: 10px;
+                    width: 100%;
+                    color: #171717;
+                    height: 40px;
+                    outline: none;
+                    font-size: 20px;
+
+                    border-radius: 2px;
+                    box-sizing: border-box;
+                    padding: 2% 3%;
+
+                    &:invalid{
+                        &:focus {
+                            border: 1px solid red;
+                        }
+                    }
+
+                    &:valid {
+                        &:valid {
+                            border: 1px solid green;
+                        }
+                    }
+
+                    &::placeholder {
+                        color: #a4a4a4;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+
 
         div.input-box {
             width: 100%;
-            margin-top: 35px;
-            margin-bottom: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
 
             label {
-                text-transform: uppercase;
-                color: white;
+                //text-transform: uppercase;
+                color: #171717;
+                font-size: 17px;
             }
 
             input {
-                border: none;
+                border: 1px solid black;
                 margin-top: 10px;
-                border: 0;
                 width: 100%;
-                color: #fff;
+                color: #171717;
                 height: 40px;
-                background-color: #5f5f5f;
                 outline: none;
-                padding: 20px;
                 font-size: 20px;
 
-
-                border-radius: 4px;
+                border-radius: 2px;
                 box-sizing: border-box;
+                padding: 2% 3%;
 
                 &:invalid{
                     &:focus {
-                        border-bottom: 2px solid red;
+                        border: 1px solid red;
                     }
                 }
 
                 &:valid {
                     &:valid {
-                        border-bottom: 2px solid green;
+                        border: 1px solid green;
                     }
                 }
 
@@ -98,7 +144,8 @@ div.auth-form {
             margin-top: 20px;
             button {
                 font-size: 23px;
-                background-color: #ffffff;
+                background-color: #171717;
+                color:white;
                 border-radius: 2px;
                 box-shadow: none;
                 border: none;
