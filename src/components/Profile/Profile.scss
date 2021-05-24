@@ -38,9 +38,14 @@ div.sidebar {
   margin-top : 15px;
   display: flex;
 
+
+
   .profile-coords {
     form {
+      padding: 50px;
+      background-color: red;
       div.profile-field {
+
         label {
           display: block;
           color: aliceblue;
@@ -48,8 +53,9 @@ div.sidebar {
           font-size: 20px;
         }
 
-        input {
+        input[type=text] {
           color: lightgrey;
+          background-color: red;
           padding-top: 5px;
           font-size: 15px;
         }
