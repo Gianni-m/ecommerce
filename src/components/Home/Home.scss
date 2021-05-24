@@ -5,38 +5,23 @@
   width: 100%;
 
 
-}
+
 
 h3.hometitle {
   font-size: 1.5rem;
-  color: #171717;
+  color: white;
   margin-bottom: 1rem;
   margin-left: 8px;
 
 }
 
 .home-products {
+  background-color: white;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25%, 25%));
   width: 100%;
   justify-content: space-between;
 
-  div.product {
-    width: 300px;
-    margin-top: 30px;
-    background: #fff;
-    cursor: pointer;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-
-    img {
-      width: 100%;
-      height: 170px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-  }
 
 }
 
@@ -51,4 +36,5 @@ h3.article-moment {
   color: #171717;
   margin-bottom: 1rem;
   margin-left: 8px;
+}
 }

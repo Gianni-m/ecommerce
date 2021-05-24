@@ -1,3 +1,22 @@
+div.product {
+  width: 300px;
+  margin-top: 30px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+
+
+
 .product-info > p {
   margin-bottom: 8px;
 }
@@ -32,4 +51,4 @@
   color: #f4f4f4;
   opacity: 0.9;
 }
-
+}
