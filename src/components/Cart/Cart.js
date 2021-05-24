@@ -10,6 +10,7 @@ import {createCommands} from "../../actions/commandActions";
 const Cart = (props) => {
     const dispatch = useDispatch();
     const cartStore = useSelector(state => state.cart);
+    const authStore = useSelector(state => state.auth);
     const cartProducts = cartStore.products
 
     const [products, setProducts] = useState([]);
@@ -92,7 +93,9 @@ const Cart = (props) => {
                 <button
                     disabled={selectedAddress != null}
                     onClick={() => {
-                        dispatch(createCommands(cartProducts, selectedAddress)).then(() => props.history.push('/profile/commands'))
+                        authStore.isAuthenticated
+                            ? dispatch(createCommands(cartProducts, selectedAddress)).then(() => props.history.push('/profile/commands'))
+                            : props.history.push('/login')
                     }}
                 > Procéder au payement</button>
             </div>

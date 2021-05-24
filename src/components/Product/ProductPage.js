@@ -10,6 +10,7 @@ const ProductPage =(props) => {
     const {productId} = props.match.params;
 
     const [product, setProduct] = useState(null);
+    const [productSizes, setProductSizes] = useState([])
     const [selectedSize, setSelectedSize] = useState(undefined);
 
     const [quantity, setQuantity] = useState(1)
@@ -19,11 +20,14 @@ const ProductPage =(props) => {
         dispatch(getProductById(productId, {expansions: 'sizes'}))
             .then((product) => {
                 if(product) {
-                    console.log(product)
                     setProduct(product)
+                    setProductSizes(product.sizes)
+                    console.log(productSizes.length)
+                    console.log(productSizes)
                     if(product.sizes.length > 0) {
-                        setSelectedSize(product.sizes.shift())
+                        setSelectedSize(product.sizes[0])
                     }
+                console.log(productSizes)
                 } else {
                     props.history.push('/')
 
@@ -72,19 +76,23 @@ const ProductPage =(props) => {
                                 <p> {product.description} </p>
                                 <div className='size-selector'>
                                     <h3> Tailles disponibles : </h3>
-                                    {
-                                        (product.sizes)
-                                        ? product.sizes.map((size) => {
-                                            console.log(size);
-                                                return <button
-                                                    onClick={() => setSelectedSize(size)}
-                                                    key={size.id}
-                                                >
-                                                    {size.sizeName}
-                                                </button>
-                                            })
-                                            : <p>Aucune taille disponible pour le moment...</p>
-                                    }
+                                    <div className='size-list'>
+                                        {
+                                            productSizes.length > 0
+                                                ? productSizes.map((size) => {
+                                                    console.log(size);
+                                                    return(
+                                                        <button
+                                                            onClick={() => setSelectedSize(size)}
+                                                            key={size.id}
+                                                        >
+                                                            {size.sizeName}
+                                                        </button>)
+                                                })
+                                                : <p>Aucune taille disponible pour le moment...</p>
+                                        }
+                                    </div>
+
                                 </div>
                             </div>
                                 <div className="left-info">
