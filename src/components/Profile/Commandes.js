@@ -1,6 +1,6 @@
 import "./Commandes.scss"
 import React, {useEffect, useState} from 'react';
-import {getCommands, getUserCommands} from "../../actions/commandActions";
+import {getUserCommands} from "../../actions/commandActions";
 import {useDispatch} from "react-redux";
 
 

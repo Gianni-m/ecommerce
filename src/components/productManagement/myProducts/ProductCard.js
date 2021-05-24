@@ -4,6 +4,7 @@ import {updateProduct} from "../../../actions/productActions";
 import {useDispatch} from "react-redux";
 import { VscTrash, VscSymbolProperty } from "react-icons/vsc";
 import { FiCamera } from "react-icons/fi";
+import product1 from '../../../assets/images/product1.jpg'
 const ProductCard = (props) => {
     const [window, setWindow] = useState(null);
 
@@ -32,7 +33,7 @@ const ProductCard = (props) => {
                  {
                      props.icon ?
                          <img src={props.icon} alt='rerer'/>
-                         : <img src='https://cdn.discordapp.com/emojis/753518147750985739.png?v=1' alt='not found'/>
+                         : <img src={product1} alt='not found'/>
 
                  }
             </div>

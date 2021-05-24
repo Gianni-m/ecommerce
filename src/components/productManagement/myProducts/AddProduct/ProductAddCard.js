@@ -2,7 +2,6 @@ import {useState} from "react";
 import {addProduct} from "../../../../actions/productActions";
 import {useDispatch} from "react-redux";
 import ProductAddForm from "./ProductAddForm";
-
 const ProductAddCard = (props) => {
     const [addWindow, setAddWindow] = useState(null);
     const dispatch = useDispatch();
@@ -29,12 +28,8 @@ const ProductAddCard = (props) => {
 
     return (
         <div className='product-card' >
-             <div
-                 className='product-icon'
-                 onClick={() => toggleEditorWindow(true)}
-             >
-                 {/*<img src={props.icon} alt='not found'/>*/}
-                 AJOUTER
+            <div onClick={() => toggleEditorWindow(true)} style={{width: '100%'}}>
+                AJOUTER
             </div>
             {addWindow}
         </div>
