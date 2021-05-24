@@ -21,7 +21,7 @@ export const loginUser = (email, password) => async  dispatch => {
 
 export const toggleIsAdmin = () => async () => {
     try {
-        return await axios.post(`api/profile/toggleIsAdmin`)
+        return await axios.get(`api/profile/toggleIsAdmin`)
     } catch (err) {
         console.log(err);
         throw err
