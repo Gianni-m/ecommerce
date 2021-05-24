@@ -17,7 +17,7 @@ const StockCard = () => {
     return (
         <div className='card product-stock-display'>
             <div className='cartProduct'>
-            {items.slice(0,5).map((item) => {
+            {items.filter(item => item.sizes.length > 0).slice(0,5).map((item) => {
                 console.log(item)
                 return (
                 <div className="product-display">
@@ -29,7 +29,7 @@ const StockCard = () => {
                             {item.name}
                         </span>
                         <span>
-                            {item.sizes[0].quantity}
+                            {item.sizes ? item.sizes[0].quantity : 0}
                         </span>
                     </div>
                 </div>
