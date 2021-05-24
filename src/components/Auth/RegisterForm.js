@@ -39,8 +39,9 @@ const RegisterForm = (props) => {
             } else {
                 document.querySelector('#error-display').classList.remove('show')
                 await dispatch(registerUser(username, email, password, firstName, lastName))
-                    .then(() => props.history.push('/home'))
+                    .then(() => props.history.push('/login'))
                     .catch((err) => {
+                        console.log(err);
                         setError('erreur de requête')
                         document.querySelector('#error-display').classList.add('show')
                     })
@@ -58,7 +59,7 @@ const RegisterForm = (props) => {
                 <div className="input-box username-box">
                     <label htmlFor="username">Username</label>
                     <input
-                        type="username"
+                        type="text"
                         id="username"
                         name="username"
                         required={true}
@@ -103,7 +104,7 @@ const RegisterForm = (props) => {
                     <label htmlFor="username">Mot de passe</label>
                     <input
                         type="password"
-                        id="username"
+                        id="password"
                         name="password"
                         minLength="5"
                         placeholder="*******"
@@ -114,9 +115,9 @@ const RegisterForm = (props) => {
                 <div className="input-box password2-box">
                     <label htmlFor="username">Mot de passe</label>
                     <input
-                        type="password2"
-                        id="username"
-                        name="password2"
+                        type="password"
+                        id="passwordCheck"
+                        name="passwordCheck"
                         minLength="5"
                         placeholder="*******"
                         required={true}

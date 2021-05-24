@@ -1,5 +1,5 @@
 import "./Commandes.scss"
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Fragment} from 'react';
 import {getCommands} from "../../../actions/commandActions";
 import {useDispatch} from "react-redux";
 
@@ -26,9 +26,10 @@ const SellerCommands = () => {
 
                     <thead className="header-table">
                     <tr>
-                        <th>numéro de commande:</th>
+                        <th>n° de commande:</th>
                         <th>status:</th>
-                        <th>nombre d'articles:</th>
+                        <th>articles:</th>
+                        <th>email:</th>
                         <th>Commandé le:</th>
                     </tr>
                     </thead>
@@ -48,13 +49,27 @@ const SellerCommands = () => {
 
 
 const renderStock = (command, index) => {
+    console.log(command)
     return (
         <tr key={index}>
             <td>
                 <span className='command-id'>{command.id}</span>
             </td>
             <td> {command.status}</td>
-            <td>{command.quantity}</td>
+            <td>
+                {
+                    command.items.map(product => {
+                        console.log(product)
+                        return <Fragment>
+                            <p>{product.product.product.name}</p>
+                            <p>{product.product.sizeName}</p>
+                            <p>{product.quantity}</p>
+                            <br/>
+                        </Fragment>
+                    })
+                }
+            </td>
+            <td>{command.user.email}</td>
             <td>{parseDate(new Date(command.createdAt))}</td>
         </tr>
     )

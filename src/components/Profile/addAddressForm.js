@@ -12,7 +12,10 @@ function AddAddressForm(props) {
     function handleSubmit(e) {
         e.preventDefault()
         dispatch(addAddress(address, city, com))
-            .then(() => props.closeForm)
+            .then(() => {
+                props.closeForm()
+                window.location.reload(true)
+            })
             .catch(err => console.log(err))
     }
 

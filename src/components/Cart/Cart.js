@@ -16,6 +16,7 @@ const Cart = (props) => {
     const [products, setProducts] = useState([]);
     const [addressList, setAddressList] = useState([])
     const [selectedAddress, setSelectedAddress] = useState(undefined)
+    const [error, setError] = useState('');
     const totalStats = getTotalStats(products, cartProducts)
 
     useEffect(() => {
@@ -33,6 +34,21 @@ const Cart = (props) => {
                 console.log(err)
             })
     }, [])
+
+    function manageCommandCreation() {
+        setError('')
+        console.log(selectedAddress)
+        if(cartProducts.length === 0)
+            setError('veuillez ajouter des produits')
+        else if(!selectedAddress) {
+            setError('addresse invalide');
+        } else {
+            console.log("ici")
+            dispatch(createCommands(cartProducts, selectedAddress))
+                .then(() => props.history.push('/profile/commands'))
+        }
+    }
+
     return (
 
         <Fragment>
@@ -68,18 +84,18 @@ const Cart = (props) => {
             </div>
             <div className='address'>
                 <h3>Adresse de livraison :</h3>
-                <select onChange={(e) => setSelectedAddress(e.target.value)}>
+                <select disabled={!authStore.isAuthenticated} onChange={(e) => setSelectedAddress(e.target.value)}>
                     {
                         addressList.map((address) => {
-                            return <option value={address.value}>{address.address}, {address.city}</option>
+                            return <option value={address.id}>{address.address}, {address.city}</option>
                         })
                     }
                 </select>
 
                 {
-                    addressList.length !== 0 ? <div className='no-address-error'>
+                    addressList.length === 0 && authStore.isAuthenticated? <div className='no-address-error'>
                         <p className='no-address-error'>Il semblerait que aucune addresse ne soit enregistrée.</p>
-                        <a>ajouter une adresse</a>
+                        <a href='/profile/infos'>ajouter une adresse</a>
                     </div> : null
                 }
             </div>
@@ -90,14 +106,16 @@ const Cart = (props) => {
                 </select>
             </div>
             <div>
+                <p>{error}</p>
+            </div>
+            <div>
                 <button
-                    disabled={selectedAddress != null}
                     onClick={() => {
                         authStore.isAuthenticated
-                            ? dispatch(createCommands(cartProducts, selectedAddress)).then(() => props.history.push('/profile/commands'))
+                            ? manageCommandCreation()
                             : props.history.push('/login')
                     }}
-                > Procéder au payement</button>
+                > {authStore.isAuthenticated ? "Procéder au payement" : "Se connecter pour continuer"}</button>
             </div>
 
         </div>

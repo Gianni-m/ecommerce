@@ -30,18 +30,14 @@ export const loginDispatch = (payload) => {
 
 export const registerUser = (username, email, password, firstName, lastName) => async  dispatch => {
     try {
-        const user = await axios.post(`auth/register`, {
+        return await axios.post(`auth/register`, {
             username:username,
             email:email,
             password: password,
             firstName,
             lastName
         })
-            .then((response) => response.data);
-        const decoded = jwt_decode(user.data);
-        dispatch(loginDispatch(decoded))
-        localStorage.setItem("jwtToken", user.data);
-        return user;
+            .then((response) => response.data.data);
     } catch (err) {
         console.log(err);
         throw err
