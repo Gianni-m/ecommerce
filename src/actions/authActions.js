@@ -21,7 +21,7 @@ export const loginUser = (email, password) => async  dispatch => {
 
 export const updateProfile = (username, email, firstName, lastName, phoneNumber) => async (dispatch) => {
     try {
-        const token = await axios.post(`auth/login`, {
+        const token = await axios.put(`api/profile/updateInformations`, {
             username, email, firstName, lastName, phoneNumber
         })
             .then((response) => response.data.data);

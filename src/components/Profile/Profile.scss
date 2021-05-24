@@ -34,33 +34,45 @@ div.sidebar {
 }
 
 
-.profile{
-  margin-top : 15px;
+.profile {
+  margin-top: 15px;
   display: flex;
+  justify-content: center;
 
+  form.profile-coords {
+    display: block;
+    padding: 50px;
+    min-width: 350px;
+    background-color: #fff;
+    div.profile-field {
+      display: block;
+      width: 100%;
+      label {
+        display: block;
+        margin-left: 5px;
+        color: #000000;
+        padding-top: 40px;
+        font-size: 17px;
+      }
+      input {
+        display: block;
+        color: black;
+        margin: auto;
+        height: 30px;
+        width: 90%;
+        border: 1px solid black;
+        padding: 2% 3%;
+        font-size: 15px;
 
-
-  .profile-coords {
-    form {
-      padding: 50px;
-      background-color: red;
-      div.profile-field {
-
-        label {
-          display: block;
-          color: aliceblue;
-          padding-top: 40px;
-          font-size: 20px;
-        }
-
-        input[type=text] {
-          color: lightgrey;
-          background-color: red;
-          padding-top: 5px;
-          font-size: 15px;
+        &:disabled {
+          color: gray;
         }
       }
+
+
     }
+  }
+
     button.edit {
       height: 25px;
       width: 60px;
@@ -68,18 +80,4 @@ div.sidebar {
       color: black;
       font-size: 20px;
     }
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
 }

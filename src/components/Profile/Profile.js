@@ -1,12 +1,14 @@
 import "./Profile.scss"
 import React, {Fragment, useState} from 'react';
 import { VscEdit } from "react-icons/vsc";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {updateProfile} from "../../actions/authActions";
 
 
 
 
 const Profile = () => {
+    const dispatch = useDispatch();
     const authReducer = useSelector(store => store.auth);
     const {user} = authReducer;
 
@@ -17,16 +19,21 @@ const Profile = () => {
     const [email, setEmail] = useState(user.email || undefined)
     const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber || undefined)
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        dispatch(updateProfile(username, email, firstName, lastName, phoneNumber))
+            .then(() => setEditing(false))
+            .catch(err => console.log(err))
+    }
+
+
     return (
-
-
-
 
         <Fragment>
             <h2 className="Header">Votre Profil </h2>
 
             <div className="profile">
-                <form className="profile-coords">
+                <form onSubmit={handleSubmit} className="profile-coords">
                     <div className='profile-field'>
                         <label htmlFor='username'>Nom d'utilisateur:</label>
                         <input
