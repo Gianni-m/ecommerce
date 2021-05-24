@@ -1,27 +1,35 @@
 
-const items = [
-    {id: 1, name: 'tshirt rere', quantity: 2},
-    {id: 323, name: 'pull', quantity: 4},
-    {id: 545, name: 'chaussettes', quantity: 5},
-]
-
+import product1 from '../../../assets/images/product1.jpg'
+import {useEffect, useState} from "react";
+import {getProducts} from "../../../actions/productActions";
+import {useDispatch} from "react-redux";
 
 const StockCard = () => {
+    const dispatch = useDispatch();
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        dispatch(getProducts({take: 5, expansions: 'sizes'}))
+            .then((data) => setItems(data))
+
+    }, [])
+
     return (
         <div className='card product-stock-display'>
             <div className='cartProduct'>
             {items.slice(0,5).map((item) => {
+                console.log(item)
                 return (
                 <div className="product-display">
                     <div className='product-icon'>
-                        <img src='' alt='not found'/>
+                        <img src={product1} alt='not found'/>
                     </div>
                     <div className='product-infos'>
                         <span>
                             {item.name}
                         </span>
                         <span>
-                            {item.quantity}
+                            {item.sizes[0].quantity}
                         </span>
                     </div>
                 </div>
