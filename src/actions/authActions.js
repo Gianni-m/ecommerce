@@ -19,6 +19,21 @@ export const loginUser = (email, password) => async  dispatch => {
     }
 }
 
+export const updateProfile = (username, email, firstName, lastName, phoneNumber) => async (dispatch) => {
+    try {
+        const token = await axios.post(`auth/login`, {
+            username, email, firstName, lastName, phoneNumber
+        })
+            .then((response) => response.data.data);
+        const decoded = jwt_decode(token.toString());
+        dispatch(loginDispatch(decoded))
+        localStorage.setItem("jwtToken", token.toString());
+    } catch (err) {
+        console.log(err);
+        throw err
+    }
+}
+
 export const toggleIsAdmin = () => async () => {
     try {
         return await axios.get(`api/profile/toggleIsAdmin`)

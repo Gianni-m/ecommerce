@@ -23,3 +23,15 @@ export const getUserAddress = () => () => {
         throw err;
     }
 }
+
+export const deleteUserAddress = (userAddressId) => () => {
+    try {
+        /*return axios.delete(`/api/userAddress/by-id/${userAddressId}/delete`)
+            .then(data => data.data.data)
+            // TODO request not working
+         */
+    } catch (err) {
+        console.log(err)
+        throw err;
+    }
+}
