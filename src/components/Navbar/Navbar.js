@@ -4,7 +4,7 @@ import logo from '../../assets/images/vet_03.jpg'
 
 import { VscAccount } from "react-icons/vsc";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-
+import { VscOutput } from "react-icons/vsc";
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown'
 import NavbarSearchbar from "./NavbarSearchbar";
@@ -81,39 +81,49 @@ function Navbar() {
                 <div className='icon'>
 
 
-                <Link to='/' className='navbar-logo'>
-                    <img src={logo} alt="logo du site"/>
-                </Link>
+                    <Link to='/' className='navbar-logo'>
+                        <img src={logo} alt="logo du site"/>
+                    </Link>
                 </div>
 
 
                 <div className='nav-links'>
-                <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={click ? "hidden" : "" }>
+                    <ul className={click ? 'nav-menu-active' : 'nav-menu'} id={click ? "hidden" : "" }>
 
-                    <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                        <Link to ='/homme' className='nav-links' onClick={close}>
-                            Homme
-                        </Link>
-                        {dropdown1 && <Dropdown/>}
-                    </li>
-                    <li className='nav-item' onMouseEnter={onMouseEnter2} onMouseLeave={onMouseLeave2}>
-                        <Link to='/femme' className='nav-links' onClick={close}>
-                            Femme
-                        </Link>
-                        {dropdown2 && <Dropdown/>}
-                    </li>
-                    <li className='nav-item' onMouseEnter={onMouseEnter3} onMouseLeave={onMouseLeave3}>
-                        <Link to ='/enfant' className='nav-links' onClick={close}>
-                            Enfant
-                        </Link>
-                        {dropdown3 && <Dropdown/>}
-                    </li>
+                        <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+                            <Link to ='/category/homme' className='nav-links' onClick={close}>
+                                Homme
+                            </Link>
+                            {dropdown1 && <Dropdown/>}
+                        </li>
+                        <li className='nav-item' onMouseEnter={onMouseEnter2} onMouseLeave={onMouseLeave2}>
+                            <Link to='/category/femme' className='nav-links' onClick={close}>
+                                Femme
+                            </Link>
+                            {dropdown2 && <Dropdown/>}
+                        </li>
+                        <li className='nav-item' onMouseEnter={onMouseEnter3} onMouseLeave={onMouseLeave3}>
+                            <Link to ='/category/enfant' className='nav-links' onClick={close}>
+                                Enfant
+                            </Link>
+                            {dropdown3 && <Dropdown/>}
+                        </li>
 
-                </ul>
+                    </ul>
                 </div>
                 <NavbarSearchbar/>
 
                 <div className='user-actions'>
+                    <div className='action action-profile'>
+                        {
+                            isAuthenticated && (authStore.user.isAdmin || authStore.user.isSeller)
+                                ?  <Link to='/dashboard' className="logo">
+                                    <VscOutput className="loginlogo"/>
+                                    {'Dashboard'}
+                                </Link>
+                                :null
+                        }
+                    </div>
                     <div className='action action-profile'>
                         {
                             isAuthenticated ?
